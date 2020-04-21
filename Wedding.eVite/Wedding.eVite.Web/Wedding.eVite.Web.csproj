@@ -1,0 +1,409 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{33AAC7AC-674A-484F-9D02-0DF06EE6A1FF}</ProjectGuid>
+    <ProjectTypeGuids>{E3E379DF-F4C6-4180-9B81-6769533ABE47};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Wedding.eVite.Web</RootNamespace>
+    <AssemblyName>Wedding.eVite.Web</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Mvc.FixedDisplayModes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.FixedDisplayModes.1.0.0\lib\net40\Microsoft.Web.Mvc.FixedDisplayModes.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.4.5.11\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.4.0.30506.0\lib\net40\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.4.0.30506.0\lib\net40\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.4.0.30506.0\lib\net40\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.4.0.30506.0\lib\net40\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.0.0\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.2.0.30506.0\lib\net40\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="Utilities">
+      <HintPath>..\..\Utilities\Utilities\bin\Release\Utilities.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.3.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.3.0\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Content\AppCode\InviteEmailType.cs" />
+    <Compile Include="Controllers\ActionResults\JsonConverters\JsonDateTimeConverter.cs" />
+    <Compile Include="Controllers\ActionResults\JsonDateTimeResult.cs" />
+    <Compile Include="Controllers\BigDayController.cs" />
+    <Compile Include="Controllers\GiftController.cs" />
+    <Compile Include="Controllers\LogInController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
+    <Compile Include="Controllers\MessagesController.cs" />
+    <Compile Include="Controllers\PageControllers\AdminPageController.cs" />
+    <Compile Include="Controllers\PhotosController.cs" />
+    <Compile Include="Controllers\ResetPasswordController.cs" />
+    <Compile Include="Controllers\RsvpController.cs" />
+    <Compile Include="Controllers\PageControllers\BaseController.cs" />
+    <Compile Include="Controllers\ChangePasswordController.cs" />
+    <Compile Include="Controllers\DefaultController.cs" />
+    <Compile Include="Controllers\PageControllers\PageController.cs" />
+    <Compile Include="Controllers\PageControllers\UserPageController.cs" />
+    <Compile Include="Controllers\UnsubscribeController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AdminGuestModel.cs" />
+    <Compile Include="Models\AdminGuestsModel.cs" />
+    <Compile Include="Models\AdminInviteController.cs" />
+    <Compile Include="Models\AdminInviteModel.cs" />
+    <Compile Include="Models\AdminAccommodationModel.cs" />
+    <Compile Include="Models\AdminSeatingPlanModel.cs" />
+    <Compile Include="Models\ChangePasswordModel.cs" />
+    <Compile Include="Models\LoginViewModel.cs" />
+    <Compile Include="Models\ResetPasswordModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\CSS\jquery-ui.css" />
+    <Content Include="Content\CSS\Wedding.eVite.Web.css" />
+    <Content Include="Content\Fonts\RougeScript\rougescript-regular-webfont.svg" />
+    <Content Include="Content\Images\BarneySlideshow\001.png" />
+    <Content Include="Content\Images\BarneySlideshow\002.png" />
+    <Content Include="Content\Images\BarneySlideshow\003.png" />
+    <Content Include="Content\Images\BarneySlideshow\004.png" />
+    <Content Include="Content\Images\BarneySlideshow\005.png" />
+    <Content Include="Content\Images\BarneySlideshow\006.png" />
+    <Content Include="Content\Images\BarneySlideshow\007.png" />
+    <Content Include="Content\Images\BarneySlideshow\008.png" />
+    <Content Include="Content\Images\BarneySlideshow\009.png" />
+    <Content Include="Content\Images\BarneySlideshow\010.png" />
+    <Content Include="Content\Images\BarneySlideshow\011.png" />
+    <Content Include="Content\Images\BarneySlideshow\012.png" />
+    <Content Include="Content\Images\BarneySlideshow\013.png" />
+    <Content Include="Content\Images\big_day_parents_image.jpg" />
+    <Content Include="Content\Images\big_day_order_image.jpg" />
+    <Content Include="Content\Images\child.png" />
+    <Content Include="Content\Images\contact_us.png" />
+    <Content Include="Content\Images\contact_us_hover.png" />
+    <Content Include="Content\Images\contact_us_white.png" />
+    <Content Include="Content\Images\contact_us_blue.png" />
+    <Content Include="Content\Images\cross.png" />
+    <Content Include="Content\Images\default_image.jpg" />
+    <Content Include="Content\Images\delete.png" />
+    <Content Include="Content\Images\delete_hover.png" />
+    <Content Include="Content\Images\edit.png" />
+    <Content Include="Content\Images\edit_hover.png" />
+    <Content Include="Content\Images\email.png" />
+    <Content Include="Content\Images\Email\large_invite_header_ceremony.png" />
+    <Content Include="Content\Images\Email\large_invite_header.png" />
+    <Content Include="Content\Images\Email\large_john_lizzie.png" />
+    <Content Include="Content\Images\Email\large_splitter.png" />
+    <Content Include="Content\Images\Email\small_invite_header_ceremony.png" />
+    <Content Include="Content\Images\Email\small_invite_header.png" />
+    <Content Include="Content\Images\Email\small_john_lizzie.png" />
+    <Content Include="Content\Images\Email\small_splitter.png" />
+    <Content Include="Content\Images\email_hover.png" />
+    <Content Include="Content\Images\error_barney.jpg" />
+    <Content Include="Content\Images\gift_beach.jpg" />
+    <Content Include="Content\Images\icon.jpg" />
+    <Content Include="Content\Images\LayoutImages\koh_chang.jpg" />
+    <Content Include="Content\Images\LayoutImages\chiang_mai_bed.jpg" />
+    <Content Include="Content\Images\LayoutImages\boat_day_2015.jpg" />
+    <Content Include="Content\Images\LayoutImages\chiang_mai_waterfall.jpg" />
+    <Content Include="Content\Images\LayoutImages\bate_wedding.jpg" />
+    <Content Include="Content\Images\LayoutImages\darkness.jpg" />
+    <Content Include="Content\Images\loading.gif" />
+    <Content Include="Content\Images\log_in_pattern.png" />
+    <Content Include="Content\Images\log_out_white.png" />
+    <Content Include="Content\Images\log_out_blue.png" />
+    <Content Include="Content\Images\message_received_footer.png" />
+    <Content Include="Content\Images\message_sent_footer.png" />
+    <Content Include="Content\Images\notes.png" />
+    <Content Include="Content\Images\notes_hover.png" />
+    <Content Include="Content\Images\plus.png" />
+    <Content Include="Content\Images\plus_hover.png" />
+    <Content Include="Content\Images\plus_one.png" />
+    <Content Include="Content\Images\is_admin.png" />
+    <Content Include="Content\Images\is_admin_blue.png" />
+    <Content Include="Content\Images\is_admin_white.png" />
+    <Content Include="Content\Images\sort_asc.png" />
+    <Content Include="Content\Images\sort_desc.png" />
+    <Content Include="Content\Images\tick.png" />
+    <Content Include="Content\Images\vegetarian.png" />
+    <Content Include="Global.asax" />
+    <None Include="Resources\GiftWebsiteEmail.htm" />
+    <Content Include="Scripts\Admin.Expenses.js" />
+    <Content Include="Scripts\Admin.Accommodation.js" />
+    <Content Include="Scripts\jquery.inputmask.js" />
+    <Content Include="Scripts\jquery.tablesorter.min.js" />
+    <Content Include="Scripts\ResetPassword.Index.js" />
+    <Content Include="Views\Admin\Expenses.cshtml" />
+    <Content Include="Views\ResetPassword\Index.cshtml" />
+    <Content Include="Views\Admin\Accommodation.cshtml" />
+    <Resource Include="Resources\InviteEmail.htm" />
+    <Resource Include="Resources\MessageFromInvite.htm" />
+    <Resource Include="Resources\MessageToInvite.htm" />
+    <Resource Include="Resources\UpdateInviteEmail.htm" />
+    <None Include="Resources\InviteEmailReceptionOnly.htm" />
+    <Content Include="Scripts\Admin.Error.js" />
+    <Content Include="Scripts\Admin.Index.js" />
+    <Content Include="Scripts\Admin.Messages.js" />
+    <Content Include="Scripts\BigDay.Index.js" />
+    <Content Include="Scripts\ChangePassword.Index.js" />
+    <Content Include="Scripts\Default.Index.js" />
+    <Content Include="Scripts\Gift.Index.js" />
+    <Content Include="Scripts\jquery-1.11.0.min.js" />
+    <Content Include="Scripts\jquery-ui-1.11.2.min.js" />
+    <Content Include="Scripts\jquery.loading.js" />
+    <Content Include="Scripts\jquery.messages.js" />
+    <Content Include="Scripts\jquery.watermark.js" />
+    <Content Include="Scripts\LogIn.Index.js" />
+    <Content Include="Scripts\Messages.Index.js" />
+    <Content Include="Scripts\Photos.Index.js" />
+    <Content Include="Scripts\RSVP.Index.js" />
+    <Content Include="Scripts\Shared.Layout.js" />
+    <Content Include="Scripts\Wedding.eVite.Web.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Views\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Wedding.eVite\Wedding.eVite.csproj">
+      <Project>{8511c22f-87d9-4c01-a8f0-4985805f7951}</Project>
+      <Name>Wedding.eVite</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Default\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\RSVP\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Admin\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\_MasterLayout.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\_Layout.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\LogIn\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\ChangePassword\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Error\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\_AdminLayout.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Admin\Errors.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Photos\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Scripts\jquery.slideshow.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\BigDay\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Messages\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Admin\Invite.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Scripts\Admin.Invite.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Admin\Messages.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Unsubscribe\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Admin\SeatingPlan.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Scripts\Admin.SeatingPlan.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\Fonts\RougeScript\rougescript-regular-webfont.eot" />
+    <Content Include="Content\Fonts\RougeScript\rougescript-regular-webfont.ttf" />
+    <Content Include="Content\Fonts\RougeScript\rougescript-regular-webfont.woff" />
+    <Content Include="Content\Fonts\RougeScript\rougescript-regular-webfont.woff2" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\PublishProfiles\GoDaddy.pubxml" />
+    <Content Include="Views\Gift\Index.cshtml" />
+    <Content Include="Scripts\Admin.Guests.js" />
+    <Content Include="Views\Admin\Guests.cshtml" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug_Admin|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>51063</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:64153/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

@@ -1,0 +1,65 @@
+﻿@using Wedding.eVite.Business
+@using Wedding.eVite.Web.Models
+@model AdminSeatingPlanModel
+
+@{
+    ViewBag.Title = "Seating Plan";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@section HeaderSection {
+    <script src="~/Scripts/jquery.watermark.js"></script>
+    <script src="~/Scripts/Admin.SeatingPlan.js"></script>
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            setSeatingPlanContainerHeight();
+
+            $('#txtFilter').watermark('Filter...', { useNative: false, className: 'watermark' });
+
+            makeUnassignedGuestContainerDroppable();
+            makeNewTableContainerDroppable();
+
+            @foreach (Table table in Model.Tables)
+            {
+                @: addTable(@table.Id);
+                        
+                foreach (Guest guest in table.Guests)
+                {
+                    @: addGuestToTable(@table.Id, @guest.Id, '@guest.FullName', '@(guest.CanBringPlusOne && guest.IsBringingPlusOne ? guest.PlusOneFullName : "")', '@(guest.IsAttending == true ? "true" : "false")');
+            }
+            }
+
+            @foreach (Guest guest in Model.UnassignedGuests)
+            {
+                @: addUnassignedGuest(@guest.Id, '@guest.FullName', '@(guest.CanBringPlusOne && guest.IsBringingPlusOne ? guest.PlusOneFullName : "")', '@(guest.IsAttending == true ? "true" : "false")');
+                        }
+
+            $('.admin_seating_plan_tables_add').on('click', function(){
+                addNewTable();
+            });
+
+        });
+
+        window.onresize = function () {
+            setSeatingPlanContainerHeight();
+        };
+
+    </script>
+
+}
+
+<div class="admin_seating_plan">
+
+    <div class="admin_seating_plan_tables">
+        <div class="admin_seating_plan_tables_add" title="Create a new table">&nbsp;</div>
+    </div>
+
+    <div class="admin_seating_plan_unassigned_guests">
+        <h5>Guests</h5>
+        <div class="admin_seating_plan_unassigned_guests_filter"><input id="txtFilter" type="text" class="textbox" onkeyup="filterUnassignedGuests(this.value);" /></div>
+
+        <div class="admin_seating_plan_unassigned_guests_container"></div>
+    </div>
+</div>

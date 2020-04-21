@@ -1,0 +1,131 @@
+﻿.page_wrapper
+{
+	width: 100%;
+	height: 460px;
+}
+
+.gallery
+{
+	width: 500px;
+	padding: 12px 0px;
+}
+
+#gallery
+{
+}
+
+.categories
+{
+	width: 344px;
+}
+
+.categories h1
+{
+	padding: 0px 6px;
+}
+
+/*.category_link_button
+{
+	float: left;
+	margin-left: 12px;
+	margin-bottom: 12px;
+	cursor: pointer;
+}
+
+.category_link_button a
+{
+	color: #ffffff;
+}
+
+.category_link_button:hover
+{
+	text-decoration: none;
+}
+
+.category
+{
+	width: 154px;
+	height: 114px;
+	border: solid 3px #000000;
+	margin-bottom: 12px;
+	cursor: pointer;
+	position:relative;
+	float: left;
+	margin-right: 12px;
+}
+
+.category:hover
+{
+	background-color: #202020;
+}
+
+.category_image_wrapper
+{
+	margin-bottom: 6px;
+	height: 130px;
+	width: 100%;
+	border: solid 1px #000000;
+	background-color: #898989;
+}
+
+.category_image_frame
+{
+}
+
+.category_image
+{
+	max-width: 173px;
+	max-height: 130px;
+}*/
+
+.category
+{
+	width: 154px;
+	height: 114px;
+	border: solid 3px #000000;
+	margin-bottom: 12px;
+	cursor: pointer;
+	position:relative;
+	float: left;
+	margin-right: 12px;
+}
+
+.category_button
+{
+	color: inherit;
+    -moz-opacity:0;
+    filter:alpha(opacity: 0);
+    opacity: 0;
+}
+
+.category_button_inner
+{
+	width: 154px;
+	height: 114px;
+}
+
+.category_button:hover
+{
+	text-decoration: none;
+}
+
+.category_image_holder
+{
+}
+
+.category_image
+{
+	width: 154px;
+	height: 114px;
+}
+
+.category_title
+{
+	position: relative;
+	top: -28px;
+	background-image: url('../Images/portfolio_category_text_background.png');
+	width: auto;
+	height: 24px;
+	font-size: 20px;
+	padding: 2px 9px;
+}

@@ -1,0 +1,62 @@
+﻿.public_album_link_button
+{
+	float: left;
+	margin-left: 12px;
+	margin-bottom: 12px;
+	cursor: pointer;
+}
+
+.public_album_link_button a
+{
+	color: #ffffff;
+}
+
+.public_album_link_button:hover
+{
+	text-decoration: none;
+}
+
+.public_album
+{
+	border: solid 2px #000000;
+	background-color: #3d3d3d;
+	width: 175px;
+	height: 172px;
+	padding: 3px;
+	text-align: center;
+	font-weight: bold;
+	font-size: 24px;
+}
+
+.public_album:hover
+{
+	background-color: #202020;
+}
+
+.public_album_image_wrapper
+{
+	margin-bottom: 6px;
+	height: 130px;
+	width: 100%;
+	border: solid 1px #000000;
+	background-color: #898989;
+}
+
+.public_album_image_frame
+{
+}
+
+.public_album_image
+{
+	max-width: 173px;
+	max-height: 130px;
+}
+
+.public_album_title
+{
+}
+
+.options
+{
+	text-align: right;
+}

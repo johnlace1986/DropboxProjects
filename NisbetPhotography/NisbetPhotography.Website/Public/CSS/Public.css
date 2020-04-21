@@ -1,0 +1,25 @@
+﻿.public_albums
+{
+	padding: 10px 0px;
+	text-align: center;
+}
+
+.content
+{
+	margin: 24px;
+}
+
+.footer
+{
+	padding: 18px;
+}
+
+.copyright_info
+{
+	float: left;
+}
+
+.credits
+{
+	float: right;
+}

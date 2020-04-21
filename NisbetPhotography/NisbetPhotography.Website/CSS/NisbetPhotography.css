@@ -1,0 +1,31 @@
+﻿.navigation
+{
+	padding: 14px 0px;
+}
+
+.nav_item
+{
+	float: left;
+	margin-left: 30px;
+}
+
+.content
+{
+	width: 952px;
+	margin: 12px 0px;
+}
+
+.footer
+{
+	padding: 18px;
+}
+
+.copyright_info
+{
+	float: left;
+}
+
+.credits
+{
+	float: right;
+}

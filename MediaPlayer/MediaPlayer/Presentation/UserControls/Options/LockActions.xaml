@@ -1,0 +1,64 @@
+﻿<UserControl
+    x:Class="MediaPlayer.Presentation.UserControls.Options.LockActions"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:options="clr-namespace:MediaPlayer.Presentation.UserControls.Options"
+    xmlns:uvc="clr-namespace:Utilities.ValueConverters;assembly=Utilities"
+    mc:Ignorable="d" 
+    d:DesignHeight="300"
+    d:DesignWidth="300">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid
+            Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Label
+                Grid.Row="0"
+                Content="When the PC is locked:" />
+
+            <CheckBox
+                Grid.Row="1"
+                Content="Pause media player"
+                IsChecked="{Binding Path=Options.PauseOnLock, Mode=TwoWay, RelativeSource={RelativeSource AncestorType={x:Type options:LockActions}}}" />
+
+            <CheckBox
+                Grid.Row="2"
+                Content="Minimize window"
+                IsChecked="{Binding Path=Options.MinimizeOnLock, Mode=TwoWay, RelativeSource={RelativeSource AncestorType={x:Type options:LockActions}}}" />
+        </Grid>
+
+        <Grid
+            Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Label
+                Grid.Row="0"
+                Content="When the PC is unlocked:" />
+
+            <CheckBox
+                Grid.Row="1"
+                Content="Unpause media player"
+                IsChecked="{Binding Path=Options.UnpauseOnUnlock, Mode=TwoWay, RelativeSource={RelativeSource AncestorType={x:Type options:LockActions}}}" />
+
+            <CheckBox
+                Grid.Row="2"
+                Content="Restore window"
+                IsChecked="{Binding Path=Options.RestoreOnUnlock, Mode=TwoWay, RelativeSource={RelativeSource AncestorType={x:Type options:LockActions}}}" />
+        </Grid>
+    </Grid>
+</UserControl>

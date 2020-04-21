@@ -1,0 +1,18 @@
+﻿<configuration>
+    <system.serviceModel>
+        <bindings>
+            <basicHttpBinding>
+                <binding name="BasicHttpBinding_INisbetPhotographyService" maxBufferSize="2147483647"
+                    maxReceivedMessageSize="2147483647">
+                    <security mode="None" />
+                </binding>
+            </basicHttpBinding>
+        </bindings>
+        <client>
+            <endpoint address="http://localhost:2628/NisbetPhotographyService.svc"
+                binding="basicHttpBinding" bindingConfiguration="BasicHttpBinding_INisbetPhotographyService"
+                contract="NisbetPhotographyService.INisbetPhotographyService"
+                name="BasicHttpBinding_INisbetPhotographyService" />
+        </client>
+    </system.serviceModel>
+</configuration>

@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{3E6C2FC5-0CA3-4A67-AB87-6E8DF87697F4}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>NisbetPhotography.DbObjects</RootNamespace>
+    <AssemblyName>NisbetPhotography.DbObjects</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Business\ConfigSettings.cs" />
+    <Compile Include="Business\CustomerAlbum.cs" />
+    <Compile Include="Business\CustomerImage.cs" />
+    <Compile Include="Business\DbObject.cs" />
+    <Compile Include="Business\Error.cs" />
+    <Compile Include="Business\Global.cs" />
+    <Compile Include="Business\PortfolioCategory.cs" />
+    <Compile Include="Business\PortfolioImage.cs" />
+    <Compile Include="Business\PublicAlbum.cs" />
+    <Compile Include="Business\PublicImage.cs" />
+    <Compile Include="Data\Control.cs" />
+    <Compile Include="Data\CustomerAlbum.cs" />
+    <Compile Include="Data\Error.cs" />
+    <Compile Include="Data\PortfolioCategory.cs" />
+    <Compile Include="Data\PublicAlbum.cs" />
+    <Compile Include="Data\StoredProcedureParameter.cs" />
+    <Compile Include="Data\User.cs" />
+    <Compile Include="Exception\AddDbObjectException.cs" />
+    <Compile Include="Exception\ChildAlreadyHasParentException.cs" />
+    <Compile Include="Exception\AddChildToParentException.cs" />
+    <Compile Include="Exception\ChildAlreadyBelongsToParentException.cs" />
+    <Compile Include="Exception\ChildBelongsToDifferentParentException.cs" />
+    <Compile Include="Exception\ChildDoesNotBelongToParentException.cs" />
+    <Compile Include="Exception\DbObjectAlreadyInDatabaseException.cs" />
+    <Compile Include="Exception\SetImageCaptionException.cs" />
+    <Compile Include="Exception\SetThumbnailImageException.cs" />
+    <Compile Include="Exception\RemoveChildFromParentException.cs" />
+    <Compile Include="Exception\ParentAlreadyHasChildException.cs" />
+    <Compile Include="Exception\DeleteDbObjectException.cs" />
+    <Compile Include="Exception\DbObjectNotInDatabaseException.cs" />
+    <Compile Include="Exception\UpdateDbObjectException.cs" />
+    <Compile Include="Exception\SpecifiedDbObjectNotFoundException.cs" />
+    <Compile Include="Exception\InvalidPropertyException.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Business\User.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

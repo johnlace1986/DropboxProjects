@@ -1,0 +1,140 @@
+﻿.admin_domain
+{
+	padding: 10px 0px;
+	text-align: center;
+}
+
+.navigation_wrapper
+{
+	width: 301px;
+}
+
+ul.navigation
+{
+	padding: 0;
+	margin: 0;
+}
+
+ul.navigation li
+{
+	list-style: none;
+	cursor: pointer;
+	margin-bottom: 12px;
+}
+
+ul.navigation li:hover
+{
+	background-image: url('../Images/navigation_selected.png');
+}
+
+ul.navigation li img
+{	
+	width: 301px;
+	height: 44px;
+}
+
+.content
+{
+	margin: 12px 0px;
+}
+
+.thumbnail
+{
+	margin-bottom: 24px;
+}
+
+.footer
+{
+	padding: 18px;
+	text-align: right;
+}
+
+.footer a
+{
+	color: #ffffff;
+}
+
+.log_out
+{
+	float: left;	
+}
+
+.return_to_site
+{
+	float: right;
+}
+
+.option_button
+{
+	width: 112px;
+	height: 43px;
+	background-image: url('../Images/option_button.png');
+	border: none;
+	background-color: Transparent;
+	color: #ffffff;
+	font: inherit;
+	font-size: 11px;
+	cursor: pointer;
+}
+
+.popup
+{
+	background-color: #3d3d3d;
+	border: solid 3px #000000;
+	width: 337px;
+	padding: 24px;
+}
+
+.upload_picture_silverlight_wrapper
+{
+	height: 43px;
+	margin-bottom: 24px;
+}
+
+.upload_picture_popup_browse
+{
+	margin-bottom: 24px;
+}
+
+.upload_picture_popup_browse_label
+{
+	vertical-align: top;
+}
+
+.upload_picture_popup_browse_button
+{
+	position: relative;
+	vertical-align: top;
+	width: 112px;
+	cursor: pointer;
+}
+
+.upload_picture_popup_browse_button_file_upload
+{
+	position: relative;
+    text-align: right;
+    -moz-opacity:0;
+    filter:alpha(opacity: 0);
+    opacity: 0;
+    z-index: 2;
+    width: 112px;
+    height: 43px;
+}
+
+.upload_picture_popup_browse_button_shield
+{
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 1;
+}
+
+.upload_picture_popup_finalise
+{
+	text-align: center;
+}
+
+input
+{
+	outline: none;
+}

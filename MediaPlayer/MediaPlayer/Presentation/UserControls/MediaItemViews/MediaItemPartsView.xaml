@@ -1,0 +1,74 @@
+﻿<UserControl
+    x:Class="MediaPlayer.Presentation.UserControls.MediaItemViews.MediaItemPartsView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:miv="clr-namespace:MediaPlayer.Presentation.UserControls.MediaItemViews"
+    xmlns:uc="clr-namespace:MediaPlayer.Presentation.UserControls"
+    mc:Ignorable="d" 
+    d:DesignHeight="300" d:DesignWidth="300"
+    Loaded="UserControl_Loaded">
+    <Grid
+        Margin="-6">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <uc:PositionManinpulationButtons
+            x:Name="psbParts"
+            Grid.Column="0"
+            Orientation="Vertical"
+            ButtonHeight="24"
+            ButtonWidth="24"
+            Margin="6"
+            UpClicked="psbParts_UpClicked"
+            AddClicked="psbParts_AddClicked"
+            DeleteClicked="psbParts_DeleteClicked"
+            DownClicked="psbParts_DownClicked" />      
+        
+        <DataGrid
+            x:Name="dgParts"
+            Grid.Column="1"
+            CanUserSortColumns="False"
+            ItemsSource="{Binding Path=MediaItem.Parts, Mode=OneWay, RelativeSource={RelativeSource AncestorType={x:Type miv:MediaItemPartsView}}}"
+            RowStyleSelector="{StaticResource mediaItemRowStyleSelector}"
+            KeyUp="dgParts_KeyUp">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding IndexString, Mode=OneWay}" Header="" SortMemberPath="Index" CellStyle="{StaticResource dataGridNumberCellStyle}" CanUserResize="False" />
+                <DataGridTextColumn Binding="{Binding Location, Mode=OneWay}" Header="Location" />
+                <DataGridTextColumn Binding="{Binding SizeString, Mode=OneWay}" Header="Size" SortMemberPath="Size" CellStyle="{StaticResource dataGridNumberCellStyle}" />
+                <DataGridTextColumn Binding="{Binding DurationString, Mode=OneWay}" Header="Duration" SortMemberPath="Duration" CellStyle="{StaticResource dataGridNumberCellStyle}" />
+            </DataGrid.Columns>
+            <DataGrid.ContextMenu>
+                <ContextMenu
+                    x:Name="cmParts"
+                    Opened="cmParts_Opened">
+                    <MenuItem
+                        x:Name="miShowInExplorer"
+                        Header="Show In Explorer"
+                        Click="miShowInExplorer_Click" />
+                    <Separator />
+                    <MenuItem
+                        x:Name="miRemove"
+                        Header="Remove"
+                        Click="miRemove_Click" />
+                    <MenuItem
+                        x:Name="miExtract"
+                        Header="Extract"
+                        Click="miExtract_Click" />
+                    <Separator />
+                    <MenuItem
+                        x:Name="miMoveUp"
+                        Header="Move Up"
+                        Click="miMoveUp_Click" />
+                    <MenuItem
+                        x:Name="miMoveDown"
+                        Header="Move Down"
+                        Click="miMoveDown_Click"/>
+                </ContextMenu>
+            </DataGrid.ContextMenu>
+        </DataGrid>
+    </Grid>
+</UserControl>

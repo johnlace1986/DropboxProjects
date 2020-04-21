@@ -1,0 +1,116 @@
+﻿<UserControl
+    x:Class="MediaPlayer.Presentation.UserControls.Pages.FileTypesView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:pages="clr-namespace:MediaPlayer.Presentation.UserControls.Pages"
+    xmlns:vc="clr-namespace:MediaPlayer.ValueConverters"
+    mc:Ignorable="d" 
+    d:DesignHeight="300"
+    d:DesignWidth="300"
+    Loaded="UserControl_Loaded">
+    <UserControl.Resources>
+        <vc:FileTypesSummaryConverter x:Key="fileTypesSummaryConverter" />
+    </UserControl.Resources>
+    <Grid
+        Margin="24, 0"
+        Grid.Column="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Label
+            Grid.Row="0"
+            Content="{Binding Path=Header, RelativeSource={RelativeSource AncestorType={x:Type pages:FileTypesView}}}"
+            Style="{StaticResource fileTypeDataGridHeader}"
+            FontSize="20" />
+
+        <DataGrid
+            x:Name="dgFileTypes"
+            Grid.Row="1"
+            Margin="0, 12"
+            ItemsSource="{Binding Path=FileTypes, Mode=OneWay, RelativeSource={RelativeSource AncestorType={x:Type pages:FileTypesView}}}"
+            BorderBrush="#808f9e"
+            BorderThickness="1"
+            KeyUp="dgFileTypes_KeyUp">
+            <DataGrid.CellStyle>
+                <Style TargetType="DataGridCell" BasedOn="{StaticResource dataGridCellStyle}">
+                    <Setter Property="Padding" Value="6" />
+                </Style>
+            </DataGrid.CellStyle>
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Name, Mode=OneWay}" Header="Name" Width="*" />
+            </DataGrid.Columns>
+            <DataGrid.ContextMenu>
+                <ContextMenu
+                    x:Name="cmFileTypes"
+                    Opened="cmFileTypes_Opened">
+                    <MenuItem
+                        x:Name="miEdit"
+                        Header="Edit"
+                        Click="miEdit_Click" />
+                    <MenuItem
+                        x:Name="miDelete"
+                        Header="Delete"
+                        Click="miDelete_Click" />
+                    <Separator />
+                    <MenuItem
+                        x:Name="miMerge"
+                        Header="Merge Selected"
+                        Click="miMerge_Click" />
+                </ContextMenu>
+            </DataGrid.ContextMenu>
+        </DataGrid>
+                
+        <Grid
+            Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+                    
+            <Label 
+                x:Name="lblSummary"
+                Grid.Column="0"
+                FontFamily="Armata"
+                FontSize="16"
+                Margin="0, 6"
+                FontWeight="Bold"
+                Content="{Binding Path=FileTypes, Converter={StaticResource fileTypesSummaryConverter}, RelativeSource={RelativeSource AncestorType={x:Type pages:FileTypesView}}}" />
+                    
+            <Button
+                x:Name="btnAddFileType"
+                Grid.Column="1"
+                Margin="6, 9"
+                Padding="4"
+                Height="24"
+                Width="24"
+                Click="btnAddFileType_Click">
+                <Polygon
+                    Stretch="Fill"
+                    Fill="{Binding Path=Foreground, RelativeSource={RelativeSource AncestorType=Button}}"
+                    Points="{StaticResource addPoints}" />                
+            </Button>
+                    
+            <Button
+                x:Name="btnDeleteFileType"
+                Grid.Column="2"
+                Margin="6, 9"
+                Padding="5"
+                Height="24"
+                Width="24"
+                Click="btnDeleteFileType_Click">
+                <Polygon
+                    Stretch="Fill"
+                    Fill="{Binding Path=Foreground, RelativeSource={RelativeSource AncestorType=Button}}"
+                    Stroke="{Binding Path=Foreground, RelativeSource={RelativeSource AncestorType=Button}}"
+                    StrokeThickness="1"
+                    Points="{StaticResource deletePoints}" />
+            </Button>
+        </Grid>
+    </Grid>
+</UserControl>

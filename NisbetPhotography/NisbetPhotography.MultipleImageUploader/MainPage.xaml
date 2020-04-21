@@ -1,0 +1,37 @@
+﻿<UserControl x:Class="NisbetPhotography.MultipleImageUploader.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="300" d:DesignWidth="400">
+
+    <Border Style="{StaticResource MainBorder}">
+        <Grid x:Name="grdMain">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="55" />
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="124" />
+                </Grid.ColumnDefinitions>
+
+                <Border Grid.Column="0" VerticalAlignment="Center">
+                    <TextBlock x:Name="txtBrowse" Text="0 images selected." Style="{StaticResource Label}" />
+                </Border>
+                <Border Grid.Column="1">
+                    <Button x:Name="btnBrowse" Click="btnBrowse_Click" Content="Browse" Style="{StaticResource Button}" />
+                </Border>
+            </Grid>
+
+            <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button x:Name="btnAddPictures" Content="Add Pictures" Click="btnAddPictures_Click" Style="{StaticResource Button}" />
+                <Button x:Name="btnCancel" Content="Cancel" Click="btnCancel_Click" Style="{StaticResource Button}" />
+            </StackPanel>
+        </Grid>
+    </Border>
+</UserControl>

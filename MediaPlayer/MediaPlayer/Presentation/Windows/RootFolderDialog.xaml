@@ -1,0 +1,128 @@
+﻿<Window
+    x:Class="MediaPlayer.Presentation.Windows.RootFolderDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:windows="clr-namespace:MediaPlayer.Presentation.Windows"
+    xmlns:uc="clr-namespace:MediaPlayer.Presentation.UserControls"
+    xmlns:vc="clr-namespace:MediaPlayer.ValueConverters"
+    xmlns:uvc="clr-namespace:Utilities.ValueConverters;assembly=Utilities"
+    xmlns:uuc="clr-namespace:Utilities.Presentation.WPF.UserControls;assembly=Utilities"
+    Style="{StaticResource dialogWindow}"
+    Title=""
+    Width="400"
+    Height="400"
+    WindowStartupLocation="CenterScreen"
+    ShowInTaskbar="False"
+    Loaded="Window_Loaded">
+    <Window.Resources>
+        <uvc:IntelligentStringConverter x:Key="intelligentStringConverter" />
+        <vc:RootFolderSizeConverter x:Key="rootFolderSizeConverter" />
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Label
+            Grid.Row="0"
+            Grid.Column="0"
+            Content="Path:" />
+
+        <uuc:FolderBrowserTextBox
+            x:Name="fbtPath"
+            Grid.Row="0"
+            Grid.Column="1"
+            Text="{Binding Path=SelectedRootFolder.Path, Mode=TwoWay, Converter={StaticResource intelligentStringConverter}, RelativeSource={RelativeSource AncestorType={x:Type windows:RootFolderDialog}}}"/>
+
+        <Label
+            Grid.Row="1"
+            Grid.Column="0"
+            Content="Size:"
+            IsEnabled="{Binding Path=IsValidPath, RelativeSource={RelativeSource AncestorType={x:Type windows:RootFolderDialog}}}"/>
+        
+        <ProgressBar
+            Grid.Row="1"
+            Grid.Column="1"
+            Maximum="{Binding Path=TotalSpace, RelativeSource={RelativeSource AncestorType={x:Type windows:RootFolderDialog}}}"
+            Value="{Binding Path=UsedSpace, RelativeSource={RelativeSource AncestorType={x:Type windows:RootFolderDialog}}}"
+            IsEnabled="{Binding Path=IsValidPath, RelativeSource={RelativeSource AncestorType={x:Type windows:RootFolderDialog}}}"/>
+
+        <Label
+            Grid.Row="2"
+            Grid.Column="1"
+            IsEnabled="{Binding Path=IsValidPath, RelativeSource={RelativeSource AncestorType={x:Type windows:RootFolderDialog}}}">
+            <MultiBinding Converter="{StaticResource rootFolderSizeConverter}">
+                <Binding Path="IsValidPath" RelativeSource="{RelativeSource AncestorType={x:Type windows:RootFolderDialog}}" />
+                <Binding Path="UsedSpace" RelativeSource="{RelativeSource AncestorType={x:Type windows:RootFolderDialog}}" />
+                <Binding Path="TotalSpace" RelativeSource="{RelativeSource AncestorType={x:Type windows:RootFolderDialog}}" />
+            </MultiBinding>
+        </Label>
+
+        <Label
+            Grid.Row="3"
+            Grid.Column="0"
+            Content="Tags:" />
+
+        <ListBox
+            x:Name="lstTags"
+            Grid.Row="3"
+            Grid.Column="1"
+            SelectionMode="Extended"
+            ItemsSource="{Binding Path=SelectedRootFolder.Tags, Mode=OneWay, RelativeSource={RelativeSource AncestorType={x:Type windows:RootFolderDialog}}}"
+            KeyUp="lstTags_KeyUp"/>
+
+        <Grid
+            Grid.Row="4"
+            Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <ComboBox
+                x:Name="cmbTag"
+                Grid.Column="0"
+                IsEditable="True"
+                IsTextSearchEnabled="True"
+                IsTextSearchCaseSensitive="False"
+                ItemsSource="{Binding Path=Tags, RelativeSource={RelativeSource AncestorType={x:Type windows:RootFolderDialog}}}"
+                KeyUp="cmbTag_KeyUp"/>
+
+            <Button
+                x:Name="btnAddTag"
+                Grid.Column="1"
+                Margin="6"
+                Content="+"
+                Click="btnAddTag_Click" />
+
+            <Button
+                x:Name="btnRemoveTag"
+                Grid.Column="2"
+                Margin="6"
+                Content="x"
+                Click="btnRemoveTag_Click" />
+        </Grid>
+
+        <Button
+            x:Name="btnOK"
+            Grid.Row="5"
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            Margin="6"
+            Content="OK"
+            Width="60"
+            HorizontalAlignment="Center"
+            Click="btnOK_Click" />
+    </Grid>
+</Window>

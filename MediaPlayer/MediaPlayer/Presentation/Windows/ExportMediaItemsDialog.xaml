@@ -1,0 +1,25 @@
+﻿<Window
+    x:Class="MediaPlayer.Presentation.Windows.ExportMediaItemsDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:windows="clr-namespace:MediaPlayer.Presentation.Windows"
+    xmlns:vc="clr-namespace:MediaPlayer.ValueConverters"
+    Title="Export..."
+    Style="{StaticResource dialogWindow}"    
+    WindowStartupLocation="CenterScreen"
+    ShowInTaskbar="False"
+    Width="400"
+    ResizeMode="NoResize"
+    SizeToContent="Height"
+    Loaded="Window_Loaded"
+    Closing="Window_Closing">
+    <Window.Resources>
+        <vc:ExportMediaItemsMaximumConverter x:Key="exportMediaItemsMaximumConverter" />
+    </Window.Resources>
+    <Grid>
+        <ProgressBar
+            Height="24"
+            Value="{Binding Path=Progress, RelativeSource={RelativeSource AncestorType={x:Type windows:ExportMediaItemsDialog}}}"
+            Maximum="{Binding Path=MediaItems, Converter={StaticResource exportMediaItemsMaximumConverter}, RelativeSource={RelativeSource AncestorType={x:Type windows:ExportMediaItemsDialog}}}"/>
+    </Grid>
+</Window>

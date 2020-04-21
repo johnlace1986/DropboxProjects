@@ -1,0 +1,196 @@
+﻿@using Wedding.eVite.Business
+
+@{
+    ViewBag.Title = "The Big Day";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section HeaderSection {
+
+    <script src="~/Scripts/jquery.loading.js"></script>
+    <script type="text/javascript" language="javascript" src="~/Scripts/BigDay.Index.js"></script>
+}
+
+<div class="big_day">
+
+    <div id="divBigDayTabs">
+        <ul>
+            <li><a href="#tabAddress">Sandhole Oak Barn</a></li>
+
+            @if (ViewBag.LoggedInInvite.IncludesCeremony) 
+            { 
+                <li><a href="#tabOrder">Order of the Day</a></li>
+            }
+            
+            <li><a href="#tabFood">Food</a></li>
+            <li><a href="#tabAccommodation">Accommodation</a></li>
+
+            @if (!((IEnumerable<Guest>)ViewBag.LoggedInInvite.Guests).Any(p => p.IsChild))
+            { 
+                <li><a href="#tabMumDadNightOff">Mum &amp; Dad's Night Off</a></li>
+            }
+        </ul>
+
+        <div id="tabAddress" class="cf">
+            <div class="big_day_address_map"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2390.5109477549645!2d-2.2238370484356387!3d53.190752193956705!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487a4545f6a8fa35%3A0x482e02f976c5b836!2sSandhole+Oak+Barn!5e0!3m2!1sen!2suk!4v1446564681399" style="border:0;height:356px;width:475px;"></iframe></div>
+            <table cellpadding="0" cellspacing="0" class="big_day_address">
+                <tr>                    
+                    <td>
+                        <a href="http://www.sandholeoakbarn-weddings.co.uk/" target="_blank">Sandhole Oak Barn</a>
+                        <p>Manchester Road (A34)</p>
+                        <p>Hulme Walfield</p>
+                        <p>Congleton</p>
+                        <p>Cheshire</p>
+                        <p>CW12 2JH</p>
+                        <p>01260 540 007</p>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        @if (ViewBag.LoggedInInvite.IncludesCeremony) {
+            <text>
+                <div id="tabOrder">
+                    <div class="big_day_order cf">
+                        <div class="big_day_order_image"></div>
+                        <table class="big_day_order_text" cellpadding="0" cellspacing="0">
+                            <tr>
+                                <td>
+                                    <table cellpadding="0" cellspacing="0" style="margin: 0 auto;">
+                                        <tr>
+                                            <td class="big_day_order_time">1:30pm</td>
+                                            <td>Guests arrive</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="big_day_order_time">2:00pm</td>
+                                            <td>Ceremony</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="big_day_order_time">2:30pm</td>
+                                            <td>Photographs</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="big_day_order_time">5:00pm</td>
+                                            <td>Wedding breakfast</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="big_day_order_time">7:00pm</td>
+                                            <td>Reception</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="big_day_order_time">12:30am</td>
+                                            <td>Goodbyes</td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </text>
+        }
+        <div id="tabFood">
+            @if (ViewBag.LoggedInInvite.IncludesCeremony)
+            { 
+                <p>As we are having a summer wedding and the weather will (hopefully!) be nice we have decided to do away with the traditional wedding breakfast and have a BBQ instead. This means that you do not have to let us know what you would want to eat because you will able to place your order then and there!</p>
+                <p>Below is a list of the dishes that will be being served on the day:</p>
+
+                <div class="big_day_food_menu">
+                    <div class="big_day_food_menu_first_course cf">
+                        <div class="big_day_food_menu_first_course_mains">
+                            <h5>Main Courses</h5>
+                            <p>Marinated Chicken Breast</p>
+                            <p>Fillet Steak with Bearnaise Sauce and Mustards</p>
+                            <p>King Prawns and Sea Scallops in Garlic Butter</p>
+                            <p>Pork and Leek Sausages with Red Onion Chutney</p>
+                            <p>Chunky Vegetable and Haloumi Kebabs (v)</p>
+                        </div>
+
+                        <div class="big_day_food_menu_first_course_sides">
+                            <h5>Side Dishes</h5>
+                            <p>Hot Buttered New Potatoes</p>
+                            <p>Sweet Potato Wedges</p>
+                            <p>Plum Tomato and Red Onion Salad</p>
+                            <p>Caesar Salad</p>
+                            <p>Coleslaw</p>
+                            <p>Sweet Chilli Noodle Salad</p>
+                        </div>
+                    </div>
+
+                    <h5>Dessert</h5>
+                    <p>A Trio of Miniature Desserts</p>
+                </div>
+            }
+
+            <p>In the evening there will be bacon sandwiches and cheese and onion paninis available. We wouldn't want you running out of energy on the dancefloor!</p>
+
+            <h5>Vegetarians</h5>
+            <p>Please let us know if any of the guests in this invititation are vegetarians by ticking the box next to their name:</p>
+
+            <div class="big_day_food_guest_vegetarian cf">
+                @if (((IEnumerable<Guest>)ViewBag.LoggedInInvite.Guests).Where(p => p.IsAttending == true).Count() == 0)
+                {
+                    <p class="big_day_food_guest_vegetarian_no_rsvp">No guests have RSVP'd yet</p>
+                }
+                else
+                {
+                    <ul>
+                        @foreach (Guest guest in ((IEnumerable<Guest>)ViewBag.LoggedInInvite.Guests).Where(p => p.IsAttending == true))
+                        {
+                            <li>
+                                <div id="@("divVegetarianGuest" + guest.Id)" class="checkbox big_day_food_guest_vegetarian_checkbox">
+                                    <input id="@("chkVegetarianGuest" + guest.Id)" type="checkbox" @(guest.IsVegetarian ? "checked=\"true\"" : "") onclick="setGuestVegetarian(@guest.Id, this.checked);" /><label for="@("chkVegetarianGuest" + guest.Id)" style="position: relative !important;">@guest.FullName</label>
+                                </div>
+                                <div class="big_day_food_guest_vegetarian_loading_cell" id="@("divVegetarianGuestLoadingCell" + guest.Id)"></div>
+                            </li>
+                        }
+                    </ul>
+                }
+            </div>
+
+            <p style="padding-top: 6px;">If you have any other special dietary requirements, please <a href="~/Messages">send us a message</a> and let us know.</p>
+        </div>
+        <div id="tabAccommodation">
+            <p>As many of our guests will be travelling long distances to attend our wedding, we have tried to provide several options for those wishing to stay over night.</p>
+            <h5><a href="http://www.sandholeoakbarn-weddings.co.uk/" target="_blank">Sandhole Oak Barn</a></h5>
+            <p><a href="http://www.sandholeoakbarn-weddings.co.uk/" target="_blank">Sandhole Oak Barn</a> offers double bedrooms for £90 for the evening. Unfortunately, there is only a limited number of rooms available and we will be prioritising these for immediate family first, followed by those of our guests travelling a long distance who simply won't be able to get home in the evening. If you would like to stay at Sandhole then please tick the box below and we will do our best to find a room for you. We will also let you know as soon as we can whether or not there is a room available.</p>
+            <div class="big_day_reserve_room">
+                <div class="big_day_reserve_room_checkbox">
+                    <input id="chkReserveRoom" type="checkbox" @(ViewBag.LoggedInInvite.ReserveSandholeRoom ? "checked" : "") @(ViewBag.LoggedInInvite.IsAdmin ? "disabled" : "") onchange="setReserveSandholeRoom();" />
+
+                    @if ((ViewBag.LoggedInInvite.Guests.Count == 1) || (((IEnumerable<Guest>)ViewBag.LoggedInInvite.Guests).Count(p => p.IsAttending == true) == 1))
+                    { 
+                        <label for="chkReserveRoom">I would like to stay overnight at Sandhole</label>
+                    }
+                    else
+                    {
+                        <label for="chkReserveRoom">We would like to stay overnight at Sandhole</label>
+                    }
+                </div>
+                <div class="big_day_reserve_room_loading"></div>
+            </div>
+            <h5><a href="http://www.thewaggonandhorseseaton.co.uk/" target="_blank">Waggon &amp; Horses B&amp;B</a></h5>
+            <p><a href="http://www.thewaggonandhorseseaton.co.uk/" target="_blank">The Waggon &amp; Horses B&amp;B</a> is situated a 5 minute walk from Sandhole Oak Barn. The Cottage is a beautifully converted 18th Century barn adjacent to the pub offering 6 well-appointed executive en-suite bedrooms at a rate of £75 per night.</p>
+            <p>If you would like to book a night please be sure to do so as soon as you can as the limited number of rooms mean they will likely be booked up very quickly.</p>
+            <h5>Macclesfield</h5>
+            <p>Sandhole Oak Barn is just 7-8 miles south of Macclesfield town centre. There are several hotels in Macclesfield including 2 <a href="http://www.premierinn.com/en/hotel/MACPTI/macclesfield-south-west" target="_blank">Premier inns</a> and a <a href="https://www.travelodge.co.uk/hotels/412/Macclesfield-Central-hotel" target="_blank">Travelodge</a>.</p>
+            <p>It is likely that there will be a fair few guests staying in Macclesfield so we will look into the possibility of arranging taxis to get you to your hotel once the party has ended.</p>
+            <p>Again, if you do plan on booking a room to spend the night, please try and book as early as possible to ensure you don't miss out.</p>
+        </div>
+        
+        @if (!((IEnumerable<Guest>)ViewBag.LoggedInInvite.Guests).Any(p => p.IsChild))
+        {
+            <div id="tabMumDadNightOff" class="big_day_parents">
+                <table width="100%" cellpadding="0" cellspacing="0">
+                    <tr>
+                        <td class="big_day_parents_image"></td>
+                        <td class="big_day_parents_text">
+                            <p>You will have noticed that this invitation only includes adults. While we would love be able to include all children in our special day, unfortunately we are only able to invite those of immediate family.</p>
+                            <p>We want to give all of our guests, including parents, the opportunity to let their hair down and have a good time without having to worry about little eyes and ears.</p>
+                            <p>We hope this advance notice means you are still able to share our big day and will enjoy having the evening off!</p>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        }
+    </div>
+</div>

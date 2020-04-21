@@ -1,0 +1,62 @@
+﻿.category_link_button
+{
+	float: left;
+	margin-left: 12px;
+	margin-bottom: 12px;
+	cursor: pointer;
+}
+
+.category_link_button a
+{
+	color: #ffffff;
+}
+
+.category_link_button:hover
+{
+	text-decoration: none;
+}
+
+.category
+{
+	border: solid 2px #000000;
+	background-color: #3d3d3d;
+	width: 175px;
+	height: 172px;
+	padding: 3px;
+	text-align: center;
+	font-weight: bold;
+	font-size: 24px;
+}
+
+.category:hover
+{
+	background-color: #202020;
+}
+
+.category_image_wrapper
+{
+	margin-bottom: 6px;
+	height: 130px;
+	width: 100%;
+	border: solid 1px #000000;
+	background-color: #898989;
+}
+
+.category_image_frame
+{
+}
+
+.category_image
+{
+	max-width: 173px;
+	max-height: 130px;
+}
+
+.category_title
+{
+}
+
+.options
+{
+	text-align: right;
+}

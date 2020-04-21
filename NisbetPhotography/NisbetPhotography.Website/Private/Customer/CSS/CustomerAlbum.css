@@ -1,0 +1,50 @@
+﻿.title
+{
+	margin-bottom: 48px;
+}
+
+ul.images
+{
+	position: relative;
+	left: -24px;
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+
+ul.images li
+{
+	max-width: 148px;
+	max-height: 135px;
+	position: relative;
+	float: left;
+	margin-left: 24px;
+	margin-bottom: 24px;
+}
+
+.image_wrapper
+{
+	width: 148px;
+	height: 114px;
+	border: solid 1px #000000;
+	margin-bottom: 6px;
+	background-color: #000000;
+}
+
+.image_actual
+{
+	max-width: 148px;
+	max-height: 114px;
+}
+
+.image_caption
+{
+	width: 148px;
+	text-align: center;
+	font-size: 10px;
+}
+
+.image_caption a
+{
+	color: #ffffff;
+}

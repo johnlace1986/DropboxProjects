@@ -1,0 +1,89 @@
+﻿<UserControl
+    x:Class="MediaPlayer.Presentation.UserControls.Options.General"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:options="clr-namespace:MediaPlayer.Presentation.UserControls.Options"
+    xmlns:uvc="clr-namespace:Utilities.ValueConverters;assembly=Utilities"
+    mc:Ignorable="d" 
+    d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <uvc:IntelligentStringConverter x:Key="intelligentStringConverter" />
+        <uvc:InverseBooleanConverter x:Key="inverseBooleanConverter" />
+    </UserControl.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        
+        <Label
+            Grid.Row="0"
+            Grid.Column="0"
+            Content="'View All' text:" />
+        
+        <TextBox
+            Grid.Row="0"
+            Grid.Column="1"
+            KeyUp="textBox_KeyUp"
+            Text="{Binding Path=Options.ViewAllText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource intelligentStringConverter}, RelativeSource={RelativeSource AncestorType={x:Type options:General}}}"/>
+        
+        <Label
+            Grid.Row="1"
+            Grid.Column="0"
+            Content="Media Item Size:" />
+
+        <Grid
+            Grid.Row="1"
+            Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <RadioButton
+                Grid.Column="0"
+                Content="Fit actual size"
+                GroupName="StretchMediaPlayer"
+                IsChecked="{Binding Path=Options.StretchMediaPlayer, Mode=TwoWay, Converter={StaticResource inverseBooleanConverter}, RelativeSource={RelativeSource AncestorType={x:Type options:General}}}"/>
+
+            <RadioButton
+                Grid.Column="1"
+                Content="Fit to window"
+                GroupName="StretchMediaPlayer"
+                IsChecked="{Binding Path=Options.StretchMediaPlayer, Mode=TwoWay, RelativeSource={RelativeSource AncestorType={x:Type options:General}}}" />
+        </Grid>
+
+        <CheckBox
+            Grid.Row="2"
+            Grid.Column="1"
+            Content="Remove media item from Now Playing playlist on finish?"
+            IsChecked="{Binding Path=Options.RemoveMediaItemFromNowPlayingOnFinish, Mode=TwoWay, RelativeSource={RelativeSource AncestorType={x:Type options:General}}}"/>
+        
+        <CheckBox
+            Grid.Row="3"
+            Grid.Column="1"
+            Content="Organise missing media items?"
+            IsChecked="{Binding Path=Options.OrganiseMissingMediaItems, Mode=TwoWay, RelativeSource={RelativeSource AncestorType={x:Type options:General}}}" />
+
+        <Label
+            Grid.Row="4"
+            Grid.Column="0"
+            Content="SQL Server Service Name" />
+
+        <TextBox
+            Grid.Row="4"
+            Grid.Column="1"
+            KeyUp="textBox_KeyUp"
+            Text="{Binding Path=Options.SqlServerServiceName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, RelativeSource={RelativeSource AncestorType={x:Type options:General}}}"/>
+    </Grid>
+</UserControl>

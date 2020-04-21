@@ -1,0 +1,164 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{38A851A4-5358-4AF7-BD86-5A147AB602D6}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Utilities</RootNamespace>
+    <AssemblyName>Utilities</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="UIAutomationTypes" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="Xceed.Wpf.Toolkit">
+      <HintPath>..\Resources\Xceed.Wpf.Toolkit.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Business\EnumerationExtension.cs" />
+    <Compile Include="Business\SortableNotifyCollectionChangedObject.cs" />
+    <Compile Include="Business\TextValueDialogInputType.cs" />
+    <Compile Include="Business\GeneralMethods.cs" />
+    <Compile Include="Business\VisualTreeHelpers.cs" />
+    <Compile Include="Data\DbCommand.cs" />
+    <Compile Include="Data\DbHelper.cs" />
+    <Compile Include="Data\DbHierarchicalObject.cs" />
+    <Compile Include="Data\DbHierarchicalObjectMetaDataAttribute.cs" />
+    <Compile Include="Data\DbObject.cs" />
+    <Compile Include="Data\DbObjectMetaDataAttribute.cs" />
+    <Compile Include="Data\ODBC\OdbcCommand.cs" />
+    <Compile Include="Data\ODBC\OdbcDbHelper.cs" />
+    <Compile Include="Data\ODBC\OdbcDbHierarchicalObject.cs" />
+    <Compile Include="Data\ODBC\OdbcDbObject.cs" />
+    <Compile Include="Data\SQL\SqlCommand.cs" />
+    <Compile Include="Data\SQL\SqlDbHelper.cs" />
+    <Compile Include="Data\SQL\SqlDbHierarchicalObject.cs" />
+    <Compile Include="Data\StoredProcedure\DataCell.cs" />
+    <Compile Include="Data\StoredProcedure\DataColumnAttribute.cs" />
+    <Compile Include="Data\StoredProcedure\ParameterCollection.cs" />
+    <Compile Include="EventArgs\DbObjectDeletedEventArgs.cs" />
+    <Compile Include="EventArgs\DbObjectSavedEventArgs.cs" />
+    <Compile Include="EventArgs\PersistsPropertyChangedEventArgs.cs" />
+    <Compile Include="Exception\AddChildSqlDbObjectToParentException.cs" />
+    <Compile Include="Exception\AddSqlDbObjectException.cs" />
+    <Compile Include="Exception\DeleteSqlDbObjectException.cs" />
+    <Compile Include="Exception\DuplicatePropertyValueException.cs" />
+    <Compile Include="Exception\PropertyNotSetException.cs" />
+    <Compile Include="Exception\RemoveChildSqlDbObjectFromParentException.cs" />
+    <Compile Include="Exception\SpecifiedSqlDbObjectNotFoundException.cs" />
+    <Compile Include="Exception\UnknownEnumValueException.cs" />
+    <Compile Include="Exception\UpdateSqlDbObjectException.cs" />
+    <Compile Include="Business\IntelligentString.cs" />
+    <Compile Include="Business\NotifyCollectionChangedObject.cs" />
+    <Compile Include="Business\NotifyPropertyChangedObject.cs" />
+    <Compile Include="Presentation\WPF\UserControls\FileBrowserTextBox.xaml.cs">
+      <DependentUpon>FileBrowserTextBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\WPF\UserControls\FolderBrowserTextBox.xaml.cs">
+      <DependentUpon>FolderBrowserTextBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\WPF\UserControls\TimeSpanPicker.xaml.cs">
+      <DependentUpon>TimeSpanPicker.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\WPF\Windows\GetTextValueDialog.xaml.cs">
+      <DependentUpon>GetTextValueDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Data\SQL\SqlDbObject.cs" />
+    <Compile Include="Data\StoredProcedure\DataRow.cs" />
+    <Compile Include="Data\StoredProcedure\DataTable.cs" />
+    <Compile Include="Data\StoredProcedure\Parameter.cs" />
+    <Compile Include="ValueConverters\BooleanVisibilityConverter.cs" />
+    <Compile Include="ValueConverters\EnumDescriptionConverter.cs" />
+    <Compile Include="ValueConverters\FormatSizeConverter.cs" />
+    <Compile Include="ValueConverters\IntelligentStringConverter.cs" />
+    <Compile Include="ValueConverters\InverseBooleanConverter.cs" />
+    <Compile Include="ValueConverters\InverseBooleanVisibilityConverter.cs" />
+    <Compile Include="ValueConverters\TextValueDialogInputVisibilityConverter.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Page Include="Presentation\WPF\UserControls\FileBrowserTextBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\WPF\UserControls\FolderBrowserTextBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\WPF\UserControls\TimeSpanPicker.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\WPF\Windows\GetTextValueDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

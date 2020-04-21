@@ -1,0 +1,32 @@
+﻿@{
+    ViewBag.Title = "Error";
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
+}
+
+<div class="error_header">ERROR</div>
+
+<div class="error_content">
+    <div class="error_content_image"><img src="~/Content/Images/error_barney.jpg" /></div>
+    <div class="error_content_text">
+        <h5>Oops!</h5>
+        <p>Unfortunately something has gone wrong in the website.</p>
+        <p>We have been notified of this error and will look to get it fixed as soon as we can.</p>
+        @if (String.IsNullOrEmpty(User.Identity.Name))
+        {
+            <text><p>Please @Html.ActionLink("click here", "Index", "LogIn") to go back to the log in page.</p></text>
+        }
+        else
+        {
+            <text><p>Please @Html.ActionLink("click here", "Index", "Default") to go back to the home page.</p></text>
+        }
+    </div>
+</div>
+
+<div class="error_footer">
+    <div class="error_log_out">
+        @if (!String.IsNullOrEmpty(User.Identity.Name))
+        {
+            <text><input type="button" class="button error_log_out_button" value="Log out" onclick="location.href='@Url.Action("LogOut", "LogIn" )'" /></text>
+        }
+    </div>
+</div>

@@ -1,0 +1,101 @@
+﻿.qualifications
+{
+	height: 222px;
+	width: 710px;
+	position: relative;
+	left: 50%;
+	margin-left: -355px;
+	margin-bottom: 24px;
+}
+
+.qualifications a
+{
+	color: #ffffff;
+	font-style: italic;
+	font-weight: normal;
+}
+
+.qualifications h3
+{
+	color: #ffffff;
+}
+
+.qualifications ul
+{
+	padding: 0;
+	margin: 0;
+}
+
+.qualification
+{
+	list-style: none;	
+}
+
+.qualification li
+{
+	float: left;
+	margin-right: 22px;
+	width: 198px;
+	height: 198px;
+	padding: 12px;
+	background-image: url('../Images/qualification_background.png');
+	text-align: center;
+	color: #ffffff;
+	position: relative;
+}
+
+.institution
+{
+	position: absolute;
+	bottom: 20px;
+	left: 50%;
+	width: 198px;
+	height: 30px;
+	text-align: center;
+	margin-left: -105px;
+	padding: 0px 6px;
+}
+
+.work_experience
+{
+	border: solid 1px #9dca5d;
+}
+
+.work_experience_title
+{
+	background-color: #528037;
+	vertical-align: top;
+	padding: 12px 24px;
+}
+
+.work_experience_title h3
+{
+	color: #ffffff;
+	font-size: 20px;
+	margin: 0;
+}
+
+.work_experience_title a
+{
+	color: #ffffff;
+}
+
+.work_experience_label_row
+{
+	background-color: #528037;
+	color: #ffffff;
+	font-weight: bold;	
+	vertical-align: top;
+	padding: 6px;
+	width: 100px;
+	font-family: Rockwell, Georgia, Verdana, Arial;
+	text-shadow: 2px 2px 2px #000000;
+	text-align: right;
+	border-right: solid 1px #9dca5d;
+}
+
+.work_experience_content_row
+{
+	vertical-align: top;
+	background-color: #e8e8e8;
+}

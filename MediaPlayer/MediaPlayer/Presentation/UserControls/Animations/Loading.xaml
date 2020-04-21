@@ -1,0 +1,42 @@
+﻿<UserControl
+    x:Class="MediaPlayer.Presentation.UserControls.Animations.Loading"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:animations="clr-namespace:MediaPlayer.Presentation.UserControls.Animations"
+    xmlns:vc="clr-namespace:MediaPlayer.ValueConverters"
+    mc:Ignorable="d" 
+    d:DesignHeight="100"
+    d:DesignWidth="300"
+    Loaded="UserControl_Loaded">
+    <UserControl.Resources>
+        <vc:LoadingBlobsConverter x:Key="loadingBlobsConverter" />
+        <vc:LoadingBlobOpacityConverter x:Key="loadingBlobOpacityConverter" />
+    </UserControl.Resources>
+    <ItemsControl
+        ItemsSource="{Binding Path=Blobs, Converter={StaticResource loadingBlobsConverter}, RelativeSource={RelativeSource AncestorType={x:Type animations:Loading}}}">
+        <ItemsControl.ItemsPanel>
+            <ItemsPanelTemplate>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" />
+            </ItemsPanelTemplate>
+        </ItemsControl.ItemsPanel>
+        <ItemsControl.ItemTemplate>
+            <DataTemplate>
+                <Ellipse
+                    Height="{Binding Path=BlobSize, RelativeSource={RelativeSource AncestorType=animations:Loading}}"
+                    Width="{Binding Path=BlobSize, RelativeSource={RelativeSource AncestorType=animations:Loading}}"
+                    Margin="{Binding Path=BlobMargin, RelativeSource={RelativeSource AncestorType=animations:Loading}}"
+                    Fill="{Binding Path=Foreground, RelativeSource={RelativeSource AncestorType=animations:Loading}}">
+                    <Ellipse.Opacity>
+                        <MultiBinding Converter="{StaticResource loadingBlobOpacityConverter}">
+                            <Binding />
+                            <Binding Path="Blobs" RelativeSource="{RelativeSource AncestorType=animations:Loading}" />
+                            <Binding Path="Value" RelativeSource="{RelativeSource AncestorType=animations:Loading}" />
+                        </MultiBinding>
+                    </Ellipse.Opacity>
+                </Ellipse>
+            </DataTemplate>
+        </ItemsControl.ItemTemplate>
+    </ItemsControl>
+</UserControl>

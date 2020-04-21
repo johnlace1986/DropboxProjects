@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="ee9aaa8e-2fcd-462d-a6e1-37decf5749d1" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>true</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.ObjectModel.ObservableCollection`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>false</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:2628/NisbetPhotographyService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="NisbetPhotographyService.xsd" MetadataType="Schema" ID="7877a3b6-e74a-47a2-b543-afe9fd07c6de" SourceId="1" SourceUrl="http://localhost:2628/NisbetPhotographyService.svc?xsd=xsd0" />
+    <MetadataFile FileName="NisbetPhotographyService1.xsd" MetadataType="Schema" ID="2a9de504-cc9f-41e4-941e-6f5ad03d0994" SourceId="1" SourceUrl="http://localhost:2628/NisbetPhotographyService.svc?xsd=xsd1" />
+    <MetadataFile FileName="NisbetPhotographyService.disco" MetadataType="Disco" ID="5acbb371-0300-4409-812a-746a56d2f68d" SourceId="1" SourceUrl="http://localhost:2628/NisbetPhotographyService.svc?disco" />
+    <MetadataFile FileName="NisbetPhotographyService2.xsd" MetadataType="Schema" ID="089037be-1cad-4e88-bd7b-319a3429b21a" SourceId="1" SourceUrl="http://localhost:2628/NisbetPhotographyService.svc?xsd=xsd2" />
+    <MetadataFile FileName="NisbetPhotographyService.wsdl" MetadataType="Wsdl" ID="8e84b8f1-c7f4-4056-9b17-7ecda2d3e037" SourceId="1" SourceUrl="http://localhost:2628/NisbetPhotographyService.svc?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

@@ -1,0 +1,43 @@
+﻿@{
+    ViewBag.Title = "Messages";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section HeaderSection {
+    <script src="~/Scripts/jquery.watermark.js"></script>
+    <script src="~/Scripts/jquery.messages.js"></script>
+    <script src="~/Scripts/jquery.loading.js"></script>
+    <script src="~/Scripts/Messages.Index.js"></script>
+
+    <script type="text/javascript">
+
+    $(document).ready(function () {
+        setMessagesContainerHeight();
+
+        initMessages(@ViewBag.LoggedInInvite.Id);
+    });
+
+    window.onresize = function () {
+        setMessagesContainerHeight();
+    };
+
+    </script>
+}
+
+<div class="messages">
+    <div class="messages_container"></div>
+
+    <div class="messages_new_message">
+        <div><textarea id="txtNewMessage" class="textbox messages_new_message_textbox" rows="6"></textarea></div>
+        <div class="message_new_message_send">
+            <div class="message_new_message_error"></div>
+            <input id="btnSendMessage" type="button" class="button message_new_message_send_button" value="Send" style="width: 90px; float: right;" />
+            <div class="messages_new_message_loading"></div>
+            <div class="checkbox message_new_message_email_messages">
+                <input id="chkEmailMessages" type="checkbox" @(ViewBag.LoggedInInvite.EmailMessages ? "checked=\"true\"" : "") onclick="setInviteEmailMessages(this.checked);" /><label for="chkEmailMessages">Send messages I receive to my email address</label>
+            </div>
+        </div>
+    </div>
+</div>
+
+

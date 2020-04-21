@@ -1,0 +1,1892 @@
+﻿html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+@font-face {
+    font-family: 'Rouge Script';
+    src: url('../../Content/Fonts/RougeScript/rougescript-regular-webfont.eot');
+    src: url('../../Content/Fonts/RougeScript/rougescript-regular-webfont.eot?#iefix') format('embedded-opentype'), url('../../Content/Fonts/RougeScript/rougescript-regular-webfont.woff2') format('woff2'), url('../../Content/Fonts/RougeScript/rougescript-regular-webfont.woff') format('woff'), url('../../Content/Fonts/RougeScript/rougescript-regular-webfont.ttf') format('truetype'), url('../../Content/Fonts/RougeScript/rougescript-regular-webfont.svg#rouge_scriptregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+    min-width: 1024px;
+    font-family: Georgia;
+    color: #969696;
+    font-size: 16px;
+    word-wrap: break-word;
+}
+
+a {
+    font: inherit;
+    color: #69816F;
+    text-decoration: none;
+}
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+    a:visited {
+        text-decoration: underline;
+        color: #69816F;
+    }
+
+h1 {
+    font-family: 'Rouge Script';
+    font-style: italic;
+    color: #7b9883;
+    font-weight: normal;
+    font-size: 96px;
+    margin: 0;
+}
+
+h2 {
+    font-family: 'Rouge Script';
+    font-style: italic;
+    color: #ffffff;
+    font-weight: normal;
+    font-size: 92px;
+    margin: 0;
+}
+
+h3 {
+    font-family: 'Rouge Script';
+    font-style: italic;
+    color: #69816F;
+    font-weight: normal;
+    font-size: 56px;
+    margin: 0;
+    text-align: center;
+}
+
+h4 {
+    font-size: 30px;
+    color: #bfbfbf;
+    margin: 12px;
+    font-weight: inherit;
+}
+
+h5 {
+    font-family: 'Rouge Script';
+    font-style: italic;
+    font-size: 36px;
+    font-weight: normal;
+    margin: 0;
+    padding-bottom: 12px;
+    color: #69816F;
+}
+
+    h5 a {
+        color: inherit;
+    }
+
+h6 {
+    font-size: 16px;
+    font-weight: normal;
+    margin: 0;
+    padding: 12px 0px;
+}
+    
+p {
+    margin: 0px 0px 12px 0px; 
+}
+
+input,
+textarea {
+    outline: none;
+    resize: none;
+}
+
+td{
+    vertical-align: middle;
+}
+
+.cf:before,
+.cf:after{
+    content: " ";
+    display: table;
+}
+
+.cf:after{
+    clear: both;
+}
+
+.cf {
+    *zoom: 1;
+}
+
+.clear {
+    clear: both;
+}
+
+.textbox {
+    border: solid 1px #47584c;
+    background-color: #ffffff;
+    font-family: inherit;
+    padding: 6px;
+    width: 206px;
+}
+
+.button {
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    color: #ffffff;
+    border: solid 1px #47584c;
+    background-color: #7b9883;
+    padding: 6px 12px;
+    cursor: pointer;
+    -webkit-appearance: none;
+    -webkit-border-radius: 0;
+}
+
+    .button:hover {
+        background-color: #9DC2A7;
+    }
+
+.checkbox {
+    margin: 3px;
+}
+
+    .checkbox input {
+        cursor: pointer;
+        margin-top: 2px;
+    }
+
+    .checkbox label {
+        cursor: pointer;
+        position: absolute;
+        margin-left: 6px;
+    }
+
+.radio {
+    margin-left: 24px;
+    cursor: pointer;
+}
+
+.radioLabel {
+    cursor: pointer;
+}
+
+.modalDialog {
+    display: none;
+}
+
+.no-close {
+    display: none;
+}
+
+.disabledElement {
+    pointer-events: none;
+    cursor: default;
+	opacity: 0.5;
+	filter:Alpha(Opacity=50); /* support: IE8 */
+}
+
+.watermark {
+    color: #7F7F7F;
+    font-style: italic;
+}
+
+#content {
+    margin-left: auto;
+    margin-right: auto;
+    width: 1024px;
+}
+
+.log_in_invite {
+    width: 612px;
+    padding: 36px;
+    background-color: #f8f8f8;
+    border: solid 1px #47584c;
+    margin: 48px auto;
+    text-align: center;
+    color: #666666;
+}
+
+    .log_in_invite p {
+        margin: 24px 0px;
+    }
+
+.log_in_pattern {
+    height: 185px;
+    width: 371px;
+    margin: 12px auto;
+}
+
+.log_in_controls {
+    display: inline-block;
+    width: 464px;
+    padding: 6px;
+}
+
+.log_in_controls_label {
+    float: left;
+    width: 220px;
+    height: 24px;
+    text-align: right;
+    margin: 6px;
+    padding-top: 6px;
+}
+
+.log_in_controls_textbox {
+    width: 220px;
+    height: 30px;
+    float: right;
+    margin : 6px;
+}
+
+.log_in_controls_checkbox {
+    height: 26px;
+    margin: 12px 6px 6px 6px;
+    float: right;
+}
+
+.log_in_controls_button {
+    height: 32px;
+    margin: 6px;
+    float: right;
+}
+
+.log_in_controls_remember_me {
+    text-align: left;
+    width: 226px;
+    float: right;
+    margin-bottom: 12px;
+}
+
+.log_in_error {
+    margin: 24px 0 0 0;
+    color: #d35e67;
+}
+
+.logged_in_layout_footer {
+    margin: 12px 12px 36px 12px;
+    height: 32px;
+    padding: 24px;
+    background-color: #7d9db2;
+    color: #ffffff;
+    font-weight: bold;
+    text-align: center;
+}
+
+    .logged_in_layout_footer a {
+        color: inherit;
+        font-size: inherit;
+        font-weight: inherit;
+    }
+
+        .logged_in_layout_footer a:hover {
+            text-decoration: none;
+            color: #9ac2dc;
+        }
+
+    .logged_in_layout_footer .button:hover {
+        background-color: transparent !important;
+    }
+
+.logged_in_layout_footer_log_out {
+    height: 32px;
+    float: right;
+}
+
+.logged_in_layout_footer_log_out_button {
+    height: 32px;
+    width: 118px;
+    background: transparent url('../Images/log_out_white.png') no-repeat left;
+    border: none;
+    text-align: right;
+    cursor: pointer;
+}
+
+    .logged_in_layout_footer_log_out_button:hover {
+        color: #9ac2dc;
+        background-image: url('../Images/log_out_blue.png');
+    }
+
+.logged_in_layout_footer_contact_us {
+    float: left;
+    height: 32px;
+}
+
+    .logged_in_layout_footer_contact_us:hover {
+        color: #9ac2dc;
+    }
+
+.logged_in_layout_footer_view_admin_website {
+    display: inline-block;
+    padding-top: 6px;
+}
+
+.logged_in_layout_footer_view_full_website {
+    float: left;
+    height: 32px;
+}
+
+    .logged_in_layout_footer_view_full_website:hover {
+        color: #9ac2dc;
+    }
+
+.logged_in_layout_footer_contact_us_button {
+    height: 32px;
+    width: 140px;
+    background: transparent url('../Images/contact_us_white.png') no-repeat left;
+    border: none;
+    text-align: right;
+    cursor: pointer;
+    z-index: 1;
+    position: absolute;
+}
+
+    .logged_in_layout_footer_contact_us_button:hover {
+        color: inherit;
+        background-image: url('../Images/contact_us_blue.png')
+    }
+
+.logged_in_layout_footer_view_full_website_button {
+    height: 32px;
+    width: 200px;
+    background: transparent url('../Images/is_admin_white.png') no-repeat;
+    background-position-x: top;
+    background-position-y: left;
+    padding-top: 6px;
+    border: none;
+    text-align: right;
+    cursor: pointer;
+    z-index: 1;
+    position: absolute;
+}
+
+    .logged_in_layout_footer_view_full_website_button:hover {
+        color: inherit;
+        background-image: url('../Images/is_admin_blue.png')
+    }
+
+.logged_in_layout_footer_contact_us_unread_message_count {
+    float: left;
+    position: absolute;
+    width: 32px;
+    margin-top: 6px;
+    margin-left: 1px;
+    font-size: 12px;
+    color: #7d9db2 !important;
+    z-index: 1;
+}
+
+.layout_header_offscreen {
+    height: 488px;
+    padding-top: 12px;
+}
+
+.layout_image {
+    height: 232px;
+    width: 232px;
+    margin: 12px;
+    float: left;
+}
+
+.layout_header {
+    height: 280px;
+}
+
+.layout_header_text {
+    width: 440px;
+    height: 184px;
+    background-color: #7b9883;
+    padding: 24px;
+    text-align: center;
+}
+
+.layout_header_text p {
+    margin: 24px 0px;
+}
+
+.layout_navigation {
+    margin: 12px;
+    height: 32px;
+    padding: 24px;
+    background-color: #7d9db2;
+    font-size: 28px;
+    color: #ffffff;
+    text-align: center;
+}
+
+.layout_navigation_items {
+    height: 32px;
+    display: inline-block;
+}
+    .layout_navigation_items ul {
+        padding: 0;
+        margin: 0;
+    }
+        .layout_navigation_items ul li {
+            position: relative;
+            float: left;
+            list-style: none;
+            margin: 0px 36px;
+        }
+
+            .layout_navigation_items ul li a {
+                color: inherit;
+                text-decoration: none;
+            }
+
+            .layout_navigation_items ul li a:hover {
+                color: #9ac2dc;
+            }
+
+.layout_navigation_item_hidden {
+    display: none;
+}
+
+.layout_body {
+    margin: 24px 12px;
+}
+
+.default_image {
+    float: left;
+    width: 500px;
+    height: 500px;
+    background-image: url('../../Content/Images/default_image.jpg');
+}
+
+.default_text {
+    float: right;
+    width: 452px;
+    padding: 0px 24px;
+}
+
+    .default_text h3 {
+        padding-top: 6px;
+    }
+
+.rsvp_invite {
+    text-align: center;
+    font-family: 'Rouge Script';
+    font-style: italic;
+    font-size: 48px;
+}
+
+    .rsvp_invite p {
+        margin-bottom: 24px;
+    }
+
+    .rsvp_invite h3 {
+        font-size: 72px;
+        margin-bottom: 24px;
+    }
+
+    .rsvp_invite div {
+        margin-bottom: 24px;
+        font-size: 36px;
+    }
+
+.rsvp_invite_guests {
+    margin-top: 24px;
+    border-bottom: solid 1px #b9b9b9;
+}
+
+.rsvp_invite_guest_name_no_rsvp {
+    color: #d35e67;
+}
+
+.rsvp_invite_guest_name_cell {
+    text-align: right;
+    border-top: solid 1px #b9b9b9;
+    padding: 12px;
+}
+
+.rsvp_invite_guest_attending_cell {
+    text-align: left;
+    width: 600px;
+    border-top: solid 1px #b9b9b9;
+    padding: 12px;
+}
+
+.rsvp_invite_guest_loading_cell{
+    width: 18px;
+    height: 20px;
+    border-top: solid 1px #b9b9b9;
+    padding: 12px;
+}
+
+.rsvp_invite_guest_plus_one {
+    height: 20px;
+    padding-left: 27px;
+}
+
+.rsvp_invite_guest_plus_one_name {
+    height: 20px;
+    position: relative;
+    padding-left: 24px;
+    cursor: pointer;
+    color: #69816F;
+}
+
+    .rsvp_invite_guest_plus_one_name:hover {
+        text-decoration: underline;
+    }
+
+.rsvp_invite_guest_plus_one_loading_cell {
+    width: 18px;
+    height: 20px;
+    padding: 12px;
+}
+
+.rsvp_invite_guest_plus_one_edit_name_label {
+    float: left;
+    height: 24px;
+    width: 78px;
+    margin: 6px;
+    padding-top: 6px;
+}
+
+.rsvp_invite_guest_plus_one_edit_name_textbox {
+    width: 220px;
+    height: 30px;
+    float: right;
+    margin : 6px;
+}
+
+.rsvp_invite_guest_plus_one_edit_name_error {
+    color: #d35e67;
+    height: 19px;
+    padding: 12px 0px;
+    text-align: center;
+}
+
+.big_day_address_map {
+    height: 356px;
+    width: 475px;
+    float: left;
+}
+
+.big_day_address {
+    text-align: center;
+    margin-top: 76px;
+    float: right;
+    width: 475px;
+}
+
+    .big_day_address a {
+        font-family: 'Rouge Script';
+        font-style: italic;
+        font-size: 36px;
+        padding-bottom: 12px;
+    }
+
+.big_day_order {
+    text-align: center;
+}
+
+.big_day_order_image {
+    width: 475px;
+    height: 356px;
+    float: left;
+    background-image: url('../Images/big_day_order_image.jpg');
+}
+
+.big_day_order_text {
+    width: 475px;
+    float: right;
+    margin-top: 70px;
+}
+
+    .big_day_order_text td {
+        text-align: left;
+        font-family: 'Rouge Script';
+        font-style: italic;
+        font-size: 36px;
+        padding: 0px 18px;
+    }
+
+.big_day_order_time {
+    color: #69816F;
+}
+
+.big_day_food_menu {
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.big_day_food_menu_first_course_mains{
+    float: left;
+    width: 475px;
+}
+
+.big_day_food_menu_first_course_sides {
+    float: right;
+    width: 475px;
+}
+
+    .big_day_food_guest_vegetarian ul {
+        margin: 0;
+        padding: 0;
+    }
+
+    .big_day_food_guest_vegetarian li {
+        list-style: none;
+        float: left;
+        width: 236px;
+    }
+
+.big_day_food_guest_vegetarian_checkbox {
+    padding-top: 6px;
+    height: 26px;
+    width: 202px;
+    margin: 0px;
+    float: left;
+}
+
+
+.big_day_food_guest_vegetarian_no_rsvp {
+    padding: 12px;
+    font-style: italic;
+}
+
+.big_day_food_guest_vegetarian_loading_cell {
+    padding-top: 9px;
+    height: 23px;
+    width: 32px;
+    float: right;
+}
+
+.big_day_reserve_room {
+    margin: 12px 0px 36px 0px;
+    height: 20px;
+}
+
+    .big_day_reserve_room label {
+        margin-left: 3px;
+        cursor: pointer;
+    }
+
+.big_day_reserve_room_checkbox {
+    height: 20px;
+    padding: 12px;
+    float: left;
+}
+
+.big_day_reserve_room_loading {
+    width: 18px;
+    height: 20px;
+    padding: 12px;
+    float: left;
+}
+
+.big_day_parents_image {
+    height: 356px;
+    width: 475px;
+    background-image: url('../Images/big_day_parents_image.jpg');
+}
+
+.big_day_parents_text {
+    vertical-align: top;
+    padding: 0px 12px;
+}
+
+.gift_header {
+    height: 236px;
+    padding-bottom: 12px;
+}
+
+.gift_image {
+    float: left;
+    width: 320px;
+    height: 209px;
+}
+
+.gift_poem {
+    font-style: italic;
+    text-align: center;
+    width: 656px;
+    float: right;
+    position: relative;
+    height: 187px;
+    padding-top: 22px;
+}
+
+.photos_slideshow_container{
+    width: 618px;
+    height: 423px;
+    margin: 24px auto;
+}
+
+.messages {
+    position:relative;
+}
+
+.messages_container {
+    overflow-y: scroll;
+    border: solid 1px #47584C;
+    background-color: #F8F8F8;
+    padding: 24px 12px;
+}
+
+.messages_received_message {
+    text-align: right;
+    margin-bottom: 12px;
+}
+
+    .messages_received_message .messages_message {
+        background-color: #9ac2dc;
+    }
+
+    .messages_received_message .message_body {
+        background-image: url('../Images/message_received_footer.png');
+        background-repeat: no-repeat;
+        background-position-y: bottom;
+        background-position-x: right;
+        padding-right: 12px;
+    }
+    
+    .messages_sent_message .messages_message {
+        background-color: #9DC2A7;
+    }
+
+    .messages_sent_message .message_body{
+        background-image: url('../Images/message_sent_footer.png');
+        background-repeat: no-repeat;
+        background-position-y: bottom;
+        padding-left: 12px;
+    }
+
+.messages_message {
+    padding: 12px;
+    max-width: 600px;
+    display: inline-block;
+    color: #ffffff;
+}
+
+.messages_date_sent {
+    padding: 6px 12px 24px 12px;
+    font-size: 14px;
+    height: 16px;
+}
+
+.messages_new_message_textbox {
+    width: 986px;
+}
+
+.messages_new_message {
+    margin-top: 24px;
+    height: 149px;
+}
+
+.message_new_message_send {
+    margin-top: 12px;
+}
+
+.message_new_message_send_button {
+    float: right;
+}
+
+.messages_new_message_loading {
+    height: 20px;
+    width: 19px;
+    float: right;
+    margin: 9px 12px;
+}
+
+.message_new_message_error {
+    color: #d35e67;
+    margin-top: 9px;
+    float: left;
+}
+
+.message_new_message_email_messages {
+    float: right;
+    margin: 7px 24px;
+    width: 320px;
+}
+
+.admin_layout_navigation {
+    margin: 12px;
+    padding: 24px;
+    background-color: #7d9db2;
+    font-size: 20px;
+    color: #ffffff;
+    text-align: center;
+}
+
+.admin_layout_navigation_items {
+    display: inline-block;
+}
+    .admin_layout_navigation_items ul {
+        padding: 0;
+        margin: 0;
+    }
+        .admin_layout_navigation_items ul li {
+            position: relative;
+            float: left;
+            list-style: none;
+            margin: 0px 36px;
+        }
+
+            .admin_layout_navigation_items ul li a {
+                color: inherit;
+                text-decoration: none;
+            }
+
+            .admin_layout_navigation_items ul li a:hover {
+                color: #9ac2dc;
+            }
+
+.admin_index_invites {
+    border: solid 1px #47584C;
+    background-color: #F8F8F8;
+    padding: 12px;
+    margin-bottom: 24px;
+    overflow-y: scroll;
+}
+
+    .admin_index_invites th {
+        text-align: left;
+        color: #7b9883;
+        padding: 6px;
+        height: 40px;
+    }
+
+    .admin_index_invites td {
+        padding: 12px 6px 6px 6px;
+        vertical-align: middle;
+        height: 40px;
+        border-top: solid 1px #bfbfbf;
+    }
+
+.admin_index_invites_buttons {
+    height: 32px;
+    text-align: left;
+    width: 176px;
+    margin: 0px;
+}
+
+    .admin_index_invites_buttons a {
+        text-decoration: none;
+    }
+
+    .admin_index_invites_buttons li {
+        list-style: none;
+        float: left;
+        margin-left: 12px;
+    }
+
+        .admin_index_invites_buttons li input {
+            height: 32px;
+            width: 32px;
+            background-color: transparent;
+            border: none;
+            padding: 0px;
+        }
+
+        .admin_index_invites_buttons li input:hover {
+            background-color: transparent;
+        }
+
+.admin_index_invites_buttons_email {
+    background-image: url('../Images/email.png');
+}
+
+    .admin_index_invites_buttons_email:hover {
+        background-image: url('../Images/email_hover.png');
+    }
+
+.admin_index_invites_buttons_edit {
+    height: 32px;
+    width: 32px;
+    background-image: url('../Images/edit.png');
+}
+
+    .admin_index_invites_buttons_edit:hover {
+        background-image: url('../Images/edit_hover.png');
+    }
+
+.admin_index_invites_buttons_delete {
+    background-image: url('../Images/delete.png');
+}
+
+    .admin_index_invites_buttons_delete:hover {
+        background-image: url('../Images/delete_hover.png');
+    }
+
+.admin_index_invites_buttons_messages {
+    height: 32px;
+    width: 32px;
+    text-align: center;
+    font-weight: bold;
+    color: #7b9883;
+    font-size: 12px;
+    background-image: url('../Images/contact_us.png');
+}
+
+    .admin_index_invites_buttons_messages:hover {
+        background-image: url('../Images/contact_us_hover.png');
+        color: #9DC2A7;
+    }
+
+    .admin_index_invites_buttons_messages a {
+        color: inherit;
+    }
+
+.admin_index_invites_buttons_unread_messages_count {
+    height: 32px;
+    width: 32px;
+    margin-top: 6px;
+    margin-left: 1px;
+    position: absolute;
+    color: #ffffff;
+    z-index: 1;
+}
+
+.admin_index_invite_summary {
+    margin-bottom: 24px;
+}
+
+    .admin_index_invite_summary li {
+        list-style: none;
+        float: left;
+        width: 250px;
+        height: 60px;
+        text-align: center;
+    }
+
+    .admin_index_invite_summary a {
+        color: inherit;
+    }
+
+        .admin_index_invite_summary a:hover {
+            text-decoration: none;
+            color: #9dc2a7;
+        }
+
+.admin_index_delete_invite_loading {
+    width: 18px;
+    height: 20px;
+    padding: 12px;
+    margin: 0 auto;
+}
+
+.admin_index_send_email_loading {
+    width: 18px;
+    height: 20px;
+    padding: 12px;
+    margin: 0 auto;
+}
+
+.admin_index_send_gift_notification_emails_loading {
+    width: 18px;
+    height: 20px;
+    padding: 12px;
+    margin: 0 auto;
+}
+
+.admin_invite_details {
+    margin-bottom: 18px;
+}
+
+    .admin_invite_details ul {
+        padding: 0;
+        height: 30px;
+        vertical-align: middle;
+    }
+
+    .admin_invite_details li {
+        list-style: none;
+        float: left;
+        margin-right: 24px;
+    }
+
+.admin_invite_details_email_address {
+    margin-top: 6px;
+    margin-right: 12px;
+}
+
+.admin_invite_guests {
+    border: solid 1px #47584C;
+    background-color: #F8F8F8;
+    padding: 12px;
+    margin-bottom: 24px;
+    overflow-y: scroll;
+}
+
+    .admin_invite_guests th {
+        text-align: left;
+        color: #7b9883;
+        padding: 6px;
+        height: 20px;
+    }
+
+    .admin_invite_guests td {
+        padding: 6px 6px 6px;
+        vertical-align: top;
+        height: 32px;
+        text-align: center;
+    }
+
+    .admin_invite_guests input[type=checkbox] {
+        margin-top: 6px;
+    }
+
+    .admin_invite_guests input[type=text] {
+        width: 96%;
+    }
+
+.admin_invite_guests_new_guest_row td {
+    height: auto !important;
+    padding: 12px 6px;
+}
+
+.admin_invite_guests_new_guest_row_line {
+    height: 1px;
+    background-color: #47584C;
+}
+    
+.admin_invite_guests_notes_button {
+    height: 32px;
+    width: 32px;
+    background-color: transparent;
+    border: none;
+    padding: 0px;
+    background-image: url('../Images/notes.png');
+}
+
+    .admin_invite_guests_notes_button:hover {
+        background-color: transparent;
+        background-image: url('../Images/notes_hover.png');
+    }
+    
+.admin_invite_guests_delete_button {
+    height: 32px;
+    width: 32px;
+    background-color: transparent;
+    border: none;
+    padding: 0px;
+    background-image: url('../Images/delete.png');
+}
+
+    .admin_invite_guests_delete_button:hover {
+        background-color: transparent;
+        background-image: url('../Images/delete_hover.png');
+    }
+
+.admin_invite_guests_add_button {
+    height: 32px;
+    width: 32px;
+    background-color: transparent;
+    border: none;
+    padding: 0px;
+    background-image: url('../Images/plus.png');
+}
+
+    .admin_invite_guests_add_button:hover {
+        background-color: transparent;
+        background-image: url('../Images/plus_hover.png');
+    }
+
+.admin_invite_options {
+    text-align: right;
+    height: 32px;
+    margin-top: 12px;
+    margin-bottom:24px;
+}
+
+.admin_invite_options_error {
+    float: left;
+    color: #d35e67;
+    margin-top: 12px;
+}
+
+.admin_invite_options_loading {
+    width: 24px;
+    height: 26px;
+    padding: 6px;
+    float: right;
+}
+
+    .admin_invite_options .button {
+        width: 90px;
+        margin-left: 6px;
+        float: right;
+    }
+
+.admin_index_add_invite {
+    height: 32px;
+    margin-top: 12px;
+}
+
+    .admin_index_add_invite input {
+        float: right;
+        min-width: 120px;
+        margin-left: 6px;
+    }
+
+.admin_messages_recipient {
+    margin-bottom: 24px;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.admin_guests_filter {
+    padding-bottom: 12px;
+}
+
+    .admin_guests_filter td {
+        vertical-align: top;
+    }
+
+    .admin_guests_filter label {
+        margin-left: 6px;
+        cursor: pointer;
+    }
+
+    .admin_guests_filter ul {
+        margin: 0px 0px 12px 0px;
+        height: 21px;
+    }
+
+    .admin_guests_filter li {
+        list-style: none;
+        float: left;
+        margin-right: 64px;
+        width: 120px;
+    }
+
+.admin_guests_list {
+    border: solid 1px #47584C;
+    background-color: #F8F8F8;
+    padding: 12px;
+    overflow-y: scroll;
+}
+
+    .admin_guests_list th {
+        text-align: left;
+        color: #7b9883;
+        padding: 6px;
+    }
+
+    .admin_guests_list td {
+        padding: 6px 6px 6px;
+        vertical-align: middle;
+        height: 32px;
+    }
+
+.admin_guests_list_edit {
+    background-image: url('../Images/edit.png');
+    height: 32px;
+    width: 32px;
+    cursor: pointer;
+}
+
+    .admin_guests_list_edit:hover {
+        background-image: url('../Images/edit_hover.png');
+    }
+
+.admin_guests_summary {
+    height: 32px;
+    margin-top: 24px;
+}
+
+.admin_guests_summary_export {
+    float: left;
+    margin-right: 12px;
+}
+
+    .admin_guests_summary_export a:hover {
+        text-decoration: none;
+    }
+
+    .admin_guests_summary_export a:visited {
+        color: #ffffff;
+    }
+
+.admin_guests_summary_rsvp {
+    float: left;
+    margin-right: 12px;
+}
+
+.admin_guests_summary_total {
+    float: right;
+    font-size: 18px;
+}
+
+    .admin_guests_summary_total label {
+        color: #7b9883;
+        font-weight: bold;
+        margin-left: 12px;
+    }
+    
+.admin_seating_plan {
+    position: relative;
+    min-height: 372px;
+}
+
+    .admin_seating_plan h5 {
+        padding-bottom: 12px;
+        margin: 0px;
+    }
+
+.admin_seating_plan_guest_not_attending {
+    font-style: italic !important;
+    color: #A2A2A2 !important;
+}
+
+.admin_seating_plan_tables {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 742px;
+    overflow-y: scroll;
+}
+
+.admin_seating_plan_tables_add {
+    width: 198px;
+    height: 307px;
+    margin-right: 12px;
+    margin-bottom: 12px;
+    padding: 12px;
+    float: left;
+    border: dashed 3px #7b9883;
+    background-image: url('../Images/plus.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    cursor: pointer;
+}
+
+    .admin_seating_plan_tables_add_hover,
+    .admin_seating_plan_tables_add:hover {
+        background-color: #9DC2A7;
+    }
+
+.admin_seating_plan_table {
+    border: solid 1px #47584C;
+    background-color: #F8F8F8;
+    padding: 12px;
+    width: 203px;
+    height: 311px;
+    overflow-y: hidden;
+    margin-right: 12px;
+    margin-bottom: 12px;
+    float: left;
+}
+
+.admin_seating_plan_table_hover {
+    background-color: #9DC2A7 !important;
+}
+
+.admin_seating_plan_table_header {
+    height: 37px;
+    margin-bottom: 6px;
+}
+
+    .admin_seating_plan_table_header h5 {
+        float: left;
+        padding: 0px;
+    }
+
+.admin_seating_plan_table_header_delete_button {
+    height: 32px;
+    width: 32px;
+    background-image: url('../Images/delete.png');
+    float: right;
+    cursor: pointer;
+}
+
+    .admin_seating_plan_table_header_delete_button:hover {
+        background-image: url('../Images/delete_hover.png');
+    }
+
+.admin_seating_plan_unassigned_guests {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 210px;
+    border: solid 1px #47584C;
+    background-color: #F8F8F8;
+    padding: 12px;
+    overflow-y: scroll;
+}
+
+    .admin_seating_plan_unassigned_guests h5 {
+        font-family: inherit;
+        font-style: inherit;
+        font-size: inherit;
+        font-weight: bold;
+    }
+
+.admin_seating_plan_unassigned_guests_hover {
+    background-color: #9DC2A7;
+}
+
+.admin_seating_plan_unassigned_guests_filter {
+    margin-bottom: 12px;
+}
+
+    .admin_seating_plan_unassigned_guests_filter input {
+        width: 184px;
+    }
+
+.admin_seating_plan_unassigned_guest {
+    cursor: pointer;
+}
+
+.admin_seating_plan_unassigned_guest_dragging {
+    border: solid 1px #47584C;
+    background-color: #F8F8F8;
+    padding: 12px;
+}
+
+    .admin_seating_plan_unassigned_guest_dragging p {
+        margin: 0px;
+    }
+
+.admin_seating_plan_table_guest {
+    cursor: pointer;
+}
+
+.admin_seating_plan_table_guest_dragging {
+    border: solid 1px #47584C;
+    background-color: #F8F8F8;
+    padding: 12px;
+}
+
+    .admin_seating_plan_table_guest_dragging p {
+        margin: 0px;
+    }
+
+.admin_expenses_list {
+    border: solid 1px #47584C;
+    background-color: #F8F8F8;
+    padding: 12px;
+    overflow-y: scroll;
+    margin-bottom: 24px;
+}
+
+    .admin_expenses_list th {
+        text-align: left;
+        color: #7b9883;
+        padding: 6px;
+    }
+    
+
+    .admin_expenses_list td {
+        padding: 6px 6px 6px;
+        vertical-align: middle;
+        height: 32px;
+    }
+
+.admin_expenses_list_nothing_to_pay {
+    color: #bfbfbf;
+}
+
+.admin_expenses_list_buttons {
+    height: 32px;
+    text-align: left;
+    width: 142px;
+    margin: 0px;
+    padding: 0px;
+}
+
+    .admin_expenses_list_buttons li {
+        list-style: none;
+        float: left;
+        margin-right: 12px;
+    }
+
+        .admin_expenses_list_buttons li input {
+            height: 32px;
+            width: 32px;
+            background-color: transparent;
+            border: none;
+            padding: 0px;
+        }
+
+        .admin_expenses_list_buttons li input:hover {
+            background-color: transparent;
+        }
+
+.admin_expenses_list_buttons_loading {
+    width: 18px;
+    height: 20px;
+    padding: 12px;
+}
+    
+.admin_expenses_list_buttons_edit {
+    height: 32px;
+    width: 32px;
+    background-color: transparent;
+    border: none;
+    padding: 0px;
+    background-image: url('../Images/edit.png');
+}
+
+    .admin_expenses_list_buttons_edit:hover {
+        background-color: transparent;
+        background-image: url('../Images/edit_hover.png');
+    }
+    
+.admin_expenses_list_buttons_delete {
+    height: 32px;
+    width: 32px;
+    background-color: transparent;
+    border: none;
+    padding: 0px;
+    background-image: url('../Images/delete.png');
+}
+
+    .admin_expenses_list_buttons_delete:hover {
+        background-color: transparent;
+        background-image: url('../Images/delete_hover.png');
+    }
+
+.admin_expenses_add_expense {
+    height: 32px;
+    margin-bottom: 24px;
+}
+
+.admin_expenses_add_expense_error {
+    display: inline-block;
+    margin-top: 6px;
+    color: #d35e67;
+}
+
+.admin_expenses_add_expense_button {
+    width: 120px;
+    float: right;
+}
+
+.admin_expenses_add_expense_loading {
+    width: 32px;
+    height: 32px;
+    float: right;
+    margin-right: 12px;
+    margin-top: 9px;
+}
+
+.admin_expenses_total {
+    border: solid 1px #47584C;
+    background-color: #F8F8F8;
+    padding: 12px;
+    overflow-y: scroll;
+    margin-bottom: 24px;
+}
+
+    .admin_expenses_total td {
+        padding: 6px 6px 6px;
+        vertical-align: middle;
+        height: 32px;
+    }
+
+.admin_expenses_total_to_pay {
+    font-weight: bold;
+    color: #d35e67;
+}
+
+.admin_expenses_save_expense_label {
+    float: left;
+    height: 24px;
+    width: 48px;
+    margin: 6px;
+    padding-top: 6px;
+}
+
+.admin_expenses_save_expense_textbox {
+    width: 220px;
+    height: 30px;
+    float: right;
+    margin : 6px;
+}
+
+.admin_expenses_save_expense_error {    
+    color: #d35e67;
+}
+    
+.admin_accommodation {
+    position: relative;
+    min-height: 372px;
+}
+
+    .admin_accommodation h5 {
+        padding-bottom: 12px;
+        margin: 0px;
+    }
+
+.admin_accommodation_guest_not_attending {
+    font-style: italic !important;
+    color: #A2A2A2 !important;
+}
+
+.admin_accommodation_rooms {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 742px;
+    overflow-y: scroll;
+}
+
+.admin_accommodation_rooms_add {
+    width: 321px;
+    height: 139px;
+    margin-right: 12px;
+    margin-bottom: 12px;
+    padding: 12px;
+    float: left;
+    border: dashed 3px #7b9883;
+    background-image: url('../Images/plus.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    cursor: pointer;
+}
+
+    .admin_accommodation_rooms_add_hover,
+    .admin_accommodation_rooms_add:hover {
+        background-color: #9DC2A7;
+    }
+
+.admin_accommodation_room {
+    border: solid 1px #47584C;
+    background-color: #F8F8F8;
+    padding: 12px;
+    width: 324px;
+    height: 143px;
+    margin-right: 12px;
+    margin-bottom: 12px;
+    float: left;
+}
+.admin_accommodation_room_empty {
+    background-color: #FCFCCD !important;
+}
+
+.admin_accommodation_room_hover {
+    background-color: #9DC2A7 !important;
+}
+
+.admin_accommodation_room_header {
+    height: 37px;
+    margin-bottom: 6px;
+    cursor: default;
+}
+
+    .admin_accommodation_room_header h5 {
+        float: left;
+        padding: 0px;
+        width: 248px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+.admin_accommodation_room_header_edit_button {
+    height: 32px;
+    width: 32px;
+    background-image: url('../Images/edit.png');
+    float: right;
+    cursor: pointer;
+    margin-left: 6px;
+}
+
+    .admin_accommodation_room_header_edit_button:hover {
+        background-image: url('../Images/edit_hover.png');
+    }
+
+.admin_accommodation_room_header_delete_button {
+    height: 32px;
+    width: 32px;
+    background-image: url('../Images/delete.png');
+    float: right;
+    cursor: pointer;
+    margin-left: 6px;
+}
+
+    .admin_accommodation_room_header_delete_button:hover {
+        background-image: url('../Images/delete_hover.png');
+    }
+
+.admin_accommodation_room_guest {
+    cursor: pointer;
+}
+
+.admin_accommodation_room_guest_dragging {
+    border: solid 1px #47584C;
+    background-color: #F8F8F8;
+    padding: 12px;
+}
+
+    .admin_accommodation_room_guest_dragging p {
+        margin: 0px;
+    }
+
+
+.admin_accommodation_unassigned_guests {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 210px;
+    border: solid 1px #47584C;
+    background-color: #F8F8F8;
+    padding: 12px;
+    overflow-y: scroll;
+}
+
+    .admin_accommodation_unassigned_guests h5 {
+        font-family: inherit;
+        font-style: inherit;
+        font-size: inherit;
+        font-weight: bold;
+    }
+
+.admin_accommodation_unassigned_guests_hover {
+    background-color: #9DC2A7;
+}
+
+.admin_accommodation_unassigned_guests_filter {
+    margin-bottom: 12px;
+}
+
+    .admin_accommodation_unassigned_guests_filter input {
+        width: 184px;
+    }
+
+.admin_accommodation_unassigned_guest {
+    cursor: pointer;
+}
+
+.admin_accommodation_unassigned_guest_dragging {
+    border: solid 1px #47584C;
+    background-color: #F8F8F8;
+    padding: 12px;
+}
+
+    .admin_accommodation_unassigned_guest_dragging p {
+        margin: 0px;
+    }
+
+.admin_accommodation_save_label {
+    float: left;
+    height: 24px;
+    width: 48px;
+    margin: 6px;
+    padding-top: 6px;
+}
+
+.admin_accommodation_save_textbox {
+    width: 220px;
+    height: 30px;
+    float: right;
+    margin : 6px;
+}
+
+.admin_accommodation_save_error {    
+    color: #d35e67;
+}
+
+.admin_errors {
+    overflow-y: scroll;
+    padding-right: 12px;
+}
+
+.admin_error {
+    border: solid 1px #47584C;
+    background-color: #F8F8F8;
+    padding: 12px;
+    margin-bottom: 12px;
+}
+
+.admin_error_header {
+    font-weight: bold;
+    height: 53px;
+}
+
+.admin_error_name {
+    float: left;
+    margin-top: 6px;
+}
+
+.admin_error_name_date_thrown {
+    font-style: italic;
+    font-weight: normal;
+    font-size: 14px;
+}
+
+.admin_error_options {
+    float: right;
+}
+
+.admin_error_options_loading{
+    width: 18px;
+    height: 20px;
+    padding: 12px;
+    float: right;
+}
+
+.admin_error_delete_button {
+    float: right;
+    background-color: transparent;
+    border: none;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    background-image: url('../Images/delete.png');
+}
+
+    .admin_error_delete_button:hover {
+        background-color: transparent;
+        background-image: url('../Images/delete_hover.png');
+    }
+
+.admin_error_detail {
+    margin-top: 12px;
+}
+
+.admin_error_detail_inner_errors {
+    font-size: 14px;
+}
+
+    .admin_error_detail_inner_errors p {
+        font-weight: bold;
+    }
+
+    .admin_error_detail_inner_errors ul {
+        margin: 0px;
+        padding: 0px;
+    }
+        .admin_error_detail_inner_errors ul li {
+            list-style: none;
+            margin-left: 12px;
+            margin-bottom: 6px;
+        }
+
+.admin_error_detail_stack_trace {
+    margin-top: 12px;
+    display: none;
+    margin-top: 12px;
+    font-style: italic;
+    font-size: 14px;
+}
+
+    .admin_error_detail_stack_trace p {
+        margin: 12px;
+    }
+
+.admin_error_detail_show_stack_trace {
+    margin-top: 12px;
+    font-style: italic;
+    font-size: 14px;
+    color: #69816F;
+    cursor: pointer;
+}
+
+    .admin_error_detail_show_stack_trace:hover {
+        text-decoration: underline;
+    }
+
+.error_header {
+    margin: 24px 12px;
+    height: 32px;
+    padding: 24px;
+    background-color: #7d9db2;
+    font-size: 28px;
+    color: #ffffff;
+    text-align: center;
+}
+
+.error_content {
+    padding: 12px;
+    height: 600px;
+}
+
+.error_content_image {
+    float: left;
+    margin: 12px;
+}
+
+.error_content_text{
+    float: right;
+    width: 502px;
+    margin: 12px;
+}
+
+.error_footer {
+    margin: 48px 12px 36px 12px;
+    height: 32px;
+    padding: 24px;
+    background-color: #7d9db2;
+    color: #ffffff;
+    font-weight: bold;
+    text-align: center;
+}
+
+    .error_footer a {
+        color: inherit;
+        font-size: inherit;
+        font-weight: inherit;
+    }
+
+    .error_footer .button:hover {
+        background-color: transparent !important;
+    }
+
+.error_log_out {
+    height: 32px;
+    float: right;
+}
+
+.error_log_out_button {
+    height: 32px;
+    width: 118px;
+    background: transparent url('../Images/log_out_white.png') no-repeat left;
+    border: none;
+    text-align: right;
+    cursor: pointer;
+}
+
+    .error_log_out_button:hover {
+        color: #9ac2dc;
+        background-image: url('../Images/log_out_blue.png');
+    }

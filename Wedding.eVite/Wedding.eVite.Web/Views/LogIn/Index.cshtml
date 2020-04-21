@@ -1,0 +1,54 @@
+﻿@model Wedding.eVite.Web.Models.LoginViewModel
+
+@{
+    ViewBag.Title = "Log In";
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
+}
+
+@section HeaderSection
+{
+    <script src="~/Scripts/LogIn.Index.js"></script>
+}
+
+<div class="log_in">
+    <div class="log_in_invite">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+
+            <div>
+                <h4>THE WEDDING OF</h4>
+                <h1>John <span style="color: #bfbfbf;">&amp;</span> Lizzie</h1>
+
+                <div class="log_in_pattern">
+                    <img src="~/Content/Images/log_in_pattern.png" />
+                </div>
+
+                <div class="log_in_controls">
+                    <div class="cf">
+                        <div class="log_in_controls_label">Email Address:</div>
+                        <div class="log_in_controls_textbox">@Html.TextBoxFor(model => model.Username, new { id = "txtUsername", value = Request.QueryString["Username"], @class = "textbox" })</div>
+
+                        <div class="log_in_controls_label">Password:</div>
+                        <div class="log_in_controls_textbox">@Html.PasswordFor(model => model.Password, new { id = "txtPassword", @class = "textbox" })</div>                    
+                    </div>
+
+                    <div class="cf">
+                        <div class="log_in_controls_button"><input type="submit" value="Log in" class="button" /></div>
+                        <div class="log_in_controls_button"><input type="button" value="Reset Password" class="button" onclick="window.location = '@Url.Action("Index", "ResetPassword")';" /></div>
+                    </div>
+
+                    <div class="cf">
+                        <div class="log_in_controls_remember_me checkbox">
+                            @Html.CheckBoxFor(model => model.RememberMe, new { id = "chkRememberMe" })
+                            <label for="chkRememberMe">Remember me?</label>
+                        </div>
+                    </div>
+
+                    <div class="log_in_error"> @ViewBag.ErrorMessage</div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

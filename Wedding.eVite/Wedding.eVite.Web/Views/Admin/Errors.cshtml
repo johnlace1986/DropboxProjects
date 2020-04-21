@@ -1,0 +1,96 @@
+﻿@using Wedding.eVite.Business
+@model IEnumerable<Error>
+
+@{
+    ViewBag.Title = "Errors";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@section HeaderSection {
+    <script src="~/Scripts/jquery.loading.js"></script>
+    <script src="~/Scripts/Admin.Error.js"></script>
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            setErrorsContainerHeight();
+
+            @foreach (Error error in Model)
+            {
+                @: displayError(@error.Id, '<p>@error.Message.Replace(Environment.NewLine, "</p><p>")</p>', '<p>@error.StackTrace.Replace(Environment.NewLine, "</p><p>")</p>');
+            }
+
+            $('.admin_error_name_date_thrown').each(function (cellIndex, cell) {
+                var year = parseInt($(cell).attr('data-dateThrownYear'));
+                var month = parseInt($(cell).attr('data-dateThrownMonth')) - 1;
+                var day = parseInt($(cell).attr('data-dateThrownDay'));
+                var hour = parseInt($(cell).attr('data-dateThrownHour'));
+                var minute = parseInt($(cell).attr('data-dateThrownMinute'));
+                var second = parseInt($(cell).attr('data-dateThrownSecond'));
+
+                var dateThrown = new Date(year, month, day, hour, minute, second);
+                $(cell).html(formatUtcDate(dateThrown));
+            });
+        });
+
+        window.onresize = function () {
+            setErrorsContainerHeight();
+        };
+
+    </script>
+}
+
+<div class="admin_errors">
+    @if (Model.Count() == 0)
+    {
+        <p>No errors to show.</p>
+    }
+    else
+    { 
+        foreach (Error error in Model)
+        {
+            <div id="@("divError" + error.Id)" class="admin_error">
+                <div class="admin_error_header">
+                    <div class="admin_error_name">
+                        <p>@error.Name</p>
+                        <p
+                            class="admin_error_name_date_thrown"
+                            data-dateThrownYear="@error.DateThrown.Year.ToString()"
+                            data-dateThrownMonth="@error.DateThrown.Month.ToString()"
+                            data-dateThrownDay="@error.DateThrown.Day.ToString()"
+                            data-dateThrownHour="@error.DateThrown.Hour.ToString()"
+                            data-dateThrownMinute="@error.DateThrown.Minute.ToString()"
+                            data-dateThrownSecond="@error.DateThrown.Second.ToString()">
+                        </p>
+                    </div>
+                    <div class="admin_error_options">
+                        <input type="button" class="button admin_error_delete_button" title="Delete Error" onclick="deleteError(@error.Id, '@Url.Action("DeleteError", "Admin")');" />
+                        <div class="admin_error_options_loading"></div>
+                    </div>
+                </div>
+                <div class="admin_error_detail">
+                    <div class="admin_error_detail_message"></div>
+                    @if (error.InnerError != null)
+                    { 
+                        <div class="admin_error_detail_inner_errors">
+                            <p>Inner Errors</p>
+                            <ul>
+                                @foreach(Error child in error.ChildrenFlattened)
+                                {
+                                    <li>@child.Name: @child.Message</li>
+                                }
+                            </ul>
+                        </div>
+                    }
+                    <div class="admin_error_detail_stack_trace"></div>
+                    <div class="admin_error_detail_show_stack_trace"></div>
+                </div>
+            </div>
+        }
+    }
+</div>
+
+<div id="divCouldNotDeleteError" class="modalDialog">
+    <p>Unable to delete error.</p>
+</div>

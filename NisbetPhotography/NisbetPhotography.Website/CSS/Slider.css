@@ -1,0 +1,32 @@
+﻿.slider_wrapper
+{
+	height: 381px;
+}
+
+.content_text_wrapper
+{
+	background-image: url('../Images/content_text_background_texture.png');
+	background-repeat: no-repeat;
+	width: 398px;
+	height: 345px;
+	padding: 18px;
+	float: left;
+}
+
+.content_text
+{
+	max-width: 398px;
+	max-height: 345px;
+	overflow: auto;
+}
+
+.content_image_wrapper
+{
+	background-image: url('../Images/content_image_background_texture.png');
+	background-repeat: no-repeat;
+	width: 503px;
+	height: 378px;
+	padding: 3px;
+	position: relative;
+	float: right;
+}

@@ -1,0 +1,18 @@
+Control Panel:
+----------------
+URL:		admin.1and1.co.uk
+User name:	nisbets.org.uk
+Password:	bpki2238
+
+FTP:
+----------------
+URL:		ftp.nisbetphotography.co.uk
+User name:	ftp61693396-0
+Password:	johnlace
+
+SQL Server:
+----------------
+Host name:	winsqleu06.1and1.co.uk
+Database name:	db353812811
+User name:	dbo353812811
+Password:	bpki2238

@@ -1,0 +1,49 @@
+<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="NisbetPhotographyMaster.Master.cs" Inherits="NisbetPhotography.Website.NisbetPhotographyMaster" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajax" %>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head id="Head1" runat="server">
+        <title>Nisbet Photography</title>
+        <link href="CSS/Global.css" rel="stylesheet" type="text/css" />
+        <link href="CSS/NisbetPhotography.css" rel="stylesheet" type="text/css" />
+
+        <script src="Scripts/js/Global.js" type="text/javascript"></script>
+        
+        <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+        <meta name="keywords" content="nisbet photography, studio, photos, candid, wedding, restoration, digital, family, portrait, peterborough, Cambridgeshire, male photographer, female photographer" />
+        <meta name="description" content="friendly family fun photography, digital restoration, corporate images, product photography, mother and baby sessions" />
+        <meta name="copyright" content="copyright Nisbet photography" />
+        <meta name="email" content="email@nisbetphotography.co.uk" />
+        
+        <asp:ContentPlaceHolder id="cphNisbetPhotographyMasterHead" runat="server" /> 
+    </head>
+    <body>
+        <form id="form1" runat="server">
+            <ajax:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server" CombineScripts="false" EnablePageMethods="true" />
+            <div id="wrapper">
+                <div class="header">
+                    <h1><a href="Default.aspx"><img src="Images/logo.png" alt="Nisbet Photography" /></a></h1>
+                </div>
+                
+                <div class="small_banner">
+                    <div class="navigation">
+                        <div class="nav_item"><a href="Default.aspx"><img src="Images/nav_item_home.png" /></a></div>
+                        <div class="nav_item"><a href="AboutUs.aspx"><img src="Images/nav_item_about_us.png" /></a></div>
+                        <div class="nav_item"><a href="Portfolio.aspx"><img src="Images/nav_item_portfolio.png" /></a></div>
+                        <div class="nav_item"><a href="ContactUs.aspx"><img src="Images/nav_item_contact_us.png" /></a></div>
+                    </div>
+                </div>
+                
+                <div class="content"><asp:ContentPlaceHolder id="cphNisbetPhotographyMasterBody" runat="server" /></div>
+                
+                <div class="small_banner" style="margin-bottom: 12px;">
+                    <div class="footer">
+                        <div class="copyright_info">Copyright &copy 2000 - <%= DateTime.Now.Year.ToString() %> - <a href="Copyright.aspx">Nisbet Photography</a> - All rights reserved</div>
+                        <div class="credits">Website by <a href="http://www.johnlace.co.uk" target="_blank">John Lace</a></div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </body>
+</html>

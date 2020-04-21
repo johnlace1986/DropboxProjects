@@ -1,0 +1,553 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{10277149-6928-4FC5-BE14-82B40EA660B7}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MediaPlayer</RootNamespace>
+    <AssemblyName>MediaPlayer</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>MediaPlayer.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.DirectoryServices.AccountManagement" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="Utilities">
+      <HintPath>..\..\Utilities\Utilities\bin\Release\Utilities.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="WPFToolkit.Extended, Version=1.5.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Resources\WPFToolkit.Extended.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\FolderBrowser.cs" />
+    <Compile Include="Business\IMediaItemsView.cs" />
+    <Compile Include="Business\IMediaItemView.cs" />
+    <Compile Include="Business\IOptionsPage.cs" />
+    <Compile Include="Business\LibraryOrganiser.cs" />
+    <Compile Include="Business\MediaItemExists.cs" />
+    <Compile Include="Business\MediaItemFilter.cs" />
+    <Compile Include="Business\ModificationRules\IRule.cs" />
+    <Compile Include="Business\ModificationRules\PrefixRule.cs" />
+    <Compile Include="Business\ModificationRules\ReplaceRule.cs" />
+    <Compile Include="Business\ModificationRules\RuleHeader.cs" />
+    <Compile Include="Business\ModificationRules\SubtractRule.cs" />
+    <Compile Include="Business\ModificationRules\TrimRule.cs" />
+    <Compile Include="Business\ModificationRules\TrimRulePositionEnum.cs" />
+    <Compile Include="Business\NonLibraryFile.cs" />
+    <Compile Include="Business\Options.cs" />
+    <Compile Include="Business\OptionsPageTypeEnum.cs" />
+    <Compile Include="Business\OrganisingMediaItemPart.cs" />
+    <Compile Include="Business\OrganisingMediaItemPartStatus.cs" />
+    <Compile Include="Business\OrganisingRootFolder.cs" />
+    <Compile Include="Business\PlayStateEnum.cs" />
+    <Compile Include="Business\SkipDirectionEnum.cs" />
+    <Compile Include="Business\MatchedOrganisingRootFolder.cs" />
+    <Compile Include="Business\VideoFilterBindingEnum.cs" />
+    <Compile Include="EventArgs\CancelMediaItemsOperationEventArgs.cs" />
+    <Compile Include="EventArgs\MediaItemPartEventArgs.cs" />
+    <Compile Include="EventArgs\MediaItemEventArgs.cs" />
+    <Compile Include="EventArgs\FileTypeEventArgs.cs" />
+    <Compile Include="EventArgs\FileTypesEventArgs.cs" />
+    <Compile Include="EventArgs\MediaItemPartsEventArgs.cs" />
+    <Compile Include="EventArgs\MediaItemsEventArgs.cs" />
+    <Compile Include="EventArgs\PlayMediaItemsEventArgs.cs" />
+    <Compile Include="EventArgs\RootFolderEventArgs.cs" />
+    <Compile Include="EventArgs\RootFolderPathChangedEventArgs.cs" />
+    <Compile Include="Presentation\UserControls\ControlExtenders\ItemsSourceTrackingDataGrid.cs" />
+    <Compile Include="Presentation\UserControls\MediaItemPlayer\MediaItemPlayer.xaml.cs">
+      <DependentUpon>MediaItemPlayer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\UserControls\MediaItemPlayer\Tracker.xaml.cs">
+      <DependentUpon>Tracker.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\UserControls\MediaItemViews\SongView.xaml.cs">
+      <DependentUpon>SongView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\UserControls\ModificationRules\PrefixRuleView.xaml.cs">
+      <DependentUpon>PrefixRuleView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\UserControls\ModificationRules\ReplaceRuleView.xaml.cs">
+      <DependentUpon>ReplaceRuleView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\UserControls\ModificationRules\SubtractRuleView.xaml.cs">
+      <DependentUpon>SubtractRuleView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\UserControls\ModificationRules\TrimRuleView.xaml.cs">
+      <DependentUpon>TrimRuleView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\UserControls\Options\ExportDirectories.xaml.cs">
+      <DependentUpon>ExportDirectories.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\UserControls\Options\LockActions.xaml.cs">
+      <DependentUpon>LockActions.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\UserControls\Options\RootFolderDirectoryExceptions.xaml.cs">
+      <DependentUpon>RootFolderDirectoryExceptions.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\UserControls\Options\TorrentSearch.xaml.cs">
+      <DependentUpon>TorrentSearch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\UserControls\Pages\FileTypesOverview.xaml.cs">
+      <DependentUpon>FileTypesOverview.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\UserControls\Pages\FileTypesView.xaml.cs">
+      <DependentUpon>FileTypesView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\UserControls\Effects\InnerGlow.xaml.cs">
+      <DependentUpon>InnerGlow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\UserControls\Animations\Loading.xaml.cs">
+      <DependentUpon>Loading.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\UserControls\MediaItemViews\MediaItemPartsView.xaml.cs">
+      <DependentUpon>MediaItemPartsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\UserControls\MediaItemViews\MediaItemsView.xaml.cs">
+      <DependentUpon>MediaItemsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\UserControls\Options\General.xaml.cs">
+      <DependentUpon>General.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\UserControls\ControlExtenders\OptionPageTreeViewItem.cs" />
+    <Compile Include="Presentation\UserControls\Options\RootFolderFileExceptions.xaml.cs">
+      <DependentUpon>RootFolderFileExceptions.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\UserControls\Pages\NowPlayingView.xaml.cs">
+      <DependentUpon>NowPlayingView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\UserControls\Pages\OrganisingLibraryView.xaml.cs">
+      <DependentUpon>OrganisingLibraryView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\UserControls\ControlExtenders\OrganisingProgressBar.cs" />
+    <Compile Include="Presentation\UserControls\Pages\RootFoldersOverview.xaml.cs">
+      <DependentUpon>RootFoldersOverview.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\UserControls\Pages\RootFoldersView.xaml.cs">
+      <DependentUpon>RootFoldersView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\UserControls\Pages\SongsView.xaml.cs">
+      <DependentUpon>SongsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\UserControls\Pages\VideosView.xaml.cs">
+      <DependentUpon>VideosView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\UserControls\MediaItemViews\VideoView.xaml.cs">
+      <DependentUpon>VideoView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\UserControls\PlayPauseIcon.xaml.cs">
+      <DependentUpon>PlayPauseIcon.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\UserControls\PositionManinpulationButtons.xaml.cs">
+      <DependentUpon>PositionManinpulationButtons.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Windows\AddFolderDialog.xaml.cs">
+      <DependentUpon>AddFolderDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Windows\ExportMediaItemsDialog.xaml.cs">
+      <DependentUpon>ExportMediaItemsDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Windows\FileTypeDialog.xaml.cs">
+      <DependentUpon>FileTypeDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Windows\FullScreenDialog.xaml.cs">
+      <DependentUpon>FullScreenDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Windows\MediaItemDialog.xaml.cs">
+      <DependentUpon>MediaItemDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Windows\MediaItemsExistDialog.xaml.cs">
+      <DependentUpon>MediaItemsExistDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Windows\MissingMediaItemsDialog.xaml.cs">
+      <DependentUpon>MissingMediaItemsDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Windows\ModifyMediaItemsDialog.xaml.cs">
+      <DependentUpon>ModifyMediaItemsDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Windows\NonLibraryFilesDialog.xaml.cs">
+      <DependentUpon>NonLibraryFilesDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Windows\OptionsDialog.xaml.cs">
+      <DependentUpon>OptionsDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Windows\RootFolderDialog.xaml.cs">
+      <DependentUpon>RootFolderDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Windows\SongsDialog.xaml.cs">
+      <DependentUpon>SongsDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Windows\VideosDialog.xaml.cs">
+      <DependentUpon>VideosDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="StyleSelectors\MediaItemRowStyleSelector.cs" />
+    <Compile Include="TemplateSelectors\MediaItemPartsRowDetailSelector.cs" />
+    <Compile Include="TemplateSelectors\OrganisingProgressCellTemplateSelector.cs" />
+    <Compile Include="ValueConverters\BorderCornerRadiusConverter.cs" />
+    <Compile Include="ValueConverters\BorderThicknessToStrokeThicknessConverter.cs" />
+    <Compile Include="ValueConverters\ArtistsConverter.cs" />
+    <Compile Include="ValueConverters\AlbumsConverter.cs" />
+    <Compile Include="ValueConverters\ExportMediaItemsMaximumConverter.cs" />
+    <Compile Include="ValueConverters\SongsConverter.cs" />
+    <Compile Include="ValueConverters\MediaItemToSongConverter.cs" />
+    <Compile Include="ValueConverters\MediaItemViewVisibilityConverter.cs" />
+    <Compile Include="ValueConverters\MediaPlayerHeightConverter.cs" />
+    <Compile Include="ValueConverters\MediaPlayerWidthConverter.cs" />
+    <Compile Include="ValueConverters\NumberGreateThanParameterBooleanConverter.cs" />
+    <Compile Include="ValueConverters\MediaItemGenresConverter.cs" />
+    <Compile Include="ValueConverters\ModificationRuleContentConverter.cs" />
+    <Compile Include="ValueConverters\ModificationRulePropertyNamesConverter.cs" />
+    <Compile Include="ValueConverters\ModificationRulesConverter.cs" />
+    <Compile Include="ValueConverters\NumberGreateThanParameterVisibilityConverter.cs" />
+    <Compile Include="ValueConverters\ResizeMediaPlayerVisibilityConverter.cs" />
+    <Compile Include="ValueConverters\RootFolderSizeConverter.cs" />
+    <Compile Include="ValueConverters\TrackerTimeRemainingToolTipConverter.cs" />
+    <Compile Include="ValueConverters\UnfilteredAlbumsConverter.cs" />
+    <Compile Include="ValueConverters\SongViewAlbumsConverter.cs" />
+    <Compile Include="ValueConverters\UnfilteredArtistsConverter.cs" />
+    <Compile Include="ValueConverters\SongViewGenresConverter.cs" />
+    <Compile Include="ValueConverters\SongViewArtistsConverter.cs" />
+    <Compile Include="ValueConverters\SongTagsConverter.cs" />
+    <Compile Include="ValueConverters\EnumVisibilityConverter.cs" />
+    <Compile Include="ValueConverters\InverseEnumVisibilityConverter.cs" />
+    <Compile Include="ValueConverters\MediaItemCountConverter.cs" />
+    <Compile Include="ValueConverters\MediaItemFilterListBoxHeaderConverter.cs" />
+    <Compile Include="ValueConverters\MediaItemsSummaryConverter.cs" />
+    <Compile Include="ValueConverters\NowPlayingIconConverter.cs" />
+    <Compile Include="ValueConverters\PauseIconVisibilityConverter.cs" />
+    <Compile Include="ValueConverters\PlayIconVisibilityConverter.cs" />
+    <Compile Include="ValueConverters\PlayPauseIconStoppedVisibilityConverter.cs" />
+    <Compile Include="ValueConverters\ScrollingTextBlockConverter.cs" />
+    <Compile Include="ValueConverters\MediaItemTagsConverter.cs" />
+    <Compile Include="ValueConverters\MediaPlayerStrechConverter.cs" />
+    <Compile Include="ValueConverters\TimeRemainingConverter.cs" />
+    <Compile Include="ValueConverters\VideoTagsConverter.cs" />
+    <Compile Include="ValueConverters\VideoViewGenresConverter.cs" />
+    <Compile Include="ValueConverters\OptionPageVisibilityConverter.cs" />
+    <Compile Include="ValueConverters\OrganisingMediaItemsConverter.cs" />
+    <Compile Include="ValueConverters\OrganisingProgressBarToolTipConverter.cs" />
+    <Compile Include="ValueConverters\PercentageValueConverter.cs" />
+    <Compile Include="ValueConverters\PositionConverter.cs" />
+    <Compile Include="ValueConverters\RootFoldersSummaryConverter.cs" />
+    <Compile Include="ValueConverters\MultiRootFoldersSummaryConverter.cs" />
+    <Compile Include="ValueConverters\GoStopButtonContentConverter.cs" />
+    <Compile Include="ValueConverters\LoadingBlobOpacityConverter.cs" />
+    <Compile Include="ValueConverters\LoadingBlobsConverter.cs" />
+    <Compile Include="ValueConverters\MediaItemCollectionConverter.cs" />
+    <Compile Include="ValueConverters\MediaItemToVideoConverter.cs" />
+    <Compile Include="ValueConverters\ShortUpDownConverter.cs" />
+    <Compile Include="ValueConverters\TimeSpanSecondsConverter.cs" />
+    <Compile Include="ValueConverters\TimeSpanStringConverter.cs" />
+    <Compile Include="ValueConverters\UnfilteredProgramsConverter.cs" />
+    <Compile Include="ValueConverters\FileTypesSummaryConverter.cs" />
+    <Compile Include="ValueConverters\MultiFileTypesSummaryConverter.cs" />
+    <Compile Include="ValueConverters\MaximizeButtonEnabledConverter.cs" />
+    <Compile Include="ValueConverters\NextPreviousButtonVisibility.cs" />
+    <Compile Include="ValueConverters\UnfilteredGenresConverter.cs" />
+    <Compile Include="ValueConverters\NullableBooleanCheckedConverter.cs" />
+    <Compile Include="ValueConverters\SeriesConverter.cs" />
+    <Compile Include="ValueConverters\ProgramsConverter.cs" />
+    <Compile Include="ValueConverters\GenresConverter.cs" />
+    <Compile Include="ValueConverters\InnerGlowCornerHeightConverter.cs" />
+    <Compile Include="ValueConverters\InnerGlowCornerWidthConverter.cs" />
+    <Compile Include="ValueConverters\InnerGlowThicknessConverter.cs" />
+    <Compile Include="ValueConverters\ResizeModeThumbVisibiliyConverter.cs" />
+    <Compile Include="ValueConverters\VideosConverter.cs" />
+    <Compile Include="ValueConverters\VideoViewProgramsConverter.cs" />
+    <Compile Include="ValueConverters\WindowControlButtonVisibilityConverter.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="MediaPlayerDialog.xaml.cs">
+      <DependentUpon>MediaPlayerDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Presentation\UserControls\MediaItemPlayer\MediaItemPlayer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\UserControls\MediaItemPlayer\Tracker.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\UserControls\MediaItemViews\SongView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\UserControls\ModificationRules\PrefixRuleView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\UserControls\ModificationRules\ReplaceRuleView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\UserControls\ModificationRules\SubtractRuleView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\UserControls\ModificationRules\TrimRuleView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\UserControls\Options\ExportDirectories.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\UserControls\Options\LockActions.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\UserControls\Options\RootFolderDirectoryExceptions.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\UserControls\Options\TorrentSearch.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\UserControls\Pages\FileTypesOverview.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\UserControls\Pages\FileTypesView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\UserControls\Effects\InnerGlow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\UserControls\Animations\Loading.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\UserControls\MediaItemViews\MediaItemPartsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\UserControls\MediaItemViews\MediaItemsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\UserControls\Options\General.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\UserControls\Options\RootFolderFileExceptions.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\UserControls\Pages\NowPlayingView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\UserControls\Pages\OrganisingLibraryView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\UserControls\Pages\RootFoldersOverview.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\UserControls\Pages\RootFoldersView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\UserControls\Pages\SongsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\UserControls\Pages\VideosView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\UserControls\MediaItemViews\VideoView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\UserControls\PlayPauseIcon.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\UserControls\PositionManinpulationButtons.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\Windows\AddFolderDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\Windows\ExportMediaItemsDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\Windows\FileTypeDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\Windows\FullScreenDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\Windows\MediaItemDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\Windows\MediaItemsExistDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MediaPlayerDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\Windows\MissingMediaItemsDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\Windows\ModifyMediaItemsDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\Windows\NonLibraryFilesDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\Windows\OptionsDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\Windows\RootFolderDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\Windows\SongsDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\Windows\VideosDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\search.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MediaPlayer.Library\MediaPlayer.Library.csproj">
+      <Project>{DDB6494B-9518-45ED-A3D0-89228DA715B4}</Project>
+      <Name>MediaPlayer.Library</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\close.png" />
+    <Resource Include="Images\maximize.png" />
+    <Resource Include="Images\minimize.png" />
+    <Resource Include="Images\restore.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="MediaPlayer.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="iTunesLib">
+      <Guid>{9E93C96F-CF0D-43F6-8BA8-B807A3370712}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>13</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

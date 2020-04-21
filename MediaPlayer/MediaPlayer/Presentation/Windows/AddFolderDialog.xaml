@@ -1,0 +1,125 @@
+﻿<Window
+    x:Class="MediaPlayer.Presentation.Windows.AddFolderDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:windows="clr-namespace:MediaPlayer.Presentation.Windows"
+    xmlns:animations="clr-namespace:MediaPlayer.Presentation.UserControls.Animations"
+    xmlns:miv="clr-namespace:MediaPlayer.Presentation.UserControls.MediaItemViews"
+    xmlns:vc="clr-namespace:MediaPlayer.ValueConverters"
+    xmlns:uc="clr-namespace:MediaPlayer.Presentation.UserControls"
+    xmlns:uuc="clr-namespace:Utilities.Presentation.WPF.UserControls;assembly=Utilities"
+    xmlns:uvc="clr-namespace:Utilities.ValueConverters;assembly=Utilities"
+    Title="Add Folder..."
+    Style="{StaticResource dialogWindow}"   
+    WindowStartupLocation="CenterScreen"
+    Height="400"
+    Width="600"
+    Loaded="Window_Loaded">
+    <Window.Resources>
+        <uvc:InverseBooleanConverter x:Key="inverseBooleanConverter" />
+        <uvc:BooleanVisibilityConverter x:Key="booleanVisibilityConverter" />
+        <vc:GoStopButtonContentConverter x:Key="goStopButtonContentConverter" />
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        
+        <Grid
+            Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            
+            <Label
+                Grid.Row="0"
+                Grid.Column="0"
+                Content="Folder Path:" />
+            
+            <uuc:FolderBrowserTextBox
+                x:Name="fbtPath"
+                Grid.Row="0"
+                Grid.Column="1"
+                Grid.ColumnSpan="2"
+                Description="Select the folder containing the media items you wish to add."
+                Text="{Binding Path=FolderBrowser.FolderPath, Mode=TwoWay, RelativeSource={RelativeSource AncestorType={x:Type windows:AddFolderDialog}}}"
+                IsEnabled="{Binding Path=FolderBrowser.IsSearching, Converter={StaticResource inverseBooleanConverter}, RelativeSource={RelativeSource AncestorType={x:Type windows:AddFolderDialog}}}" />
+
+            <animations:Loading
+                Grid.Row="1"
+                Grid.Column="0"
+                Margin="6"
+                Blobs="4"
+                BlobSize="12"
+                BlobMargin="3"
+                Interval="0:0:0:0.5"
+                Visibility="{Binding Path=FolderBrowser.IsSearching, Converter={StaticResource booleanVisibilityConverter}, RelativeSource={RelativeSource AncestorType={x:Type windows:AddFolderDialog}}}"
+                Foreground="#4c555e" />
+            
+            <TextBlock
+                Grid.Row="1"
+                Grid.Column="1"
+                TextTrimming="CharacterEllipsis"
+                Margin="6"
+                Foreground="#4c555e"
+                VerticalAlignment="Center"
+                Text="{Binding Path=FolderBrowser.SelectedFolderPath, RelativeSource={RelativeSource AncestorType={x:Type windows:AddFolderDialog}}}">
+                <TextBlock.Effect>
+                    <DropShadowEffect Color="Black" Opacity="0.3" ShadowDepth="3" />
+                </TextBlock.Effect>
+            </TextBlock>
+            
+            <Button
+                x:Name="btnSearch"
+                Grid.Row="1"
+                Grid.Column="2"
+                Width="42"
+                Content="{Binding Path=FolderBrowser.IsSearching, Converter={StaticResource goStopButtonContentConverter}, RelativeSource={RelativeSource AncestorType={x:Type windows:AddFolderDialog}}}"
+                Click="btnSearch_Click" />
+        </Grid>
+
+        <miv:MediaItemsView
+            x:Name="miItems"
+            Grid.Row="1"
+            Margin="6"
+            BorderBrush="#808f9e"
+            BorderThickness="1"
+            RecycleBinPrompt="False"
+            EnablePlayOptions="False"
+            MediaItems="{Binding Path=ItemsSource, RelativeSource={RelativeSource AncestorType={x:Type windows:AddFolderDialog}}}"
+            Filter="{Binding Path=Filter, RelativeSource={RelativeSource AncestorType={x:Type windows:AddFolderDialog}}}"
+            MediaItemSaved="miItems_MediaItemSaved"
+            MediaItemsSaved="miItems_MediaItemsSaved"
+            MediaItemsDeleted="miItems_MediaItemsDeleted"
+            FileTypeAdded="miItems_FileTypeAdded">
+            <miv:MediaItemsView.Columns>
+                <DataGridTextColumn Binding="{Binding Name, Mode=OneWay}" Header="Name" />
+                <DataGridTextColumn Binding="{Binding Type, Mode=OneWay}" Header="Type" />
+                <DataGridTextColumn Binding="{Binding Genre, Mode=OneWay}" Header="Genre" />
+                <DataGridTextColumn Binding="{Binding Parts.SizeString, Mode=OneWay}" Header="Size" SortMemberPath="Parts.Size" CellStyle="{StaticResource dataGridNumberCellStyle}" />
+                <DataGridTextColumn Binding="{Binding Parts.DurationString, Mode=OneWay}" Header="Duration" SortMemberPath="Parts.Duration" CellStyle="{StaticResource dataGridNumberCellStyle}" />
+                <DataGridTextColumn Binding="{Binding DateCreatedString, Mode=OneWay}" Header="Created" SortMemberPath="DateCreated" />
+                <DataGridTextColumn Binding="{Binding Parts.FirstLocation, Mode=OneWay}" Header="Location" SortMemberPath="Parts.FirstLocation" />
+            </miv:MediaItemsView.Columns>
+        </miv:MediaItemsView>
+
+        <Button            
+            x:Name="btnOK"
+            Grid.Row="2"
+            Margin="6"
+            Content="OK"
+            Width="80"
+            IsEnabled="{Binding Path=FolderBrowser.IsSearching, Converter={StaticResource inverseBooleanConverter}, RelativeSource={RelativeSource AncestorType={x:Type windows:AddFolderDialog}}}"
+            Click="btnOK_Click"/>
+            
+    </Grid>
+</Window>

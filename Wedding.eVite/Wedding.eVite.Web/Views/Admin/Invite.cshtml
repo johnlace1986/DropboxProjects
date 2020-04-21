@@ -1,0 +1,121 @@
+﻿@using Wedding.eVite.Business
+@using Wedding.eVite.Web.Models
+
+@model AdminInviteModel
+
+@{
+    ViewBag.Title = "Invite";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@section HeaderSection {
+    <script src="~/Scripts/jquery.loading.js"></script>
+    <script src="~/Scripts/Admin.Invite.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            EMAIL_TYPE_NONE = @((Int32)Wedding.eVite.Web.Content.AppCode.InviteEmailType.None);
+            EMAIL_TYPE_INVITE = @((Int32)Wedding.eVite.Web.Content.AppCode.InviteEmailType.Invite);
+            EMAIL_TYPE_UPDATE = @((Int32)Wedding.eVite.Web.Content.AppCode.InviteEmailType.Update);
+
+            isAdmin = @Model.Invite.IsAdmin.ToString().ToLower();
+
+            @foreach (Guest guest in Model.Invite.Guests)
+            {
+                @: addGuest(@guest.Id, '@guest.Forename', '@guest.Surname', @(guest.IsAttending.HasValue ? guest.IsAttending.Value.ToString().ToLower() : "null"), @(guest.DateOfRsvp.HasValue ? "new Date(" + guest.DateOfRsvp.Value.Year.ToString() + ", " + (guest.DateOfRsvp.Value.Month - 1).ToString() + ", " + guest.DateOfRsvp.Value.Day.ToString() + ", " + guest.DateOfRsvp.Value.Hour.ToString() + ", " + guest.DateOfRsvp.Value.Minute.ToString() + ", " + guest.DateOfRsvp.Value.Second.ToString() + ")" : "null"), @guest.IsChild.ToString().ToLower(), @guest.IsVegetarian.ToString().ToLower(), @guest.CanBringPlusOne.ToString().ToLower(), @(guest.TableId.HasValue ? guest.TableId.Value.ToString() : "null"), @(guest.RoomId.HasValue ? guest.RoomId.Value.ToString() : "null"), '@guest.Notes');
+            }
+
+            setInviteContainerHeight();
+
+            window.onresize = function () {
+                setInviteContainerHeight();
+            };
+        });
+    </script>
+}
+
+<div>
+    <div class="admin_invite_details">
+        <ul>
+            <li>
+                <span class="admin_invite_details_email_address">Email address:</span><input id="txtEmailAddress" type="text" class="textbox" style="width: 260px;" value="@Model.Invite.EmailAddress" />
+            </li>
+            <li>
+                <div class="checkbox" style="width: 171px;">
+                    <input id="chkIncludesCeremony" type="checkbox" @if (Model.Invite.IncludesCeremony) { <text>checked</text> } />
+                    <label for="chkIncludesCeremony">Includes ceremony</label>
+                </div>
+            </li>
+            <li>
+                <div class="checkbox" style="width: 90px;">
+                    <input id="chkIsAdmin" type="checkbox" @if (Model.Invite.IsAdmin) { <text>checked</text> } @if (Model.Invite.Id == ViewBag.LoggedInInvite.Id) { <text>disabled</text> } onchange="isAdminChanged(this.checked);" />
+                    <label for="chkIsAdmin">Admin</label>
+                </div>
+            </li>
+            <li>
+                <div class="checkbox" style="width: 233px;">
+                    <input id="chkReserveSandholeRoom" type="checkbox" @if (Model.Invite.IsAdmin) { <text>disabled</text> } @if (Model.Invite.ReserveSandholeRoom) { <text>checked</text> } />
+                    <label for="chkReserveSandholeRoom">Reserve a room at Sandhole</label>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <div class="admin_invite_guests">
+        <table id="tblGuests" width="100%" cellpadding="0" cellspacing="0">
+            <colgroup>
+                <col width="362" />
+                <col width="363" />
+                <col width="32" />
+                <col width="32" />
+                <col width="32" />
+                <col width="32" />
+                <col width="32" />
+            </colgroup>
+            <thead>
+                <tr>
+                    <th>Forename</th>
+                    <th>Surname</th>
+                    <th><img src="~/Content/Images/child.png" title="Is the guest under 10?" /></th>
+                    <th><img src="~/Content/Images/vegetarian.png" title="Is the guest a vegetarian?" /></th>
+                    <th><img src="~/Content/Images/plus_one.png" title="Is the guest allowed to bring a 'plus one'?" /></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="admin_invite_guests_new_guest_row">
+                    <td colspan="6"><div class="admin_invite_guests_new_guest_row_line"></div></td>
+                </tr>
+                <tr id="trNewGuest">
+                    <td><input id="txtForenameNew" type="text" class="textbox" onkeydown="addNewGuestFromKeyboard(event.keyCode);" /></td>
+                    <td><input id="txtSurnameNew" type="text" class="textbox" onkeydown="addNewGuestFromKeyboard(event.keyCode);" /></td>
+                    <td><input id="chkIsChildNew" type="checkbox" @if (Model.Invite.IsAdmin) { <text>disabled</text> } disableForAdmin /></td>
+                    <td><input id="chkIsVegetarianNew" type="checkbox" /></td>
+                    <td><input id="chkCanBringPlusOne" type="checkbox" @if (Model.Invite.IsAdmin) { <text>disabled</text> } disableForAdmin /></td>
+                    <td style="padding: 0px 6px;"><input type="button" class="button admin_invite_guests_notes_button" title="Notes" onclick="editNotes(-1);" /></td>
+                    <td style="padding: 0px 6px;"><input type="button" class="button admin_invite_guests_add_button" title="Add Guest" onclick="if (addNewGuest()) $('#txtForenameNew').focus();" /></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="admin_invite_options cf">
+        <div class="admin_invite_options_error"></div>
+        <input type="button" class="button" value="Cancel" onclick="location.href = '@Url.Action(String.IsNullOrEmpty(Model.ReturnAction) ? "Index" : Model.ReturnAction)';" />
+        <input type="button" class="button" value="Save" onclick="saveInvite(@Model.Invite.Id, '@Url.Action("SaveInvite", "Admin")', function() { location.href = '@Url.Action(String.IsNullOrEmpty(Model.ReturnAction) ? "Index" : Model.ReturnAction, "Admin")'; });" />
+        <div class="admin_invite_options_loading">&nbsp;</div>
+    </div>
+</div>
+
+<div id="divNotes" class="modalDialog">
+    <input id="txtNotes" type="text" class="textbox" rows="6" style="width: 286px;" />
+</div>
+
+<div id="divDeleteGuest" class="modalDialog">
+    <p>Are you sure you want to delete this guest?</p>
+</div>
+
+<div id="divSendEmail" class="modalDialog">
+    <p>Do you want to send an email to the guests informing them of the change you have made?</p>
+</div>

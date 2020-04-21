@@ -1,0 +1,107 @@
+﻿@using Wedding.eVite.Business
+@using Wedding.eVite.Web.Models
+
+@model Expense[]
+
+@{
+    ViewBag.Title = "Expenses";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@section HeaderSection {
+    <script src="~/Scripts/jquery.inputmask.js"></script>
+    <script src="~/Scripts/jquery.loading.js"></script>
+    <script src="~/Scripts/Admin.Expenses.js"></script>
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            setExpensesContainerHeight();
+
+            $('.currency').inputmask('9{1,10}.99');
+
+            @foreach (Expense expense in Model.OrderBy(expense => expense.Paid >= expense.Cost))
+            {
+                @: addExpense(@expense.Id, '@expense.Name', '@expense.Cost.ToString("0.00")', '@expense.Paid.ToString("0.00")');
+            }
+
+            loadTotals();
+        });
+
+        window.onresize = function () {
+            setExpensesContainerHeight();
+        };
+
+    </script>
+}
+
+<div class="admin_expenses">
+    <div class="admin_expenses_list">
+        <table id="tblExpenses" width="100%" cellpadding="0" cellspacing="0">
+            <colgroup>
+                <col />
+                <col />
+                <col width="154" />
+                <col width="154" />
+                <col width="154" />
+                <col width="154" />
+            </colgroup>
+            <thead>
+                <tr>
+                    <th style="width: 20px;"></th>
+                    <th data-sortOrder="0">Expense</th>
+                    <th data-sortOrder="1">Cost</th>
+                    <th data-sortOrder="2">Paid</th>
+                    <th data-sortOrder="3">Remaining</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+
+    <div class="admin_expenses_add_expense">
+        <div class="admin_expenses_add_expense_error"></div>
+        <input id="btnAddExpense" type="button" class="button admin_expenses_add_expense_button" value="Add Expense" onclick="addNewExpense();" />
+        <div class="admin_expenses_add_expense_loading"></div>
+    </div>
+
+    <div class="admin_expenses_total">
+        <table width="100%" cellpadding="0" cellspacing="0">
+            <colgroup>
+                <col />
+                <col />
+                <col width="154" />
+                <col width="154" />
+                <col width="154" />
+                <col width="154" />
+            </colgroup>
+            <tbody>
+                <tr>
+                    <td style="width: 20px;"></td>
+                    <td>Total</td>
+                    <td total></td>
+                    <td paid></td>
+                    <td totalToPay class="admin_expenses_total_to_pay"></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div id="divExpense" class="modalDialog">
+
+    <div class="cf">
+        <div class="admin_expenses_save_expense_label">Name:</div>
+        <div class="admin_expenses_save_expense_textbox"><input id="txtName" type="text" class="textbox" /></div>
+
+        <div class="admin_expenses_save_expense_label">Cost:</div>
+        <div class="admin_expenses_save_expense_textbox"><input id="txtCost" type="text" class="textbox currency" /></div>
+
+        <div class="admin_expenses_save_expense_label">Paid:</div>
+        <div class="admin_expenses_save_expense_textbox"><input id="txtPaid" type="text" class="textbox currency" /></div>
+    </div>
+
+    <div class="admin_expenses_save_expense_error"><label id="lblSaveExpenseError">&nbsp;</label></div>
+</div>

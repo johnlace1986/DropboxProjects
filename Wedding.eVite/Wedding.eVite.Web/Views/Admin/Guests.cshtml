@@ -1,0 +1,169 @@
+﻿@using Wedding.eVite.Business
+@using Wedding.eVite.Web.Models
+@model AdminGuestsModel
+
+@{
+    ViewBag.Title = "Guests";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@section HeaderSection {
+    <script src="~/Scripts/jquery.tablesorter.min.js"></script>
+    <script src="~/Scripts/Admin.Guests.js"></script>
+    <script src="~/Scripts/jquery.watermark.js"></script>
+}
+
+<div class="admin_guests">
+
+    <div class="admin_guests_filter">
+        <table width="100%" cellpadding="0" cellspacing="0">
+            <tr>
+                <td>Attending:</td>
+                <td>
+                    <ul>
+                        <li><input id="chkAttendingAll" type="radio" value="all" name="chkAttending" @if (Model.RSVP == "all") { <text> checked</text> } /><label for="chkAttendingAll">All</label></li>
+                        <li><input id="chkAttendingYes" type="radio" value="yes" name="chkAttending" @if (Model.RSVP == "yes") { <text> checked</text> } /><label for="chkAttendingYes">Yes</label></li>
+                        <li><input id="chkAttendingNo" type="radio" value="no" name="chkAttending" @if (Model.RSVP == "no") { <text> checked</text> } /><label for="chkAttendingNo">No</label></li>
+                        <li><input id="chkAttendingUnknown" type="radio" value="unknown" name="chkAttending" @if (Model.RSVP == "unknown") { <text> checked</text> } /><label for="chkAttendingUnknown">Not RSVP'd</label></li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Attending Ceremony:</td>
+                <td>
+                    <ul>
+                        <li><input id="chkAttendingCeremonyAll" type="radio" value="all" name="chkAttendingCeremony" checked /><label for="chkAttendingCeremonyAll">All</label></li>
+                        <li><input id="chkAttendingCeremonyYes" type="radio" value="yes" name="chkAttendingCeremony" /><label for="chkAttendingCeremonyYes">Yes</label></li>
+                        <li><input id="chkAttendingCeremonyNo" type="radio" value="no" name="chkAttendingCeremony" /><label for="chkAttendingCeremonyNo">No</label></li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Age:</td>
+                <td>
+                    <ul>
+                        <li><input id="chkAgeAll" type="radio" value="all" name="chkAge" checked /><label for="chkAgeAll">All</label></li>
+                        <li><input id="chkAgeAdult" type="radio" value="adult" name="chkAge" /><label for="chkAgeAdult">Adults</label></li>
+                        <li><input id="chkAgeChild" type="radio" value="child" name="chkAge" /><label for="chkAgeChild">Children</label></li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Vegetarians:</td>
+                <td>
+                    <ul>
+                        <li><input id="chkVegetarianAll" type="radio" value="all" name="chkVegetarian" checked /><label for="chkVegetarianAll">All</label></li>
+                        <li><input id="chkVegetarianYes" type="radio" value="yes" name="chkVegetarian" /><label for="chkVegetarianYes">Yes</label></li>
+                        <li><input id="chkVegetarianNo" type="radio" value="no" name="chkVegetarian" /><label for="chkVegetarianNo">No</label></li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Staying at Sandhole:</td>
+                <td>
+                    <ul>
+                        <li><input id="chkStayingAtSandholeAll" type="radio" value="all" name="chkStayingAtSandhole" checked /><label for="chkStayingAtSandholeAll">All</label></li>
+                        <li><input id="chkStayingAtSandholeYes" type="radio" value="yes" name="chkStayingAtSandhole" /><label for="chkStayingAtSandholeYes">Yes</label></li>
+                        <li><input id="chkStayingAtSandholeNo" type="radio" value="no" name="chkStayingAtSandhole" /><label for="chkStayingAtSandholeNo">No</label></li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="admin_guests_list">
+        <table id="tblGuests" width="100%" cellpadding="0" cellspacing="0">
+            <colgroup>
+                <col width="32" />
+                <col width="174" />
+                <col width="174" />
+                <col width="180" />
+                <col width="120" />
+                <col width="64" />
+                <col width="64" />
+                <col width="64" />
+                <col width="32" />
+            </colgroup>
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Surname</th>
+                    <th>Forename</th>
+                    <th>Date of RSVP</th>
+                    <th>Attending</th>
+                    <th colspan="4" style="text-align: right;"><input type="text" id="txtFilter" class="textbox" onkeyup="filterGuests();" style="width: 151px;" /></th>
+                </tr>
+            </thead>
+            <tbody id="tbGuests">
+                @foreach (AdminGuestModel guest in Model.Guests)
+                {
+                    <tr
+                        data-inviteId="@guest.Invite.Id"
+                        data-guestId="@guest.Guest.Id"
+                        data-attending="@(guest.Guest.IsAttending.HasValue ? (guest.Guest.IsAttending.Value ? "yes" : "no") : "unknown")"
+                        data-attendingCeremony="@(guest.Invite.IncludesCeremony ? "yes" : "no")"
+                        data-age="@(guest.Guest.IsChild ? "child" : "adult")"
+                        data-vegetarian="@(guest.Guest.IsVegetarian ? "yes" : "no")"
+                        data-stayingAtSandhole="@(guest.Invite.ReserveSandholeRoom ? "yes" : "no")"
+                        style="height: 32px;">
+                        <td><input id="@("chkSelectGuest" + guest.Invite.Id + "_" + guest.Guest.Id)" type="checkbox" class="admin_guests_list_guest_checkbox" data-inviteId="@guest.Invite.Id" data-guestId="@guest.Guest.Id" /></td>
+                        <td><label for="@("chkSelectGuest" + guest.Invite.Id + "_" + guest.Guest.Id)">@guest.Guest.Surname</label></td>
+                        <td><label for="@("chkSelectGuest" + guest.Invite.Id + "_" + guest.Guest.Id)">@guest.Guest.Forename</label></td>
+                        <td data-inviteId="@guest.Invite.Id"
+                            data-guestId="@guest.Guest.Id"
+                            data-dateOfRsvp
+                            @if (guest.Guest.DateOfRsvp.HasValue) { <text>
+                            data-dateOfRsvpYear="@guest.Guest.DateOfRsvp.Value.ToUniversalTime().Year.ToString("0000")"
+                            data-dateOfRsvpMonth="@guest.Guest.DateOfRsvp.Value.ToUniversalTime().Month.ToString("00")"
+                            data-dateOfRsvpDay="@guest.Guest.DateOfRsvp.Value.ToUniversalTime().Day.ToString("00")"
+                            data-dateOfRsvpHour="@guest.Guest.DateOfRsvp.Value.ToUniversalTime().Hour.ToString("00")"
+                            data-dateOfRsvpMinute="@guest.Guest.DateOfRsvp.Value.ToUniversalTime().Minute.ToString("00")"
+                            data-dateOfRsvpSecond="@guest.Guest.DateOfRsvp.Value.ToUniversalTime().Second.ToString("00")"
+                            </text>  }></td>
+                        <td data-inviteId="@guest.Invite.Id"
+                            data-guestId="@guest.Guest.Id"
+                            data-isAttending="@(guest.Guest.IsAttending.HasValue ? guest.Guest.IsAttending.Value.ToString().ToLower() : String.Empty)">
+                        </td>
+                        <td style="text-align: center;">
+                            @if (guest.Guest.IsChild)
+                            {
+                                <text><img src="~/Content/Images/child.png" title="Guest is under 10" /></text>
+                            }
+                        </td>
+                        <td style="padding-left: 22px;">
+                            @if (guest.Guest.IsVegetarian)
+                            {
+                                <text><img src="~/Content/Images/vegetarian.png" title="Guest a vegetarian" /></text>
+                            }
+                        </td>
+                        <td style="text-align: center;">
+                            @if (!String.IsNullOrEmpty(guest.Guest.Notes))
+                            {
+                                <text><input class="button admin_invite_guests_notes_button" type="button" onclick="showNotes('@guest.Guest.Notes');" /></text>
+                            }
+                        </td>
+                        <td><div class="admin_guests_list_edit" onclick="location.href = '@Url.Action("Invite", new { inviteId = guest.Invite.Id, returnAction = "Guests" })';">&nbsp;</div>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <div class="admin_guests_summary">
+        <div class="admin_guests_summary_export"><input type="button" class="button" value="Export" onclick="location.href='@Url.Action("ExportGuests", "Admin")'" /></div>
+        <div class="admin_guests_summary_rsvp"><input type="button" class="button" value="RSVP" onclick="rsvpGuests();" /></div>
+        <div class="admin_guests_summary_total">Total guests:<label id="lblTotalGuests">@Model.Guests.Count()</label></div>
+    </div>
+</div>
+
+<div id="divNotes" class="modalDialog">
+    <p><label id="lblNotes"></label></p>
+</div>
+
+<div id="divRsvpGuests" class="modalDialog">
+    <p>Are the guests attending the wedding?</p>
+    <ul>
+        <li><input id="rdoRsvpGuestsIsAttendingYes" type="radio" name="rsvpGuests" /><label for="rdoRsvpGuestsIsAttendingYes">Yes</label></li>
+        <li><input id="rdoRsvpGuestsIsAttendingNo" type="radio" name="rsvpGuests" /><label for="rdoRsvpGuestsIsAttendingNo">No</label></li>
+    </ul>
+</div>

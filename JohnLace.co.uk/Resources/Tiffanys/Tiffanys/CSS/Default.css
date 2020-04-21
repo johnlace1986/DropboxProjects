@@ -1,0 +1,36 @@
+﻿.folded_corner_boxes
+{
+	position: relative;
+	float: left;
+	left: 24px;
+}
+
+.folded_corner_box
+{
+	width: 420px;
+	height: 148px;
+	background-image: url('../Images/folded_corner_box.png');
+	margin-bottom: 24px;
+	padding: 12px 18px;
+}
+
+.folded_corner_box_image_cell
+{
+	vertical-align: top;
+	text-align: center;
+	width: 100px;
+}
+
+.folded_corner_box_image
+{
+	max-height: 100px;
+}
+
+.description
+{
+	position: relative;
+	float:right;
+	width: 440px;
+	padding: 0px 12px;
+	right: 12px;
+}

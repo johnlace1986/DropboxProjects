@@ -1,0 +1,57 @@
+﻿.page_wrapper
+{
+	width: 600px;
+}
+
+.page_wrapper h2
+{
+	font-size: 24px;
+}
+
+.page_wrapper h2 a
+{
+	color: #ffffff;
+}
+
+.page_wrapper h3
+{
+	font-size: 18px;
+	margin-bottom: 6px;
+}
+
+.page_wrapper a
+{
+	color: inherit;
+}
+
+.inner_error
+{
+}
+
+.options
+{
+	text-align: right;
+}
+
+.stack_trace
+{
+	border-bottom: solid 1px #3e3d3d;
+	margin-bottom: 24px;
+}
+
+.stack_trace ul
+{
+	position: relative;;
+	left: -18px;
+}
+
+.stack_trace ul li
+{
+	margin-bottom: 6px;
+}
+
+.inner_errors
+{
+	border-bottom: solid 1px #3e3d3d;
+	margin-bottom: 24px;
+}

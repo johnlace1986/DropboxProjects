@@ -1,0 +1,100 @@
+﻿@using Wedding.eVite.Business
+
+@{
+    ViewBag.Title = "RSVP";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section HeaderSection {
+
+    <script src="~/Scripts/jquery.loading.js"></script>
+    <script src="~/Scripts/RSVP.Index.js"></script>
+}
+
+<div>
+    <div class="rsvp_invite">
+        <p>Mrs June Toms and her daughter Elizabeth</p>
+        <div>together with</div>
+        <p>Mr &amp; Mrs Allan Lace and their son John</p>
+
+        @if (ViewBag.LoggedInInvite.IncludesCeremony)
+        { 
+            <div>request the honour of your presence at the wedding of</div>
+        }
+        else
+        {
+            <div>request the honour of your presence at the reception celebrating the marriage of</div>
+        }
+
+        <h3>Elizabeth <span style="color: #bfbfbf;">&amp;</span> John</h3>
+
+        @if (ViewBag.LoggedInInvite.IncludesCeremony)
+        {
+            <p>on Friday 29th July 2016 at 2:00pm</p>
+        }
+        else
+        {
+            <p>on Friday 29th July 2016 at 7:00pm</p>
+        }
+
+        <p>at Sandhole Oak Barn, Congleton</p>
+    </div>
+    <div class="rsvp_invite_guests">
+        <table width="100%" cellspacing="0" cellpadding="0">
+            <tbody>
+                @foreach (Guest guest in ViewBag.LoggedInInvite.Guests)
+                {
+                    <tr>
+                        <td class="rsvp_invite_guest_name_cell"><span id="@("spanGuest" + guest.Id)" class="@(guest.IsAttending.HasValue ? "" : "rsvp_invite_guest_name_no_rsvp")">@guest.FullName</span></td>
+                        <td class="rsvp_invite_guest_attending_cell">
+                            <div id="@("divAttendingCell" + guest.Id)">
+                                <input class="radio" type="radio" name="@guest.Id" id="@("chkGuestAttendingYes" + guest.Id)" @(guest.IsAttending.HasValue && guest.IsAttending.Value ? "checked" : "") @(ViewBag.LoggedInInvite.IsAdmin ? "disabled" : "") onchange="@("setInviteGuestAttending(" + guest.Id + ", true);")" /><label class="radioLabel" for="@("chkGuestAttendingYes" + guest.Id)">Yes, I would love to attend</label>
+                                <input class="radio" type="radio" name="@guest.Id" id="@("chkGuestAttendingNo" + guest.Id)" @(guest.IsAttending.HasValue && !guest.IsAttending.Value ? "checked" : "") @(ViewBag.LoggedInInvite.IsAdmin ? "disabled" : "") onchange="@("setInviteGuestAttending(" + guest.Id + ", false);")"><label class="radioLabel" for="@("chkGuestAttendingNo" + guest.Id)">Unfortunately I am unavailable</label>
+                            </div>
+                        </td>
+                        <td class="rsvp_invite_guest_loading_cell"><div id="@("divLoadingCell" + guest.Id)"></div></td>
+                    </tr>
+
+                    if (guest.CanBringPlusOne)
+                    {
+                        <tr id="@("trGuestPlusOneAttendingCell" + guest.Id)" style="@(guest.IsAttending == true ? "" : "display: none;")">
+                            <td></td>
+                            <td class="rsvp_invite_guest_plus_one">
+
+                                <div id="@("divGuestPlusOneAttendingCell" + guest.Id)">
+                                    <table width="100%" cellpadding="0" cellspacing="0">
+                                        <tr>
+                                            <td style="width: 226px;">
+                                                <div class="checkbox">
+                                                    <input type="checkbox" id="@("chkIsBringingPlusOne" + guest.Id)" onclick="@("showHidePlusOneName(" + guest.Id + ", this.checked);")" checked="@(guest.IsBringingPlusOne)" />
+                                                    <label for="@("chkIsBringingPlusOne" + guest.Id)">I would like to bring a guest</label>
+                                                </div>
+                                            </td>
+                                            <td class="rsvp_invite_guest_plus_one_name"><div id="@("divGuestPlusOneName" + guest.Id)" data-plusoneforename="@guest.PlusOneForename" data-plusonesurname="@guest.PlusOneSurname" onclick="editGuestPlusOneDetails(@(guest.Id), this.getAttribute('data-plusOneForename'), this.getAttribute('data-plusOneSurname'), false);">@(guest.IsBringingPlusOne ? guest.PlusOneFullName : "")</div></td>
+                                        </tr>
+                                    </table>                                    
+                                </div>
+                            </td>
+
+                            <td class="rsvp_invite_guest_plus_one_loading_cell"><div id="@("divGuestPlusOneLoadingCell" + guest.Id)"></div></td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div id="divEditGuestPlusOneDetails" class="modalDialog" data-guestid="-1" data-untickisbringingplusoneoncancel="true">
+    <p>Please enter the name of the guest you would like to bring to the wedding?</p>
+
+    <div class="cf">
+        <div class="rsvp_invite_guest_plus_one_edit_name_label">Forename:</div>
+        <div class="rsvp_invite_guest_plus_one_edit_name_textbox"><input id="txtPlusOneForename" type="text" class="textbox" onkeydown="if (event.keyCode == 13) saveEditGuestPlusOneDetails();" /></div>
+
+        <div class="rsvp_invite_guest_plus_one_edit_name_label">Surname:</div>
+        <div class="rsvp_invite_guest_plus_one_edit_name_textbox"><input id="txtPlusOneSurname" type="text" class="textbox" onkeydown="if (event.keyCode == 13) saveEditGuestPlusOneDetails();" /></div>
+    </div>
+
+    <div class="rsvp_invite_guest_plus_one_edit_name_error"><label id="lblEditGuestPlusOneDetailsError"></label></div>
+</div>

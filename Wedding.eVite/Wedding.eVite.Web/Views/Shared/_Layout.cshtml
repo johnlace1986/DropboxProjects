@@ -1,0 +1,102 @@
+﻿@{
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
+}
+
+@section HeaderSection {
+    @RenderSection("HeaderSection", required: false)
+
+    <script src="~/Scripts/jquery.slideshow.js"></script>
+    <script src="~/Scripts/Shared.Layout.js"></script>
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            setContentHeight();
+            getUnreadMessageCount(@ViewBag.LoggedInInvite.Id, '@Url.Action("GetInviteUnreadMessageCount")');
+
+            @if (ViewBag.ShouldLoadLayoutImages)
+            {
+                <text>fadeInImages();</text>
+            }
+            else
+            {
+                <text>scrollToContent(0);</text>
+            }
+        });
+
+        $(document).on('scroll', function(){
+            cancelScrollToContent();
+        });
+
+        window.onresize = function () {
+            setContentHeight();
+        };
+</script>
+}
+
+<div>
+    <div class="layout_header_offscreen layout_images">
+        <div class="layout_image" style="height: 488px;" data-imagefadeindex="1">
+            <img src="~/Content/Images/LayoutImages/chiang_mai_bed.jpg" style="@(ViewBag.ShouldLoadLayoutImages ? "display: none;" : "")" />
+        </div>
+        <div class="layout_image" style="height: 488px;">
+            <div style="height: 232px; margin-bottom: 24px;" data-imagefadeindex="5">
+                <img src="~/Content/Images/LayoutImages/darkness.jpg" style="@(ViewBag.ShouldLoadLayoutImages ? "display: none;" : "")" />
+            </div>
+            <div style="height: 232px;" data-imagefadeindex="0">
+                <img src="~/Content/Images/LayoutImages/chiang_mai_waterfall.jpg" style="@(ViewBag.ShouldLoadLayoutImages ? "display: none;" : "")" />
+            </div>
+        </div>
+        <div class="layout_image" style="height: 488px; width: 488px;" data-imagefadeindex="3">
+            <img src="~/Content/Images/LayoutImages/koh_chang.jpg" style="@(ViewBag.ShouldLoadLayoutImages ? "display: none;" : "")" />
+        </div>
+    </div>
+
+    <div class="layout_onscreen">
+        <div class="layout_header layout_images">
+            <div class="layout_image" data-imagefadeindex="4">
+                <img src="~/Content/Images/LayoutImages/boat_day_2015.jpg" style="@(ViewBag.ShouldLoadLayoutImages ? "display: none;" : "")" />
+            </div>
+            <div class="layout_image layout_header_text">
+                <h4>THE WEDDING OF</h4>
+                <h2>John <span style="color: #bfbfbf;">&amp;</span> Lizzie</h2>
+            </div>
+            <div class="layout_image" data-imagefadeindex="2">
+                <img src="~/Content/Images/LayoutImages/bate_wedding.jpg" style="@(ViewBag.ShouldLoadLayoutImages ? "display: none;" : "")" />
+            </div>
+        </div>
+
+        <div class="layout_navigation">
+            <div class="layout_navigation_items">
+                <ul>
+                    <li><a href="~/Default">Home</a></li>
+                    <li><a href="~/RSVP">RSVP</a></li>
+                    <li><a href="~/BigDay">The Big Day</a></li>
+                    <li class="@(ViewBag.LoggedInInvite.IncludesCeremony ? "" : "layout_navigation_item_hidden")"><a href="~/Gift">Gift</a></li>
+                    <li><a href="~/Photos">Photos</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="layout_body">@RenderBody()</div>
+    </div>
+
+    <div class="logged_in_layout_footer">
+        <div class="logged_in_layout_footer_contact_us">
+            <input type="button" class="button logged_in_layout_footer_contact_us_button" value="Contact Us" onclick="location.href='@Url.Action("Index", "Messages")'" />
+            <div class="logged_in_layout_footer_contact_us_unread_message_count"></div>
+        </div>
+
+        @if (ViewBag.LoggedInInvite.IsAdmin)
+        {
+            <div class="logged_in_layout_footer_view_admin_website">
+                <p>@Html.ActionLink("Return to Admin website", "ReturnAdminWebsite")</p>
+            </div>
+        }
+
+        <div class="logged_in_layout_footer_log_out">
+            <input type="button" class="button logged_in_layout_footer_log_out_button" value="Log out" onclick="location.href='@Url.Action("LogOut", "LogIn" )'" />
+        </div>
+    </div>
+</div>

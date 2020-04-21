@@ -1,0 +1,12 @@
+﻿.grid_view
+{
+    width: 100%;
+	border-color: #000000;
+	text-shadow: none;
+	color: #000000;
+}
+
+.grid_view a
+{
+	color: inherit;
+}

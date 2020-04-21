@@ -1,0 +1,111 @@
+﻿.fields
+{
+	height: 98px;
+	margin-bottom: 24px;
+}
+
+.field
+{
+	height: 43px;
+	margin-bottom: 6px;
+}
+
+.field_label
+{
+	float: left;
+	padding: 6px 0px;
+	width: 84px;
+	margin-right: 12px;
+}
+
+.field_textbox
+{
+	float: left;
+}
+
+.images
+{
+}
+
+.image
+{
+	width: 176px;
+	height: 240px;
+	padding: 3px;
+	border: solid 2px #000000;
+	background-color: #3d3d3d;
+	text-align: center;
+	float: left;
+	margin-left: 12px;
+	margin-bottom: 12px;
+}
+
+.image_wrapper
+{
+	margin-bottom: 12px;
+	height: 132px;
+	width: 100%;
+	border: solid 1px #000000;
+	background-color: #898989;
+}
+
+.image_actual
+{
+	max-width: 174px;
+	max-height: 132px;
+}
+
+.image_thumbnail
+{
+	margin-bottom: 12px;
+}
+
+.image_thumbnail input
+{
+	position: relative;
+	top: 1px;
+}
+
+.image_thumbnail label
+{
+	position: relative;
+	margin-left: 6px;
+}
+
+.image_delete_button
+{
+	margin-bottom: 6px;
+}
+
+.options
+{
+	height: 43px;
+	margin-bottom: 24px;
+}
+
+ul.options
+{
+	margin: 0;
+	list-style: none;
+}
+
+ul.options li
+{
+	float: right;
+	margin-left: 12px;
+}
+
+.error_label
+{
+	height: 19px;
+	float: left;
+	padding: 12px 0px;
+	color: #ff0000;
+	text-align: center;
+	width: 100%;
+}
+
+.no_pictures
+{
+	margin-bottom: 24px;
+}

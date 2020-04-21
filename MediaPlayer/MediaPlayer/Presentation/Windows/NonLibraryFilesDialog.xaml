@@ -1,0 +1,64 @@
+﻿<Window
+    x:Class="MediaPlayer.Presentation.Windows.NonLibraryFilesDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:windows="clr-namespace:MediaPlayer.Presentation.Windows"
+    xmlns:uvc="clr-namespace:Utilities.ValueConverters;assembly=Utilities"
+    Title="Non-Library Files Found"
+    Style="{StaticResource dialogWindow}"    
+    WindowStartupLocation="CenterScreen"
+    ShowInTaskbar="False"
+    Height="400"
+    Width="600">
+    <Window.Resources>
+        <uvc:InverseBooleanConverter x:Key="inverseBooleanConverter" />
+        
+        <DataTemplate x:Key="optionsTemplate">
+            <StackPanel
+                Orientation="Horizontal"
+                HorizontalAlignment="Left">
+                <Button
+                    x:Name="btnDeleteNonLibraryFile"
+                    Content="Delete"
+                    Margin="0"
+                    Click="btnDeleteNonLibraryFile_Click" />
+                
+                <Button
+                    x:Name="btnAddRootFolderFileException"
+                    Content="Ignore Filename"
+                    Margin="6, 0"
+                    Click="btnAddRootFolderFileException_Click" />
+                
+                <Button
+                    x:Name="btnAddRootFolderDirectoryException"
+                    Content="Ignore Folder name"
+                    Margin="0"
+                    IsEnabled="{Binding Path=IsInRootFolder, Mode=OneWay, Converter={StaticResource inverseBooleanConverter}}"
+                    Click="btnAddRootFolderDirectoryException_Click" />
+            </StackPanel>
+        </DataTemplate>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        
+        <TextBlock
+            Grid.Row="0"
+            Text="The following files were found in root folders but do not belong to the the media library:"
+            Style="{StaticResource wrappingTextBlock}" />
+        
+        <DataGrid
+            Grid.Row="1"
+            ItemsSource="{Binding Path=ItemsSource, RelativeSource={RelativeSource AncestorType={x:Type windows:NonLibraryFilesDialog}}}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Root Folder" Binding="{Binding Path=RootFolder.Path, Mode=OneWay}" />
+                <DataGridTextColumn Header="Sub Folder" Binding="{Binding Path=SubFolderPath, Mode=OneWay}" />
+                <DataGridTextColumn Header="Name" Binding="{Binding Path=Name, Mode=OneWay}" />
+                <DataGridTextColumn Header="Type" Binding="{Binding Path=RootFolder.MediaItemType, Mode=OneWay}" />
+                <DataGridTemplateColumn Header="Actions" CellTemplate="{StaticResource optionsTemplate}" />
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>

@@ -1,0 +1,94 @@
+﻿<Window
+    x:Class="Utilities.Presentation.WPF.Windows.GetTextValueDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:windows="clr-namespace:Utilities.Presentation.WPF.Windows"
+    xmlns:vc="clr-namespace:Utilities.ValueConverters"
+    xmlns:uc="clr-namespace:Utilities.Presentation.WPF.UserControls"
+    Title=""
+    Width="300"
+    SizeToContent="Height"
+    ResizeMode="NoResize"
+    Loaded="Window_Loaded"
+    ShowInTaskbar="False"
+    WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <vc:TextValueDialogInputVisibilityConverter x:Key="textValueDialogInputVisibilityConverter" />
+    </Window.Resources>
+    <Border Padding="6">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Grid
+                Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Label
+                    x:Name="lblHeader"
+                    Grid.Column="0"
+                    Content="{Binding Path=Header, RelativeSource={RelativeSource AncestorType=windows:GetTextValueDialog}}"/>
+
+                <TextBox
+                    x:Name="txtValue"
+                    Grid.Column="1"
+                    KeyDown="ele_KeyDown"
+                    Text="{Binding Path=Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, RelativeSource={RelativeSource AncestorType=windows:GetTextValueDialog}}"
+                    Visibility="{Binding Path=InputType, Converter={StaticResource textValueDialogInputVisibilityConverter}, ConverterParameter=TextBox, RelativeSource={RelativeSource AncestorType=windows:GetTextValueDialog}}" />
+
+                <uc:FileBrowserTextBox
+                    x:Name="txtFile"
+                    Grid.Column="1"
+                    KeyDown="ele_KeyDown"
+                    Text="{Binding Path=Value, Mode=TwoWay, RelativeSource={RelativeSource AncestorType=windows:GetTextValueDialog}}"
+                    Visibility="{Binding Path=InputType, Converter={StaticResource textValueDialogInputVisibilityConverter}, ConverterParameter=FileBrowserTextBox, RelativeSource={RelativeSource AncestorType=windows:GetTextValueDialog}}"/>
+
+                <uc:FolderBrowserTextBox
+                    x:Name="txtFolder"
+                    Grid.Column="1"
+                    KeyDown="ele_KeyDown"
+                    Text="{Binding Path=Value, Mode=TwoWay, RelativeSource={RelativeSource AncestorType=windows:GetTextValueDialog}}"
+                    Visibility="{Binding Path=InputType, Converter={StaticResource textValueDialogInputVisibilityConverter}, ConverterParameter=FolderBrowserTextBox, RelativeSource={RelativeSource AncestorType=windows:GetTextValueDialog}}"/>
+
+                <PasswordBox
+                    x:Name="pwbValue"
+                    Grid.Column="1"
+                    KeyDown="ele_KeyDown"                    
+                    Visibility="{Binding Path=InputType, Converter={StaticResource textValueDialogInputVisibilityConverter}, ConverterParameter=PasswordBox, RelativeSource={RelativeSource AncestorType=windows:GetTextValueDialog}}"/>
+
+                <ComboBox
+                    x:Name="cmbValue"
+                    Grid.Column="1"
+                    KeyDown="ele_KeyDown"
+                    IsEditable="True"
+                    IsTextSearchEnabled="True"
+                    Text="{Binding Path=Value, Mode=TwoWay,RelativeSource={RelativeSource AncestorType=windows:GetTextValueDialog}}"
+                    Visibility="{Binding Path=InputType, Converter={StaticResource textValueDialogInputVisibilityConverter}, ConverterParameter=ComboBox, RelativeSource={RelativeSource AncestorType=windows:GetTextValueDialog}}"
+                    ItemsSource="{Binding Path=ItemsSource, RelativeSource={RelativeSource AncestorType=windows:GetTextValueDialog}}"
+                    SelectedIndex="{Binding Path=SelectedIndex, Mode=TwoWay, RelativeSource={RelativeSource AncestorType=windows:GetTextValueDialog}}"
+                    SelectedItem="{Binding Path=SelectedItem, Mode=TwoWay, RelativeSource={RelativeSource AncestorType=windows:GetTextValueDialog}}"
+                    DisplayMemberPath="{Binding Path=DisplayMemberPath, RelativeSource={RelativeSource AncestorType=windows:GetTextValueDialog}}"/>
+
+                <DatePicker
+                    x:Name="dpValue"
+                    Grid.Column="1"
+                    KeyDown="ele_KeyDown"
+                    Text="{Binding Path=Value, Mode=TwoWay,RelativeSource={RelativeSource AncestorType=windows:GetTextValueDialog}}"
+                    Visibility="{Binding Path=InputType, Converter={StaticResource textValueDialogInputVisibilityConverter}, ConverterParameter=DatePicker, RelativeSource={RelativeSource AncestorType=windows:GetTextValueDialog}}"/>
+            </Grid>
+
+            <Button
+                x:Name="btnOK"                
+                Grid.Row="1"
+                Content="OK"
+                Width="72"
+                HorizontalAlignment="Center"
+                Click="btnOK_Click"/>
+        </Grid>
+    </Border>
+</Window>

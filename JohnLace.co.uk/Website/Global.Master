@@ -1,0 +1,198 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="~/Global.master.cs" Inherits="Website.Global" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajax" %>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head id="Head1" runat="server">
+        <title>JohnLace.co.uk</title>
+        <link href="CSS/Global.css" rel="stylesheet" type="text/css" />
+        <link href="CSS/nivo-slider.css" rel="stylesheet" type="text/css" />
+        <link href="CSS/custom-nivo-slider.css" rel="stylesheet" type="text/css" />
+
+        <script src="script/jquery.min.js" type="text/javascript"></script>
+        <script src="script/jquery.nivo.slider.pack.js" type="text/javascript"></script>
+        
+        <link rel="shortcut icon" href="Images/icon.png" />
+        
+        <meta charset="utf-8"> 
+        <meta name="Author" content="John Lace" /> 
+        <meta name="description" content="This is the online portfolio of John Lace, a software developer from Manchester and Nottingham" /> 
+        <meta name="keyword" content="Software Developer Manchester, Software Developer Nottingham, software developer manchester, software developer nottingham, software developer, john lace, lace, software developer cheshire, software developer west bridgford, software developer keyworth, software developer altrincham, software developer knutsford, websites, software, databases, .NET, C#, asp, silverlight, wcf, wpf" /> 
+
+        <script src="script/global.js" type="text/javascript" language="javascript"></script>
+        <script type="text/javascript" language="javascript">
+            function btnSendEnquiry_Click() {
+                var name = document.getElementById('<%= txtName.ClientID %>').value;
+                var emailAddress = document.getElementById('<%= txtEmailAddress.ClientID %>').value;
+                var enquiry = document.getElementById('<%= txtEnquiry.ClientID %>').value;
+                var lblError = document.getElementById('<%= lblError.ClientID %>');
+
+                if ((name == '') || (name == '<%= tweName.WatermarkText %>')) {
+                    lblError.innerHTML = 'Please enter your name';
+                    SetVisibility('<%= pnlEnquiryErrorPopup.ClientID %>', true);
+                    return false;
+                }
+
+                if ((emailAddress == '') || (emailAddress == '<%= tweEmailAddress.WatermarkText %>')) {
+                    lblError.innerHTML = 'Please enter your email address';
+                    SetVisibility('<%= pnlEnquiryErrorPopup.ClientID %>', true);
+                    return false;
+                }
+
+                if (!(ValidateEmailAddress(emailAddress))) {
+                    lblError.innerHTML = 'Please enter a vaild email address';
+                    SetVisibility('<%= pnlEnquiryErrorPopup.ClientID %>', true);
+                    return false;
+                }
+
+                if ((enquiry == '') || (enquiry == '<%= tweEnquiry.WatermarkText %>')) {
+                    lblError.innerHTML = 'Please enter your enquiry';
+                    SetVisibility('<%= pnlEnquiryErrorPopup.ClientID %>', true);
+                    return false;
+                }
+
+                return true;
+            }
+        </script>
+    
+       <script type="text/javascript">
+           $(window).load(function () {
+               $('#slider').nivoSlider({
+                   effect: 'fade',
+                   pauseTime: 7500,
+                   animSpeed: 1000
+               });
+           });
+        </script>
+        
+        <asp:ContentPlaceHolder ID="cphHead" runat="server" />
+    </head>
+    <body onload="SetFooterSize(); FillScreen();" onresize="FillScreen();">
+        <form id="form1" runat="server">
+            <ajax:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server" />        
+            
+            <div id="wrapper">
+                <div class="header">
+                    <div class="black_banner">
+                        <div class="logo"><h1><a href="Default.aspx"><img src="Images/logo.png" /></a></h1></div>
+                        <ul class="navigation_buttons">
+                            <li><a href="Default.aspx">home</a></li>
+                            <li><a href="CurriculumVitae.aspx">cv</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="description">
+                        <h2>UK based software development and web design</h2>
+                    </div>
+                </div>
+                
+                <div class="content">
+                    <div><asp:ContentPlaceHolder ID="cphBody" runat="server" /></div>
+
+                </div>
+                
+                <div id="footer">
+            
+            <asp:UpdatePanel ID="udpContactUs" runat="server">
+                <Triggers>
+                    <asp:AsyncPostBackTrigger ControlID="btnSendEnquiry" EventName="Click" />
+                </Triggers>
+                <ContentTemplate>
+                    <asp:Panel ID="pnlEnquiryErrorPopup" runat="server" CssClass="popup" style="z-index: 2; margin: 36px;">
+                        <div class="popup_box">
+                            <div class="popup_box_header"></div>
+                            <div class="popup_box_body">
+                                <p><asp:Label ID="lblError" runat="server" /></p>
+                                <p><input class="ok_button" type="button" value="OK" onclick="SetVisibility('<%= pnlEnquiryErrorPopup.ClientID %>', false);" /></p>
+                            </div>
+                            <div class="popup_box_footer"></div>
+                        </div>
+                    </asp:Panel>
+                    
+                    <div id="footer_div" style="padding-top: 6px;">
+                        <asp:Panel ID="pnlContactMe" runat="server" CssClass="contact_me" DefaultButton="btnSendEnquiry">
+                            <h3>Contact me</h3>
+                            
+                            <table class="contact_me_table">
+                                <tr>
+                                    <td class="contact_me_table_cell">
+                                        <p><asp:TextBox ID="txtName" runat="server" CssClass="textbox" /></p>
+                                        <p><asp:TextBox ID="txtEmailAddress" runat="server" CssClass="textbox" /></p>
+                                        <p><asp:TextBox ID="txtEnquiry" runat="server" TextMode="MultiLine" CssClass="textbox_multiline" /></p>
+                                    </td>
+                                    <td style="width: 12px;"></td>
+                                    <td class="contact_me_table_cell" style="width: 166px;">
+                                        <p>If you would like to get in contact with me regarding any software development or web design work you require doing then please fill in the form and I will get in contact with you ASAP</p>
+                                        <p><asp:Button ID="btnSendEnquiry" runat="server" Text="Send" CssClass="contact_me_send_button" OnClientClick="if (!(btnSendEnquiry_Click())) return false;" OnClick="btnSendEnquiry_Click" /></p>
+                                    </td>
+                                </tr>
+                            </table>
+                        </asp:Panel>
+                        
+                        <div class="vertical_seperator_dark"></div>
+                        
+                        <div class="connect_with_me">
+                            <h3>Connect with me</h3>
+                            
+                            <div class="social_links">
+                                <table cellpadding="0" cellspacing="6">
+                                    <tr>
+                                        <td class="social_links_button"><a href="http://www.facebook.com/<%= ConfigurationManager.AppSettings["FacebookAccount"] %>" target="_blank"><img src="Images/facebook_button.png" /></a></td>
+                                        <td class="social_links_link"><a href="http://www.facebook.com/<%= ConfigurationManager.AppSettings["FacebookAccount"] %>" target="_blank">Find me on Facebook</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="social_links_button"><a href="http://twitter.com/<%= ConfigurationManager.AppSettings["TwitterAccount"] %>" target="_blank"><img src="Images/twitter_button.png" /></a></td>
+                                        <td class="social_links_link"><a href="http://twitter.com/<%= ConfigurationManager.AppSettings["TwitterAccount"] %>" target="_blank">Follow me on Twitter</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="social_links_button"><a href="http://uk.linkedin.com/in/<%= ConfigurationManager.AppSettings["LinkedInAccount"] %>" target="_blank"><img src="Images/linked_in_button.png" /></a></td>
+                                        <td class="social_links_link">
+                                            <a href="http://uk.linkedin.com/in/<%= ConfigurationManager.AppSettings["LinkedInAccount"] %>" target="_blank">Connect with me on Linked In</a>
+                                            <div class="linked_in_pdf">
+                                                <a href="http://www.linkedin.com/profile?viewProfilePDF=&key=87643254&authToken=e3P5&authType=name&trk=pdf_pro_full"><asp:Image ID="imgLinkedInPdf" runat="server" ToolTip="View my Linked In profile as a PDF" ImageUrl="Images/pdf_icon.gif" height="16px" /></a>&nbsp&nbsp
+                                                <a href="http://www.linkedin.com/addressBookExport?exportMemberVCard=&memberID=87643254" target="_blank"><asp:Image ID="imgLinkedInVCard" runat="server" ToolTip="Download my vCard" ImageUrl="Images/vcard.png" height="16px" /></a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>                        
+                        </div>
+                        
+                        <div class="vertical_seperator_dark"></div> 
+                        
+                        <div id="latest_tweet_div" class="latest_tweet">
+                            <h3>Latest tweets</h3>
+                            
+                            <div class="latest_tweet_text">
+                                <div id="twitter_update_list">
+                                </div>
+                                <script type="text/javascript" src="http://twitter.com/javascripts/blogger.js">
+                                </script>
+                                <script type="text/javascript" src="http://twitter.com/statuses/user_timeline/<%= ConfigurationManager.AppSettings["TwitterAccount"] %>.json?callback=twitterCallback2&count=<%= ConfigurationManager.AppSettings["LatestTweetsCount"] %>">
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+                                        
+                    <ajax:TextBoxWatermarkExtender ID="tweName" runat="server" TargetControlID="txtName" WatermarkCssClass="watermark_textbox" WatermarkText="Name" />
+                    <ajax:TextBoxWatermarkExtender ID="tweEmailAddress" runat="server" TargetControlID="txtEmailAddress" WatermarkCssClass="watermark_textbox" WatermarkText="Email Address" />
+                    <ajax:TextBoxWatermarkExtender ID="tweEnquiry" runat="server" TargetControlID="txtEnquiry" WatermarkCssClass="watermark_textbox_multiline" WatermarkText="Enquiry" />
+                </ContentTemplate>
+            </asp:UpdatePanel>
+                    <div style="padding-bottom: 24px;">
+                        <div class="horizontal_seperator_dark"></div>
+                        
+                        <table width="100%" cellpadding="0" cellspacing="0">
+                            <tr>
+                                <td class="copyright_info">Copyright &copy; <%= DateTime.Now.Year.ToString() %> - John Lace - All rights reserved</td>
+                                <td class="quick_links"><a href="Default.aspx">Home</a> | <a href="CurriculumVitae.aspx">Curriculum Vitae</a></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </body>
+</html>
+
+

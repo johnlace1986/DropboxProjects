@@ -1,0 +1,150 @@
+﻿<UserControl
+    x:Class="MediaPlayer.Presentation.UserControls.Effects.InnerGlow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:vc="clr-namespace:MediaPlayer.ValueConverters"
+    xmlns:effects="clr-namespace:MediaPlayer.Presentation.UserControls.Effects"
+    mc:Ignorable="d" 
+    d:DesignHeight="300"
+    d:DesignWidth="300">
+    <UserControl.Resources>
+        <vc:BorderCornerRadiusConverter x:Key="borderCornerRadiusConverter" />
+        <vc:InnerGlowThicknessConverter x:Key="innerGlowThicknessConverter" />
+        <vc:InnerGlowCornerWidthConverter x:Key="innerGlowCornerWidthConverter" />
+        <vc:InnerGlowCornerHeightConverter x:Key="innerGlowCornerHeightConverter" />
+    </UserControl.Resources>
+    <Border
+        CornerRadius="{Binding Path=CornerRadius, RelativeSource={RelativeSource AncestorType={x:Type effects:InnerGlow}}}">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="{Binding Path=GlowThickness, Converter={StaticResource innerGlowThicknessConverter}, ConverterParameter=Top, RelativeSource={RelativeSource AncestorType={x:Type effects:InnerGlow}}}" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="{Binding Path=GlowThickness, Converter={StaticResource innerGlowThicknessConverter}, ConverterParameter=Bottom, RelativeSource={RelativeSource AncestorType={x:Type effects:InnerGlow}}}" />
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="{Binding Path=GlowThickness, Converter={StaticResource innerGlowThicknessConverter}, ConverterParameter=Left, RelativeSource={RelativeSource AncestorType={x:Type effects:InnerGlow}}}" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="{Binding Path=GlowThickness, Converter={StaticResource innerGlowThicknessConverter}, ConverterParameter=Right, RelativeSource={RelativeSource AncestorType={x:Type effects:InnerGlow}}}" />
+            </Grid.ColumnDefinitions>
+
+            <Border
+                Grid.Row="0"
+                Grid.Column="0"
+                Width="{Binding Path=GlowThickness, Converter={StaticResource innerGlowCornerWidthConverter}, ConverterParameter=TopLeft, RelativeSource={RelativeSource AncestorType={x:Type effects:InnerGlow}}}"
+                Height="{Binding Path=GlowThickness, Converter={StaticResource innerGlowCornerHeightConverter}, ConverterParameter=TopLeft, RelativeSource={RelativeSource AncestorType={x:Type effects:InnerGlow}}}"
+                CornerRadius="{Binding Path=CornerRadius, Converter={StaticResource borderCornerRadiusConverter}, ConverterParameter=TopLeft, RelativeSource={RelativeSource AncestorType={x:Type effects:InnerGlow}}}">
+                <Border.Background>
+                    <RadialGradientBrush
+                        GradientOrigin="0.5, 0.5">
+                        <GradientStop Color="{Binding Path=Colour, RelativeSource={RelativeSource AncestorType={x:Type effects:InnerGlow}}}" Offset="1.0" />
+                        <GradientStop Color="Transparent" Offset="0.0" />
+                    </RadialGradientBrush>
+                </Border.Background>
+            </Border>
+
+            <Border
+                Grid.Row="0"
+                Grid.Column="1">
+                <Border.Background>
+                    <LinearGradientBrush
+                        StartPoint="0, 0"
+                        EndPoint="0, 1">
+                        <GradientStop Color="{Binding Path=Colour, RelativeSource={RelativeSource AncestorType={x:Type effects:InnerGlow}}}" Offset=" 0.0" />
+                        <GradientStop Color="Transparent" Offset=" 1.0" />
+                    </LinearGradientBrush>
+                </Border.Background>
+            </Border>
+
+            <Border
+                Grid.Row="0"
+                Grid.Column="2"
+                Width="{Binding Path=GlowThickness, Converter={StaticResource innerGlowCornerWidthConverter}, ConverterParameter=TopRight, RelativeSource={RelativeSource AncestorType={x:Type effects:InnerGlow}}}"
+                Height="{Binding Path=GlowThickness, Converter={StaticResource innerGlowCornerHeightConverter}, ConverterParameter=TopRight, RelativeSource={RelativeSource AncestorType={x:Type effects:InnerGlow}}}"
+                HorizontalAlignment="Right"
+                CornerRadius="{Binding Path=CornerRadius, Converter={StaticResource borderCornerRadiusConverter}, ConverterParameter=TopRight, RelativeSource={RelativeSource AncestorType={x:Type effects:InnerGlow}}}">
+                <Border.Background>
+                    <RadialGradientBrush
+                        GradientOrigin="0.5, 0.5">
+                        <GradientStop Color="{Binding Path=Colour, RelativeSource={RelativeSource AncestorType={x:Type effects:InnerGlow}}}" Offset="1.0" />
+                        <GradientStop Color="Transparent" Offset="0.0" />
+                    </RadialGradientBrush>
+                </Border.Background>
+            </Border>
+
+            <Border
+                Grid.Row="1"
+                Grid.Column="0">
+                <Border.Background>
+                    <LinearGradientBrush
+                        StartPoint="0, 0"
+                        EndPoint="1, 0">
+                        <GradientStop Color="{Binding Path=Colour, RelativeSource={RelativeSource AncestorType={x:Type effects:InnerGlow}}}" Offset=" 0.0" />
+                        <GradientStop Color="Transparent" Offset=" 1.0" />
+                    </LinearGradientBrush>
+                </Border.Background>
+            </Border>
+
+            <Border
+                Grid.Row="1"
+                Grid.Column="2">
+                <Border.Background>
+                    <LinearGradientBrush
+                        StartPoint="0, 0"
+                        EndPoint="1, 0">
+                        <GradientStop Color="{Binding Path=Colour, RelativeSource={RelativeSource AncestorType={x:Type effects:InnerGlow}}}" Offset=" 1.0" />
+                        <GradientStop Color="Transparent" Offset=" 0.0" />
+                    </LinearGradientBrush>
+                </Border.Background>
+            </Border>
+
+            <Border
+                Grid.Row="2"
+                Grid.Column="0"
+                Width="{Binding Path=GlowThickness, Converter={StaticResource innerGlowCornerWidthConverter}, ConverterParameter=BottomLeft, RelativeSource={RelativeSource AncestorType={x:Type effects:InnerGlow}}}"
+                Height="{Binding Path=GlowThickness, Converter={StaticResource innerGlowCornerHeightConverter}, ConverterParameter=BottomLeft, RelativeSource={RelativeSource AncestorType={x:Type effects:InnerGlow}}}"
+                VerticalAlignment="Bottom"
+                CornerRadius="{Binding Path=CornerRadius, Converter={StaticResource borderCornerRadiusConverter}, ConverterParameter=BottomLeft, RelativeSource={RelativeSource AncestorType={x:Type effects:InnerGlow}}}">
+                <Border.Background>
+                    <RadialGradientBrush
+                        GradientOrigin="0.5, 0.5">
+                        <GradientStop Color="{Binding Path=Colour, RelativeSource={RelativeSource AncestorType={x:Type effects:InnerGlow}}}" Offset="1.0" />
+                        <GradientStop Color="Transparent" Offset="0.0" />
+                    </RadialGradientBrush>
+                </Border.Background>
+            </Border>
+
+            <Border
+                Grid.Row="2"
+                Grid.Column="1">
+                <Border.Background>
+                    <LinearGradientBrush
+                        StartPoint="0, 0"
+                        EndPoint="0, 1">
+                        <GradientStop Color="{Binding Path=Colour, RelativeSource={RelativeSource AncestorType={x:Type effects:InnerGlow}}}" Offset=" 1.0" />
+                        <GradientStop Color="Transparent" Offset=" 0.0" />
+                    </LinearGradientBrush>
+                </Border.Background>
+            </Border>
+
+            <Border
+                Grid.Row="2"
+                Grid.Column="2"
+                Width="{Binding Path=GlowThickness, Converter={StaticResource innerGlowCornerWidthConverter}, ConverterParameter=BottomRight, RelativeSource={RelativeSource AncestorType={x:Type effects:InnerGlow}}}"
+                Height="{Binding Path=GlowThickness, Converter={StaticResource innerGlowCornerHeightConverter}, ConverterParameter=BottomRight, RelativeSource={RelativeSource AncestorType={x:Type effects:InnerGlow}}}"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Bottom"
+                CornerRadius="{Binding Path=CornerRadius, Converter={StaticResource borderCornerRadiusConverter}, ConverterParameter=BottomRight, RelativeSource={RelativeSource AncestorType={x:Type effects:InnerGlow}}}">
+                <Border.Background>
+                    <RadialGradientBrush
+                        GradientOrigin="0.5, 0.5">
+                        <GradientStop Color="{Binding Path=Colour, RelativeSource={RelativeSource AncestorType={x:Type effects:InnerGlow}}}" Offset="1.0" />
+                        <GradientStop Color="Transparent" Offset="0.0" />
+                    </RadialGradientBrush>
+                </Border.Background>
+            </Border>
+        </Grid>
+    </Border>
+</UserControl>

@@ -1,0 +1,55 @@
+﻿@model Wedding.eVite.Web.Models.ChangePasswordModel
+
+@{
+    ViewBag.Title = "Change Password";
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
+}
+
+@section HeaderSection {
+    <script src="~/Scripts/ChangePassword.Index.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#txtPassword').focus();
+        });
+    </script>
+}
+
+<div class="log_in">
+    <div class="log_in_invite">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+
+            <div>
+                <h4>THE WEDDING OF</h4>
+                <h1>John <span style="color: #bfbfbf;">&amp;</span> Lizzie</h1>
+
+                <div class="log_in_pattern">
+                    <img src="~/Content/Images/log_in_pattern.png" />
+                </div>
+
+                <h6>Please change your password</h6>
+
+
+                <div class="log_in_controls">
+                    <div class="cf">
+                        <div class="log_in_controls_label">Password:</div>
+                        <div class="log_in_controls_textbox">@Html.PasswordFor(model => model.Password, new { id = "txtPassword", @class = "textbox" })</div>
+
+                        <div class="log_in_controls_label">Re-enter Password:</div>
+                        <div class="log_in_controls_textbox">@Html.PasswordFor(model => model.ReEnteredPassword, new { id = "txtReEnteredPassword", @class = "textbox" })</div>
+                    </div>
+
+                    <div class="cf">
+                        <div class="log_in_controls_button"><input type="button" value="Cancel" class="button" onclick="location.href='@Url.Action("LogOut", "LogIn" )'" /></div>
+                        <div class="log_in_controls_button"><input type="submit" value="Change" class="button" onclick="return validatePasswords();" /></div>
+                    </div>
+
+                    <div class="log_in_error"> @if (String.IsNullOrEmpty(ViewBag.ErrorMessage)) { <text>&nbsp;</text> } else { <text> @ViewBag.ErrorMessage</text>}</div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

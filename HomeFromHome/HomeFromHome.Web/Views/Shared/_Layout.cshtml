@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width" />
+
+        <link rel="shortcut icon" href="~/Content/Images/icon.jpg" />
+
+        <link href="~/Content/CSS/HomeFromHome.css" rel="stylesheet" />
+    
+        <title>@(ViewBag.Title) - Home from Home - Dog Sitting in Knutsford, Cheshire</title>
+
+        <link href="https://fonts.googleapis.com/css?family=Acme" rel="stylesheet" />
+
+        @RenderSection("HeaderSection", required: false)
+    </head>
+    <body>
+        <div class="layout_content">
+            <div class="layout_header cf">
+                <div class="layout_header_logo"><img src="~/Content/Images/layout_logo.png" alt="Home From Home" /></div>
+
+                <div class="layout_header_tag">
+                    <a href="https://uk.dogbuddy.com/dog-sitter-knutsford/home-from-home-dog-sitters/339012"><div class="layout_header_tag_image">&nbsp;</div></a>
+                    <h1>Dog sitting in Knutsford, Cheshire</h1>
+                </div>
+            </div>
+
+            <div class="layout_navigation_header">&nbsp;</div>
+
+            <div class="layout_navigation">
+                <div class="layout_navigation_items">
+                    <ul>
+                        <li><a href="~/">Home</a></li>
+                        <li><a href="~/Services">Services</a></li>
+                        <li><a href="~/Prices">Prices</a></li>
+                        <li><a href="~/Testimonials">Testimonials</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div id="content" class="cf">
+                <div>@RenderBody()</div>
+            </div>
+
+            <div class="layout_footer">
+                <div class="layout_footer_social">
+                    <ul>
+                        <li style="margin-top: 12px;">Follow us on social media:</li>
+                        <li><a href="http://www.twitter.com/" target="_blank" title="Follow us on Twitter"><div class="layout_footer_social_twitter">&nbsp;</div></a></li>
+                        <li><a href="https://www.facebook.com/HomeFromHomeDogSittingKnutsford" target="_blank" title="Follow us on Facebook"><div class="layout_footer_social_facebook">&nbsp;</div></a></li>
+                        <li><a href="https://www.instagram.com/homefromhomedogsitting/" target="_blank" title="Follow us on Instagram"><div class="layout_footer_social_instagram">&nbsp;</div></a></li>
+                    </ul>
+                </div>
+
+                <div class="layout_footer_credit"><a href="mailto:lace.john@gmail.com">Website by John Lace</a></div>
+            </div>
+
+            <div class="layout_footer_overflow">&nbsp;</div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,81 @@
+﻿@using Wedding.eVite.Business
+@using Wedding.eVite.Web.Models
+@model AdminAccommodationModel
+
+@{
+    ViewBag.Title = "Accommodation";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@section HeaderSection {
+    <script src="~/Scripts/jquery.inputmask.js"></script>
+    <script src="~/Scripts/jquery.watermark.js"></script>
+    <script src="~/Scripts/Admin.Accommodation.js"></script>
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            setAccommodationContainerHeight();
+
+            $('#txtBeds').inputmask('9{1,10}');
+
+            $('#txtFilter').watermark('Filter...', { useNative: false, className: 'watermark' });
+
+            makeUnassignedGuestContainerDroppable();
+            makeNewRoomContainerDroppable();
+
+            @foreach (Room room in Model.Rooms)
+            {
+                @: addRoom(@room.Id, '@room.Name', @room.Beds);
+
+                foreach (Guest guest in room.Guests)
+                {
+                    @: addGuestToRoom(@room.Id, @guest.Id, '@guest.FullName', '@(guest.CanBringPlusOne && guest.IsBringingPlusOne ? guest.PlusOneFullName : "")', '@(guest.IsAttending == true ? "true" : "false")');
+            }
+            }
+
+            @foreach (Guest guest in Model.UnassignedGuests)
+            {
+                @: addUnassignedGuest(@guest.Id, '@guest.FullName', '@(guest.CanBringPlusOne && guest.IsBringingPlusOne ? guest.PlusOneFullName : "")', '@(guest.IsAttending == true ? "true" : "false")');
+                        }
+
+            $('.admin_accommodation_rooms_add').on('click', function(){
+                addNewRoom();
+            });
+
+        });
+
+        window.onresize = function () {
+            setAccommodationContainerHeight();
+        };
+
+    </script>
+
+}
+
+<div class="admin_accommodation">
+
+    <div class="admin_accommodation_rooms">
+        <div class="admin_accommodation_rooms_add" title="Create a new room">&nbsp;</div>
+    </div>
+
+    <div class="admin_accommodation_unassigned_guests">
+        <h5>Guests</h5>
+        <div class="admin_accommodation_unassigned_guests_filter"><input id="txtFilter" type="text" class="textbox" onkeyup="filterUnassignedGuests(this.value);" /></div>
+
+        <div class="admin_accommodation_unassigned_guests_container"></div>
+    </div>
+</div>
+
+<div id="divRoom" class="modalDialog">
+
+    <div class="cf">
+        <div class="admin_accommodation_save_label">Name:</div>
+        <div class="admin_accommodation_save_textbox"><input id="txtName" type="text" class="textbox" /></div>
+
+        <div class="admin_accommodation_save_label">Beds:</div>
+        <div class="admin_accommodation_save_textbox"><input id="txtBeds" type="text" class="textbox" /></div>
+    </div>
+
+    <div class="admin_accommodation_save_error"><label id="lblSaveExpenseError">&nbsp;</label></div>
+</div>

@@ -1,0 +1,327 @@
+﻿html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+.cf:before,
+.cf:after{
+    content: " ";
+    display: table;
+}
+
+.cf:after{
+    clear: both;
+}
+
+.cf {
+    *zoom: 1;
+}
+
+.clear {
+    clear: both;
+}
+
+@font-face {
+    font-family: 'Yellowtail';
+    src: url('../../Content/Fonts/Yellowtail/Yellowtail-Regular-webfont.eot');
+    src: url('../../Content/Fonts/Yellowtail/Yellowtail-Regular-webfont.eot?#iefix') format('embedded-opentype'), url('../../Content/Fonts/Yellowtail/Yellowtail-Regular-webfont.woff') format('woff'), url('../../Content/Fonts/Yellowtail/Yellowtail-Regular-webfont.ttf') format('truetype'), url('../../Content/Fonts/Yellowtail/Yellowtail-Regular-webfont.svg#yellowtailregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    background-color: #f4f3ea;
+    min-width: 1000px;
+    font-family: 'Acme', sans-serif, "Trebuchet MS", Helvetica, sans-serif;
+    color: #231f20;
+    font-size: 18px;
+    word-wrap: break-word;
+}
+
+h1 {
+    font-size: 24px;
+    color: #628d4e;
+    margin-top: 12px;
+    margin-bottom: 12px;
+}
+
+h2 {
+    color: #628d4e;
+    margin-left: 12px;
+    margin-top: 12px;
+    margin-bottom: 12px;
+}
+
+p {
+    margin-top: 12px;
+    margin-bottom: 12px;
+}
+
+a {
+    color: #628d4e;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+    a:visited {
+        color: #628d4e;
+    }
+
+    a:visited:hover,
+    a:hover {
+        color: #7DB463;
+    }
+
+.layout_content {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 24px;
+    width: 1000px;
+}
+
+.layout_header {
+    height: 175px;
+    margin-bottom: 24px;
+}
+
+.layout_header_logo {
+    float: left;
+    width: 320px;
+}
+
+.layout_header_tag {
+    float: right;
+    width: 407px;
+    text-align: right;
+    text-align: center;
+}
+
+    .layout_header_tag a {
+        color: #744836;
+    }
+
+        .layout_header_tag a:hover {
+            color: #A8684E;
+        }
+
+.layout_header_tag_image {
+    background-image: url('../Images/layout_tag.png');
+    width: 406px;
+    height: 140px;
+    margin-bottom: 12px;
+}
+
+    .layout_header_tag_image:hover {
+        background-image: url('../Images/layout_tag_hover.png');
+    }
+
+.layout_navigation_header {
+    border-left: solid 6px #231f20;
+    border-right: solid 6px #231f20;
+    border-top: solid 6px #231f20;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    margin: 0px 94px;
+    background-color: #cbc9b0;
+}
+
+.layout_navigation {
+    background-image: url('../Images/layout_navigation_ribbon.png');
+    width: 1000px;
+    height: 73px;
+    font-size: 32px;
+    padding-top: 18px;
+    text-align: center;
+}
+
+.layout_navigation_items {
+    display: inline-block;
+}
+    .layout_navigation_items ul li {
+        position: relative;
+        float: left;
+        list-style: none;
+        margin: 0px 42px;
+    }
+
+    .layout_navigation a {
+        color: #ffffff;
+        text-decoration: inherit;
+    }
+
+        .layout_navigation a:hover {
+            color: #cbc9b0;
+        }
+
+#content {
+    margin: 0 94px;
+    border-left: solid 6px #231f20;
+    border-right: solid 6px #231f20;
+    padding: 0 24px;
+    background-color: #cbc9b0;
+}
+
+.layout_footer {
+    background-image: url('../Images/layout_footer_navigation.png');
+    width: 788px;
+    height: 52px;
+    padding: 39px 106px 0px 106px;
+    color: #ffffff;
+}
+
+.layout_footer_social {
+    float: left;
+}
+    .layout_footer_social ul li {
+        position: relative;
+        float: left;
+        list-style: none;
+        margin-right: 24px;
+    }
+
+.layout_footer_social_twitter {
+    background-image: url('../Images/layout_social_twitter.png');
+    height: 36px;
+    width: 36px;
+}
+
+    .layout_footer_social_twitter:hover {
+        background-image: url('../Images/layout_social_twitter_hover.png');
+    }
+
+.layout_footer_social_facebook {
+    background-image: url('../Images/layout_social_facebook.png');
+    height: 36px;
+    width: 36px;
+}
+
+    .layout_footer_social_facebook:hover {
+        background-image: url('../Images/layout_social_facebook_hover.png');
+    }
+
+.layout_footer_social_instagram {
+    height: 36px;
+    width: 36px;
+    background-image: url('../Images/layout_social_instagram.png');
+}
+
+    .layout_footer_social_instagram:hover {
+        background-image: url('../Images/layout_social_instagram_hover.png');
+    }
+
+.layout_footer_credit {
+    margin-top: 12px;
+    float: right;
+}
+
+    .layout_footer_credit a {
+        color: #ffffff;
+    }
+
+        .layout_footer_credit a:hover {
+            color: #cbc9b0;
+        }
+
+.layout_footer_overflow {
+    border-left: solid 6px #231f20;
+    border-right: solid 6px #231f20;
+    border-bottom: solid 6px #231f20;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    margin: 0px 94px;
+    background-color: #cbc9b0;
+}
+
+.home_text {
+    float: left;
+    width: 416px;
+    margin-right: 12px;
+}
+
+.home_text_signature {
+    font-family: 'Yellowtail';
+    text-align: center;
+    margin-top: 24px;
+    font-size: 48px;
+}
+
+.home_jen_mindy {
+    float: right;
+    margin-left: 12px;
+    border: solid 6px #231f20;
+    border-radius: 3px;
+    width: 300px;
+    height: 400px;
+}
+
+.prices {
+    text-align: center;
+    font-size: 32px;
+}
+
+    .prices ul {
+        display: inline-block;
+    }
+
+    .prices li {
+        float: left;
+        padding: 0px 60px;
+    }
+
+    .prices img {
+        width: 240px;
+        height: 232px;
+        margin-bottom: 12px;
+    }
+
+.testimonials_quote {
+    width: 602px;
+}
+
+.testimonials_dog {
+    border: solid 3px #231f20;
+    border-radius: 3px;
+    width: 120px;
+    height: 120px;
+    margin-top: 12px;
+    margin-bottom: 12px;
+}

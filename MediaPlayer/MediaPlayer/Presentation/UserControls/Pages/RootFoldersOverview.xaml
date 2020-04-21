@@ -1,0 +1,93 @@
+﻿<UserControl
+    x:Class="MediaPlayer.Presentation.UserControls.Pages.RootFoldersOverview"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:pages="clr-namespace:MediaPlayer.Presentation.UserControls.Pages"
+    xmlns:vc="clr-namespace:MediaPlayer.ValueConverters"
+    mc:Ignorable="d" 
+    d:DesignHeight="500"
+    d:DesignWidth="500">
+    <UserControl.Resources>
+        <vc:MultiRootFoldersSummaryConverter x:Key="multiRootFoldersSummaryConverter" />
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Label
+            Grid.Row="0"
+            Margin="24"
+            FontFamily="Armata"
+            FontSize="32"
+            FontWeight="Bold"
+            Content="Root Folders"
+            HorizontalContentAlignment="Center" />
+
+        <Border
+            Grid.Row="1"
+            Height="12"
+            Opacity="0.5">
+            <Border.Background>
+                <RadialGradientBrush 
+                    GradientOrigin="0.5,0.0" 
+                    Center="0.5,0.0"
+                    RadiusX="0.5"
+                    RadiusY="1">
+                    <RadialGradientBrush.GradientStops>
+                        <GradientStop Color="#4c555e" Offset="0" />
+                        <GradientStop Color="Transparent" Offset="1" />
+                    </RadialGradientBrush.GradientStops>
+                </RadialGradientBrush>
+            </Border.Background>
+        </Border>
+
+        <Grid
+            Grid.Row="2"
+            Margin="0, 12">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <pages:RootFoldersView
+                x:Name="rfvVideos"
+                Grid.Column="0"
+                Margin="24, 0"
+                Header="Videos"
+                AssociatedType="Video"
+                IsOrganising="{Binding Path=IsOrganising, Mode=OneWay, RelativeSource={RelativeSource AncestorType={x:Type pages:RootFoldersOverview}}}"
+                RootFolders="{Binding Path=VideoRootFolders, Mode=TwoWay, RelativeSource={RelativeSource AncestorType={x:Type pages:RootFoldersOverview}}}"
+                ShowHidden="{Binding Path=ShowHidden, Mode=TwoWay, RelativeSource={RelativeSource AncestorType={x:Type pages:RootFoldersOverview}}}"
+                PathChanged="rootFoldersView_PathChanged"/>
+
+            <pages:RootFoldersView
+                x:Name="rfvSongs"
+                Grid.Column="1"
+                Margin="24, 0"
+                Header="Songs"
+                AssociatedType="Song"
+                IsOrganising="{Binding Path=IsOrganising, Mode=OneWay, RelativeSource={RelativeSource AncestorType={x:Type pages:RootFoldersOverview}}}"
+                RootFolders="{Binding Path=SongRootFolders, Mode=TwoWay, RelativeSource={RelativeSource AncestorType={x:Type pages:RootFoldersOverview}}}"
+                ShowHidden="{Binding Path=ShowHidden, Mode=TwoWay, RelativeSource={RelativeSource AncestorType={x:Type pages:RootFoldersOverview}}}"
+                PathChanged="rootFoldersView_PathChanged" />
+        </Grid>
+
+        <Label
+            x:Name="lblSummary"
+            Grid.Row="3"
+            Style="{StaticResource pageSummaryLabelStyle}">
+            <Label.Content>
+                <MultiBinding Converter="{StaticResource multiRootFoldersSummaryConverter}">
+                    <Binding Path="VideoRootFolders" RelativeSource="{RelativeSource AncestorType={x:Type pages:RootFoldersOverview}}" />
+                    <Binding Path="SongRootFolders" RelativeSource="{RelativeSource AncestorType={x:Type pages:RootFoldersOverview}}" />
+                </MultiBinding>
+            </Label.Content>
+        </Label>
+    </Grid>
+</UserControl>

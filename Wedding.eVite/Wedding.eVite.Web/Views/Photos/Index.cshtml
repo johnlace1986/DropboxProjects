@@ -1,0 +1,26 @@
+﻿@{
+    ViewBag.Title = "Photos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section HeaderSection
+{
+    <script src="~/Scripts/jquery.slideshow.js"></script>
+    <script src="~/Scripts/Photos.Index.js"></script>
+}
+
+<div>        
+    <p>Once we get our wedding photos back from the photographer we will be uploading them to the website so all of our guests will be able to see them. We will be placing a disposable camera on each of the tables and the photos that get taken on these will be available as well (providing they aren’t too inappropriate!).</p>
+
+    <p>You will also be able to upload your own photos to share with us and the rest of our guests.</p>
+
+    <p>In the meantime, here are a few pictures of Barney who, unfortunately, won’t be able to make it on the day...</p>
+
+    <div class="photos_slideshow_container">
+        @foreach (String s in ViewBag.SlideshowImages)
+        {
+            <img src="~/Content/Images/BarneySlideshow/@s" />
+        }
+    </div>
+
+</div>

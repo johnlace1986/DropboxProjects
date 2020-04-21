@@ -1,0 +1,31 @@
+﻿.map_wrapper
+{
+	position: relative;
+	float: right;
+	right: 24px;
+	margin-bottom: 24px;
+}
+
+.map
+{
+	width: 432px;
+	height: 356px;
+	background-image: url('../Images/map_background.png');
+	padding: 1px;
+}
+
+.map_view_larger
+{
+	padding: 0px 6px;
+	margin-top: 3px;
+	text-align: right;
+}
+
+.description
+{
+	position: relative;
+	float: left;
+	left: 36px;
+	width: 456px;
+	margin-bottom: 24px;
+}

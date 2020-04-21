@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/NisbetPhotography.Website.Business" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/NisbetPhotography.Website.Business" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:simpleType name="AlbumTypeEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Customer" />
+      <xs:enumeration value="Portfolio" />
+      <xs:enumeration value="Public" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="AlbumTypeEnum" nillable="true" type="tns:AlbumTypeEnum" />
+</xs:schema>

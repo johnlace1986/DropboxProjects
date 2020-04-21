@@ -1,0 +1,73 @@
+﻿.gradient
+{
+	position: absolute;
+	z-index: 1;
+	width: 1000px;
+	height: 312px;
+	background-image: url('../../Images/background_gradient.png');
+	background-repeat: no-repeat;
+	left: 50%;
+	margin-left: -500px;
+	overflow: hidden;
+}
+
+.log_in
+{
+	z-index: 2;
+	padding: 18px;
+	width: 417px;
+	height: 351px;
+	background-image: url('../Images/log_in_background_texture.png');
+	background-repeat: no-repeat;
+	text-align: left;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin: -194px 0px 0px -227px;
+}
+
+.log_in_text_box_holder
+{
+	height: 31px;
+	margin-bottom: 6px;
+}
+
+.log_in_text_box_label
+{
+	float: left;
+	padding-top: 4px;
+	margin-left: 36px;
+}
+
+.log_in_text_box
+{
+	float: right;
+	margin-right: 36px;
+	width: 189px;
+}
+
+.log_in_error
+{
+	margin-top:12px;
+	margin-right: 36px;
+	height: 35px;
+}
+
+.log_in_error_label
+{
+	height: 35px;
+	margin-top: 6px;
+	margin-left: 36px;
+	float: left;
+}
+
+.log_in_error_button
+{
+	float: right;
+}
+
+.return_to_main_site
+{
+	margin: 39px -12px 0px 0px;
+	text-align: right;
+}

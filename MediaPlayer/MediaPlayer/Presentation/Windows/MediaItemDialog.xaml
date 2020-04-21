@@ -1,0 +1,218 @@
+﻿<Window
+    x:Class="MediaPlayer.Presentation.Windows.MediaItemDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:etk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit/extended"
+    xmlns:windows="clr-namespace:MediaPlayer.Presentation.Windows"
+    xmlns:vc="clr-namespace:MediaPlayer.ValueConverters"
+    xmlns:uvc="clr-namespace:Utilities.ValueConverters;assembly=Utilities"
+    xmlns:miv="clr-namespace:MediaPlayer.Presentation.UserControls.MediaItemViews"   
+    Width="800"
+    Padding="6"
+    Style="{StaticResource dialogWindow}"    
+    WindowStartupLocation="CenterScreen"
+    SizeToContent="Height"
+    ResizeMode="NoResize"
+    ShowInTaskbar="False"
+    Title="{Binding SelectedMediaItem.Name.Value}"
+    Loaded="Window_Loaded">
+    <Window.Resources>
+        <vc:NextPreviousButtonVisibility x:Key="nextPreviousButtonVisibility" />
+        <vc:MediaItemToVideoConverter x:Key="mediaItemToVideoConverter" />
+        <vc:MediaItemToSongConverter x:Key="mediaItemToSongConverter" />
+        <vc:MediaItemTagsConverter x:Key="mediaItemTagsConverter" />
+        <vc:MediaItemGenresConverter  x:Key="mediaItemGenresConverter" />
+        <vc:MediaItemViewVisibilityConverter x:Key="mediaItemViewVisibilityConverter" />
+        <uvc:IntelligentStringConverter x:Key="intelligentStringConverter" />
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        
+        <miv:VideoView
+            x:Name="vvSelectedVideo"
+            Grid.Row="0"
+            SelectedVideo="{Binding Path=SelectedMediaItem, Converter={StaticResource mediaItemToVideoConverter}, RelativeSource={RelativeSource AncestorType={x:Type windows:MediaItemDialog}}}"
+            ShowHidden="{Binding Path=ShowHidden, RelativeSource={RelativeSource AncestorType={x:Type windows:MediaItemDialog}}}"
+            Visibility="{Binding Path=SelectedMediaItem, Converter={StaticResource mediaItemViewVisibilityConverter}, ConverterParameter=Video, RelativeSource={RelativeSource AncestorType={x:Type windows:MediaItemDialog}}}"
+            KeyDown="element_KeyDown"/>
+        
+        <miv:SongView
+            x:Name="svSelectedSong"
+            Grid.Row="0"
+            SelectedSong="{Binding Path=SelectedMediaItem, Converter={StaticResource mediaItemToSongConverter}, RelativeSource={RelativeSource AncestorType={x:Type windows:MediaItemDialog}}}"
+            ShowHidden="{Binding Path=ShowHidden, RelativeSource={RelativeSource AncestorType={x:Type windows:MediaItemDialog}}}"
+            Visibility="{Binding Path=SelectedMediaItem, Converter={StaticResource mediaItemViewVisibilityConverter}, ConverterParameter=Song, RelativeSource={RelativeSource AncestorType={x:Type windows:MediaItemDialog}}}"
+            KeyDown="element_KeyDown" />
+
+        <Grid
+            Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="80" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="80" />
+                <ColumnDefinition Width="80" />
+                <ColumnDefinition Width="40" />
+                <ColumnDefinition Width="80" />
+            </Grid.ColumnDefinitions>
+
+            <Label
+                Grid.Column="0"
+                Content="Genre:" />
+
+            <ComboBox
+                x:Name="cmbGenre"
+                Grid.Column="1"
+                IsTextSearchEnabled="True"
+                IsTextSearchCaseSensitive="False"
+                IsEditable="True"
+                Text="{Binding Path=SelectedMediaItem.Genre, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource intelligentStringConverter}, RelativeSource={RelativeSource AncestorType={x:Type windows:MediaItemDialog}}}"
+                GotFocus="element_GotFocus"
+                KeyDown="element_KeyDown">
+                <ComboBox.ItemsSource>
+                    <MultiBinding Converter="{StaticResource mediaItemGenresConverter}">
+                        <Binding Path="SelectedMediaItem" RelativeSource="{RelativeSource AncestorType={x:Type windows:MediaItemDialog}}" />
+                        <Binding Path="ShowHidden" RelativeSource="{RelativeSource AncestorType={x:Type windows:MediaItemDialog}}" />
+                    </MultiBinding>
+                </ComboBox.ItemsSource>
+            </ComboBox>
+            
+            <CheckBox
+                x:Name="chkIsHidden"
+                Grid.Column="3"
+                IsChecked="{Binding Path=SelectedMediaItem.IsHidden, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, RelativeSource={RelativeSource AncestorType={x:Type windows:MediaItemDialog}}}"
+                Content="Hidden"
+                GotFocus="element_GotFocus"
+                KeyDown="element_KeyDown"/>
+        </Grid>
+
+        <Grid
+            Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <GroupBox
+                Grid.Column="0"
+                Header="Parts">
+                <miv:MediaItemPartsView
+                    x:Name="mipParts"
+                    MediaItem="{Binding Path=SelectedMediaItem, Mode=OneWay, RelativeSource={RelativeSource AncestorType=windows:MediaItemDialog}}"
+                    FileTypeAdded="mipParts_FileTypeAdded"
+                    PartsAdded="mipParts_PartsAdded"
+                    PartExtracted="mipParts_PartExtracted"/>
+            </GroupBox>
+
+            <GroupBox
+                Grid.Column="1"
+                Header="Tags"
+                Width="240">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <ListBox
+                        x:Name="lstTags"
+                        Grid.Row="0"
+                        SelectionMode="Extended"
+                        ItemsSource="{Binding Path=SelectedMediaItem.Tags, Mode=OneWay, RelativeSource={RelativeSource AncestorType=windows:MediaItemDialog}}"
+                        KeyDown="lstTags_KeyDown" />
+
+                    <Grid
+                        Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <ComboBox
+                            x:Name="cmbAddTag"
+                            Grid.Column="0"
+                            IsTextSearchEnabled="True"
+                            IsTextSearchCaseSensitive="False"
+                            IsEditable="True"
+                            KeyDown="cmbAddTag_KeyDown">
+                            <ComboBox.ItemsSource>
+                                <MultiBinding Converter="{StaticResource mediaItemTagsConverter}">
+                                    <Binding Path="SelectedMediaItem" RelativeSource="{RelativeSource AncestorType={x:Type windows:MediaItemDialog}}" />
+                                    <Binding Path="ShowHidden" RelativeSource="{RelativeSource AncestorType={x:Type windows:MediaItemDialog}}" />
+                                </MultiBinding>
+                            </ComboBox.ItemsSource>
+                        </ComboBox>
+
+                        <Button
+                            x:Name="btnAddTag"
+                            Grid.Column="1"
+                            Margin="6"
+                            Width="24"
+                            Height="24"
+                            Padding="4"
+                            Click="btnAddTag_Click">
+                            <Polygon
+                                Stretch="Fill"
+                                Fill="{Binding Path=Foreground, RelativeSource={RelativeSource AncestorType=Button}}"
+                                Points="{StaticResource addPoints}" />
+                        </Button>
+                    </Grid>
+                </Grid>
+            </GroupBox>
+        </Grid>
+
+        <StackPanel
+            Grid.Row="3"
+            Orientation="Horizontal"
+            HorizontalAlignment="Center"
+            Margin="0, 0, 0, 6">
+            <Button
+                x:Name="btnPrevious"
+                Margin="6"
+                Padding="6, 4"
+                Width="24"
+                Height="24"
+                Click="btnPrevious_Click">
+                <Button.Visibility>
+                    <MultiBinding Converter="{StaticResource nextPreviousButtonVisibility}" ConverterParameter="Previous">
+                        <Binding Path="MediaItems" Mode="OneWay" RelativeSource="{RelativeSource AncestorType={x:Type windows:MediaItemDialog}}" />
+                        <Binding Path="SelectedIndex" RelativeSource="{RelativeSource AncestorType={x:Type windows:MediaItemDialog}}" />
+                    </MultiBinding>
+                </Button.Visibility>
+                <Polygon
+                    Stretch="Fill"
+                    Fill="{Binding Path=Foreground, RelativeSource={RelativeSource AncestorType=Button}}"
+                    Points="{StaticResource lessThanPoints}" />
+            </Button>
+            <Button
+                x:Name="btnOK"
+                Margin="6"
+                Content="OK"
+                Width="80"
+                Click="btnOK_Click" />
+            <Button
+                x:Name="btnNext"
+                Margin="6"
+                Padding="6, 4"
+                Width="24"
+                Height="24"
+                Click="btnNext_Click">
+                <Button.Visibility>
+                    <MultiBinding Converter="{StaticResource nextPreviousButtonVisibility}" ConverterParameter="Next">
+                        <Binding Path="MediaItems" Mode="OneWay" RelativeSource="{RelativeSource AncestorType={x:Type windows:MediaItemDialog}}" />
+                        <Binding Path="SelectedIndex" RelativeSource="{RelativeSource AncestorType={x:Type windows:MediaItemDialog}}" />
+                    </MultiBinding>
+                </Button.Visibility>
+                <Polygon
+                    Stretch="Fill"
+                    Fill="{Binding Path=Foreground, RelativeSource={RelativeSource AncestorType=Button}}"
+                    Points="{StaticResource greaterThanPoints}" />
+            </Button>
+        </StackPanel>
+
+    </Grid>
+</Window>

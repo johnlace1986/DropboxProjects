@@ -1,0 +1,125 @@
+﻿<Window
+    x:Class="MediaPlayer.Presentation.Windows.ModifyMediaItemsDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:this="clr-namespace:MediaPlayer"
+    xmlns:windows="clr-namespace:MediaPlayer.Presentation.Windows"
+    xmlns:vc="clr-namespace:MediaPlayer.ValueConverters"
+    Title="Modify Media Items"
+    Style="{StaticResource dialogWindow}"   
+    WindowStartupLocation="CenterScreen"
+    Height="200"
+    Width="600"
+    Loaded="Window_Loaded">
+    <Window.Resources>
+        <vc:ModificationRulesConverter x:Key="modificationRulesConverter" />
+        <vc:ModificationRuleContentConverter x:Key="modificationRuleContentConverter" />
+        <vc:ModificationRulePropertyNamesConverter x:Key="modificationRulePropertyNamesConverter" />
+        <vc:NumberGreateThanParameterVisibilityConverter x:Key="numberGreateThanParameterVisibilityConverter" />
+        <vc:NumberGreateThanParameterBooleanConverter x:Key="numberGreateThanParameterBooleanConverter" />
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <ScrollViewer
+            Grid.Row="0"
+            Padding="12"
+            HorizontalScrollBarVisibility="Disabled"
+            VerticalScrollBarVisibility="Auto">
+            <ItemsControl
+                Grid.Row="0"
+                ItemsSource="{Binding Path=Rules, RelativeSource={RelativeSource AncestorType={x:Type windows:ModifyMediaItemsDialog}}}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel
+                            Orientation="Vertical" />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            
+                            <Label
+                                Grid.Column="0"
+                                Margin="6"
+                                Effect="{x:Null}"
+                                Content="then"
+                                Visibility="{Binding Path=Index, Converter={StaticResource numberGreateThanParameterVisibilityConverter}, ConverterParameter=0}"/>
+
+                            <ComboBox
+                                Grid.Column="1"
+                                Width="80"
+                                DisplayMemberPath="DisplayName"
+                                ItemsSource="{Binding Converter={StaticResource modificationRulesConverter}}"
+                                SelectedItem="{Binding Path=Rule, Mode=TwoWay}"/>
+
+                            <Label
+                                Grid.Column="2"
+                                Margin="0"
+                                Padding="0"
+                                HorizontalContentAlignment="Stretch"
+                                VerticalContentAlignment="Center"
+                                Effect="{x:Null}"
+                                Content="{Binding Path=Rule, Converter={StaticResource modificationRuleContentConverter}}" />
+                            
+                            <ComboBox
+                                Grid.Column="3"
+                                Width="120"
+                                SelectedItem="{Binding PropertyName, Mode=TwoWay}"
+                                ItemsSource="{Binding Path=MediaItems, Converter={StaticResource modificationRulePropertyNamesConverter}, RelativeSource={RelativeSource AncestorType={x:Type windows:ModifyMediaItemsDialog}}}"/>
+
+                            <Button
+                                x:Name="btnAddRule"
+                                Grid.Column="4"
+                                Padding="4"
+                                Width="24"
+                                Height="24"
+                                Click="btnAddRule_Click">
+                                <Polygon
+                                    Stretch="Fill"
+                                    Fill="{Binding Path=Foreground, RelativeSource={RelativeSource AncestorType=Button}}"
+                                    Points="{StaticResource addPoints}" />
+                            </Button>
+
+                            <Button
+                                x:Name="btnDelete"
+                                Grid.Column="5"
+                                Padding="5"
+                                Width="24"
+                                Height="24"
+                                IsEnabled="{Binding Path=Index, Converter={StaticResource numberGreateThanParameterBooleanConverter}, ConverterParameter=0}"
+                                Click="btnDeleteRule_Click">
+                                <Polygon
+                                    Stretch="Fill"
+                                    Fill="{Binding Path=Foreground, RelativeSource={RelativeSource AncestorType=Button}}"
+                                    Stroke="{Binding Path=Foreground, RelativeSource={RelativeSource AncestorType=Button}}"
+                                    StrokeThickness="1"
+                                    Points="{StaticResource deletePoints}" />
+                            </Button>
+                        </Grid>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+        
+        <Button
+            x:Name="btnOK"
+            Grid.Row="1"
+            HorizontalAlignment="Center"
+            Margin="6"
+            Content="OK"
+            Width="80"
+            Click="btnOK_Click" />
+    </Grid>
+</Window>

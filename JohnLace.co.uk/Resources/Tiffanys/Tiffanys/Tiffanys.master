@@ -1,0 +1,48 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Tiffanys.master.cs" Inherits="Tiffanys_Tiffanys" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajax" %>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head runat="server">
+        <title>Tiffanys Card and Gift Shop</title>
+        
+        <link href="CSS/Global.css" rel="stylesheet" type="text/css" />
+        <asp:ContentPlaceHolder ID="cphHead" runat="server" />
+    </head>
+    <body>
+        <form id="form1" runat="server">
+            <ajax:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server" />
+            
+            <div id="wrapper">
+                
+                <div class="header">
+                    <div class="title">
+                        <div class="logo">
+                            <h1><img src="Images/logo.png" /></h1>
+                            <h2><img src="Images/card_and_gift_shop.png" /></h2>
+                        </div>
+                        <div class="title_address">70 King Street<br />Knutsford<br />Cheshire<br />WA16 6ED<br />01565653292<br />kingstreetcards@tiffanys.org.uk</div>
+                    </div>
+                    <div class="navigation">
+                        <div class="<%= GetNavItemCssClass(NavItem.Home) %>" onclick="window.location = 'Default.aspx';">Home</div>
+                        <div class="nav_bullet"></div>
+                        <div class="<%= GetNavItemCssClass(NavItem.GreetingsCards) %>" onclick="window.location = 'GreetingsCards.aspx';">Greetings Cards</div>
+                        <div class="nav_bullet"></div>
+                        <div class="<%= GetNavItemCssClass(NavItem.ThorntonsChocolates) %>" onclick="window.location = 'ThorntonsChocolates.aspx';">Thorntons Chocolates</div>
+                        <div class="nav_bullet"></div>
+                        <div class="<%= GetNavItemCssClass(NavItem.HeliumBalloons) %>" onclick="window.location = 'HeliumBalloons.aspx';">Helium Ballons</div>
+                        <div class="nav_bullet"></div>
+                        <div class="<%= GetNavItemCssClass(NavItem.FindUs) %>" onclick="window.location = 'FindUs.aspx';">Find Us</div>
+                    </div>
+                </div>
+                
+                <div class="content"><asp:ContentPlaceHolder id="cphBody" runat="server" /></div>
+                
+                <div class="footer">
+                    <div class="copyright_info">Copyright &copy; <%= DateTime.Now.Year.ToString() %> - <a href="Default.aspx">King Street Cards Ltd</a> - All rights reserved</div>
+                    <div class="credit">Website by <a href="http://www.johnlace.co.uk" target="_blank">John Lace</a></div>
+                </div>
+            </div>
+        </form>
+    </body>
+</html>

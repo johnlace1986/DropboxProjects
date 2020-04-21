@@ -1,0 +1,464 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{2526C94F-387C-4265-89C6-A79B497226BC}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>NisbetPhotography.Website</RootNamespace>
+    <AssemblyName>NisbetPhotography.Website</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <SilverlightApplicationList>{EE907DD5-4EA7-4835-B04C-8DD369F8941A}|..\NisbetPhotography.MultipleImageUploader\NisbetPhotography.MultipleImageUploader.csproj|ClientBin|False</SilverlightApplicationList>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <TargetFrameworkProfile />
+    <UseIISExpress>false</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AjaxControlToolkit, Version=3.5.40412.0, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLL\AjaxControlToolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.Mobile" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="CSS\ContactUs.css" />
+    <Content Include="CSS\Copyright.css" />
+    <Content Include="CSS\Global.css" />
+    <Content Include="CSS\NisbetPhotography.css" />
+    <Content Include="CSS\nivo-slider.css" />
+    <Content Include="CSS\Portfolio.css" />
+    <Content Include="CSS\Slider.css" />
+    <Content Include="NisbetPhotographyService.svc" />
+    <Content Include="Private\CSS\Default.css" />
+    <Content Include="Private\Customer\ContentErrorPage.aspx" />
+    <Content Include="Private\Customer\CSS\Customer.css" />
+    <Content Include="Private\Customer\CSS\CustomerAlbum.css" />
+    <Content Include="Private\Customer\CSS\PersonalDetails.css" />
+    <Content Include="Private\Customer\CustomerAlbum.aspx" />
+    <Content Include="Private\Customer\Default.aspx" />
+    <Content Include="Private\Customer\Images\customer_domain.png" />
+    <Content Include="Private\Customer\Images\navigation_account.png" />
+    <Content Include="Private\Customer\Images\navigation_albums.png" />
+    <Content Include="Private\Customer\Images\navigation_selected.png" />
+    <Content Include="Private\Customer\Images\option_button.png" />
+    <Content Include="Private\Customer\PersonalDetails.aspx" />
+    <Content Include="Private\Images\log_in_background_texture.png" />
+    <Content Include="Private\Default.aspx" />
+    <Content Include="Images\arrows.png" />
+    <Content Include="Images\background_gradient.png" />
+    <Content Include="Images\background_texture.png" />
+    <Content Include="Images\button.png" />
+    <Content Include="Images\contact_us_background.png" />
+    <Content Include="Images\ContentImages\AboutUs\001.jpg" />
+    <Content Include="Images\ContentImages\AboutUs\002.jpg" />
+    <Content Include="Images\ContentImages\AboutUs\003.jpg" />
+    <Content Include="Images\ContentImages\AboutUs\004.jpg" />
+    <Content Include="Images\ContentImages\AboutUs\005.jpg" />
+    <Content Include="Images\ContentImages\AboutUs\006.jpg" />
+    <Content Include="Images\ContentImages\Default\001.JPG" />
+    <Content Include="Images\ContentImages\Default\002.JPG" />
+    <Content Include="Images\ContentImages\Default\003.JPG" />
+    <Content Include="Images\ContentImages\Default\004.JPG" />
+    <Content Include="Images\ContentImages\Default\005.JPG" />
+    <Content Include="Images\ContentImages\Default\006.JPG" />
+    <Content Include="Images\content_image_background_texture.png" />
+    <Content Include="Images\content_text_background_texture.png" />
+    <Content Include="Images\header_banner_texture.png" />
+    <Content Include="Images\loading.gif" />
+    <Content Include="Images\logo.png" />
+    <Content Include="Images\nav_item_about_us.png" />
+    <Content Include="Images\nav_item_contact_us.png" />
+    <Content Include="Images\nav_item_home.png" />
+    <Content Include="Images\nav_item_portfolio.png" />
+    <Content Include="Images\portfolio_category_text_background.png" />
+    <Content Include="Images\portfolio_gallery_background.png" />
+    <Content Include="Images\small_banner_texture.png" />
+    <Content Include="Images\textbox.png" />
+    <Content Include="Images\textbox_multiline.png" />
+    <Content Include="Scripts\js\Global.js" />
+    <Content Include="Scripts\js\jquery.min.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AboutUs.aspx.cs">
+      <DependentUpon>AboutUs.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AboutUs.aspx.designer.cs">
+      <DependentUpon>AboutUs.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Business\AlbumTypeEnum.cs" />
+    <Compile Include="Business\BasePage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Business\UploadImageTypeEnum.cs" />
+    <Compile Include="ContactUs.aspx.cs">
+      <DependentUpon>ContactUs.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ContactUs.aspx.designer.cs">
+      <DependentUpon>ContactUs.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ContentErrorPage.aspx.cs">
+      <DependentUpon>ContentErrorPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ContentErrorPage.aspx.designer.cs">
+      <DependentUpon>ContentErrorPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Copyright.aspx.cs">
+      <DependentUpon>Copyright.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Copyright.aspx.designer.cs">
+      <DependentUpon>Copyright.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="INisbetPhotographyService.cs" />
+    <Compile Include="NisbetPhotographyService.svc.cs">
+      <DependentUpon>NisbetPhotographyService.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Private\Admin\Admin.Master.cs">
+      <DependentUpon>Admin.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Private\Admin\Admin.Master.designer.cs">
+      <DependentUpon>Admin.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Private\Admin\ContentErrorPage.aspx.cs">
+      <DependentUpon>ContentErrorPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Private\Admin\ContentErrorPage.aspx.designer.cs">
+      <DependentUpon>ContentErrorPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Private\Admin\Customer.aspx.cs">
+      <DependentUpon>Customer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Private\Admin\Customer.aspx.designer.cs">
+      <DependentUpon>Customer.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Private\Admin\CustomerAlbum.aspx.cs">
+      <DependentUpon>CustomerAlbum.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Private\Admin\CustomerAlbum.aspx.designer.cs">
+      <DependentUpon>CustomerAlbum.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Private\Admin\Customers.aspx.cs">
+      <DependentUpon>Customers.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Private\Admin\Customers.aspx.designer.cs">
+      <DependentUpon>Customers.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Private\Admin\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Private\Admin\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Private\Admin\Errors.aspx.cs">
+      <DependentUpon>Errors.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Private\Admin\Errors.aspx.designer.cs">
+      <DependentUpon>Errors.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Private\Admin\ImagesHandler.ashx.cs">
+      <DependentUpon>ImagesHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Private\Admin\Portfolio.aspx.cs">
+      <DependentUpon>Portfolio.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Private\Admin\Portfolio.aspx.designer.cs">
+      <DependentUpon>Portfolio.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Private\Admin\PortfolioCategory.aspx.cs">
+      <DependentUpon>PortfolioCategory.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Private\Admin\PortfolioCategory.aspx.designer.cs">
+      <DependentUpon>PortfolioCategory.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Private\Admin\PublicAlbum.aspx.cs">
+      <DependentUpon>PublicAlbum.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Private\Admin\PublicAlbum.aspx.designer.cs">
+      <DependentUpon>PublicAlbum.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Private\Admin\PublicAlbums.aspx.cs">
+      <DependentUpon>PublicAlbums.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Private\Admin\PublicAlbums.aspx.designer.cs">
+      <DependentUpon>PublicAlbums.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Private\Admin\Error.aspx.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Private\Admin\Error.aspx.designer.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Private\Customer\ContentErrorPage.aspx.cs">
+      <DependentUpon>ContentErrorPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Private\Customer\ContentErrorPage.aspx.designer.cs">
+      <DependentUpon>ContentErrorPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Private\Customer\Customer.Master.cs">
+      <DependentUpon>Customer.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Private\Customer\Customer.Master.designer.cs">
+      <DependentUpon>Customer.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Private\Customer\CustomerAlbum.aspx.cs">
+      <DependentUpon>CustomerAlbum.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Private\Customer\CustomerAlbum.aspx.designer.cs">
+      <DependentUpon>CustomerAlbum.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Private\Customer\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Private\Customer\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Private\Customer\PersonalDetails.aspx.cs">
+      <DependentUpon>PersonalDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Private\Customer\PersonalDetails.aspx.designer.cs">
+      <DependentUpon>PersonalDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Private\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Private\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="NisbetPhotographyMaster.Master.cs">
+      <DependentUpon>NisbetPhotographyMaster.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="NisbetPhotographyMaster.Master.designer.cs">
+      <DependentUpon>NisbetPhotographyMaster.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Portfolio.aspx.cs">
+      <DependentUpon>Portfolio.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Portfolio.aspx.designer.cs">
+      <DependentUpon>Portfolio.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Public\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Public\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Public\Public.Master.cs">
+      <DependentUpon>Public.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Public\Public.Master.designer.cs">
+      <DependentUpon>Public.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Public\PublicAlbum.aspx.cs">
+      <DependentUpon>PublicAlbum.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Public\PublicAlbum.aspx.designer.cs">
+      <DependentUpon>PublicAlbum.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Slider.Master.cs">
+      <DependentUpon>Slider.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Slider.Master.designer.cs">
+      <DependentUpon>Slider.Master</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="NisbetPhotographyMaster.Master" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AboutUs.aspx" />
+    <Content Include="ContactUs.aspx" />
+    <Content Include="Copyright.aspx" />
+    <Content Include="Default.aspx" />
+    <Content Include="Portfolio.aspx" />
+    <Content Include="Silverlight.js" />
+    <Content Include="Slider.Master" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NisbetPhotography.DbObjects\NisbetPhotography.DbObjects.csproj">
+      <Project>{3E6C2FC5-0CA3-4A67-AB87-6E8DF87697F4}</Project>
+      <Name>NisbetPhotography.DbObjects</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ContentErrorPage.aspx" />
+    <Content Include="CSS\galleria.classic.css" />
+    <Content Include="Images\galleria\classic-loader.gif" />
+    <Content Include="Images\galleria\classic-map.png" />
+    <Content Include="Images\no_thumbnail_image.png" />
+    <Content Include="Private\Admin\Admin.Master" />
+    <Content Include="Private\Admin\ContentErrorPage.aspx" />
+    <Content Include="Private\Admin\CSS\Admin.css" />
+    <Content Include="Private\Admin\CSS\Errors.css" />
+    <Content Include="Private\Admin\CSS\Portfolio.css" />
+    <Content Include="Private\Admin\CSS\PortfolioCategory.css" />
+    <Content Include="Private\Admin\CSS\PublicAlbum.css" />
+    <Content Include="Private\Admin\CSS\PublicAlbums.css" />
+    <Content Include="Private\Admin\CSS\Error.css" />
+    <Content Include="Private\Admin\Customers.aspx" />
+    <Content Include="Private\Admin\Default.aspx" />
+    <Content Include="Private\Admin\Errors.aspx" />
+    <Content Include="Private\Admin\Images\administrator_domain.png" />
+    <Content Include="Private\Admin\Images\navigation_customers.png" />
+    <Content Include="Private\Admin\Images\navigation_errors.png" />
+    <Content Include="Private\Admin\Images\navigation_orders.png" />
+    <Content Include="Private\Admin\Images\navigation_portfolio.png" />
+    <Content Include="Private\Admin\Images\navigation_public_albums.png" />
+    <Content Include="Private\Admin\Images\navigation_selected.png" />
+    <Content Include="Private\Admin\Images\option_button.png" />
+    <Content Include="Private\Admin\Images\portfolio_category_background.png" />
+    <Content Include="Images\vertical_seperator.png" />
+    <Content Include="Private\Admin\Portfolio.aspx" />
+    <Content Include="Private\Admin\PortfolioCategory.aspx" />
+    <Content Include="Private\Admin\PublicAlbum.aspx" />
+    <Content Include="Private\Admin\PublicAlbums.aspx" />
+    <Content Include="Private\Admin\Error.aspx" />
+    <Content Include="Private\Images\logo.png" />
+    <Content Include="Scripts\js\galleria.classic.js" />
+    <Content Include="Scripts\js\galleria.js" />
+    <Content Include="Scripts\js\highlight.pack.js" />
+    <Content Include="Scripts\js\jquery.nivo.slider.pack.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Private\Admin\CSS\Customer.css" />
+    <Content Include="Private\Admin\CSS\CustomerAlbum.css" />
+    <Content Include="Private\Admin\CSS\Customers.css" />
+    <Content Include="Private\Admin\Customer.aspx" />
+    <Content Include="Private\Admin\CustomerAlbum.aspx" />
+    <Content Include="Public\CSS\Default.css" />
+    <Content Include="Public\CSS\Public.css" />
+    <Content Include="Public\Default.aspx" />
+    <Content Include="Public\Images\public_albums.png" />
+    <Content Include="Public\Public.Master" />
+    <Content Include="Public\PublicAlbum.aspx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="ClientBin\" />
+    <Folder Include="Images\ContentImages\Portfolio\" />
+    <Folder Include="Properties\" />
+    <Folder Include="Public\Images\ContentImages\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Private\Admin\ImagesHandler.ashx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Private\Customer\Customer.Master" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>2628</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

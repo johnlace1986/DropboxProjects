@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Name>MediaPlayer.Data</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>4.1</ProjectVersion>
+    <ProjectGuid>{e4756017-136e-4790-9cd1-861a8896861f}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql120DatabaseSchemaProvider</DSP>
+    <OutputType>Database</OutputType>
+    <RootPath>
+    </RootPath>
+    <RootNamespace>MediaPlayer.Data</RootNamespace>
+    <AssemblyName>MediaPlayer.Data</AssemblyName>
+    <ModelCollation>1033, CI</ModelCollation>
+    <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
+    <DeployToDatabase>True</DeployToDatabase>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetLanguage>CS</TargetLanguage>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <SqlServerVerification>False</SqlServerVerification>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+    <!-- Default to the v11.0 targets path if the targets file for the current VS version is not found -->
+    <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
+    <VisualStudioVersion Condition="'$(SSDTExists)' == ''">11.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Condition="'$(SQLDBExtensionsRefPath)' != ''" Project="$(SQLDBExtensionsRefPath)\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <ItemGroup>
+    <Folder Include="Properties" />
+    <Folder Include="dbo\" />
+    <Folder Include="dbo\Tables\" />
+    <Folder Include="dbo\Stored Procedures\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="dbo\Tables\Video.sql" />
+    <Build Include="dbo\Tables\Song.sql" />
+    <Build Include="dbo\Tables\RootFolderTag.sql" />
+    <Build Include="dbo\Tables\RootFolder.sql" />
+    <Build Include="dbo\Tables\MediaItemTag.sql" />
+    <Build Include="dbo\Tables\MediaItemPlayHistory.sql" />
+    <Build Include="dbo\Tables\MediaItemPart.sql" />
+    <Build Include="dbo\Tables\MediaItem.sql" />
+    <Build Include="dbo\Tables\FileTypeExtension.sql" />
+    <Build Include="dbo\Tables\FileType.sql" />
+    <Build Include="dbo\Tables\DeletedSongITunesId.sql" />
+    <Build Include="dbo\Stored Procedures\UpdateVideo.sql" />
+    <Build Include="dbo\Stored Procedures\UpdateSong.sql" />
+    <Build Include="dbo\Stored Procedures\UpdateRootFolder.sql" />
+    <Build Include="dbo\Stored Procedures\UpdateMediaItemPart.sql" />
+    <Build Include="dbo\Stored Procedures\UpdateFileType.sql" />
+    <Build Include="dbo\Stored Procedures\RootFolderPathExists.sql" />
+    <Build Include="dbo\Stored Procedures\RemoveExtensionFromFileType.sql" />
+    <Build Include="dbo\Stored Procedures\MediaItemPartLocationExists.sql" />
+    <Build Include="dbo\Stored Procedures\GetVideoById.sql" />
+    <Build Include="dbo\Stored Procedures\GetSongById.sql" />
+    <Build Include="dbo\Stored Procedures\GetRootFolderTagsByPriority.sql" />
+    <Build Include="dbo\Stored Procedures\GetRootFoldersByType.sql" />
+    <Build Include="dbo\Stored Procedures\GetRootFolderByPriority.sql" />
+    <Build Include="dbo\Stored Procedures\GetMediaItemTagsById.sql" />
+    <Build Include="dbo\Stored Procedures\GetMediaItems.sql" />
+    <Build Include="dbo\Stored Procedures\GetMediaItemPlayHistoryById.sql" />
+    <Build Include="dbo\Stored Procedures\GetMediaItemPartsById.sql" />
+    <Build Include="dbo\Stored Procedures\GetFileTypes.sql" />
+    <Build Include="dbo\Stored Procedures\GetFileTypeById.sql" />
+    <Build Include="dbo\Stored Procedures\GetExtensionsByFileTypeId.sql" />
+    <Build Include="dbo\Stored Procedures\GetDeletedSongITunesIds.sql" />
+    <Build Include="dbo\Stored Procedures\GenerateIdNumber.sql" />
+    <Build Include="dbo\Stored Procedures\FileTypeNameExists.sql" />
+    <Build Include="dbo\Stored Procedures\DeleteRootFolderTag.sql" />
+    <Build Include="dbo\Stored Procedures\DeleteRootFolder.sql" />
+    <Build Include="dbo\Stored Procedures\DeleteMediaItemTag.sql" />
+    <Build Include="dbo\Stored Procedures\DeleteMediaItemPart.sql" />
+    <Build Include="dbo\Stored Procedures\DeleteMediaItem.sql" />
+    <Build Include="dbo\Stored Procedures\DeleteFileType.sql" />
+    <Build Include="dbo\Stored Procedures\DeleteDeletedSongITunesId.sql" />
+    <Build Include="dbo\Stored Procedures\AddVideo.sql" />
+    <Build Include="dbo\Stored Procedures\AddSong.sql" />
+    <Build Include="dbo\Stored Procedures\AddRootFolderTag.sql" />
+    <Build Include="dbo\Stored Procedures\AddRootFolder.sql" />
+    <Build Include="dbo\Stored Procedures\AddMediaItemTag.sql" />
+    <Build Include="dbo\Stored Procedures\AddMediaItemPlayHistory.sql" />
+    <Build Include="dbo\Stored Procedures\AddMediaItemPart.sql" />
+    <Build Include="dbo\Stored Procedures\AddFileType.sql" />
+    <Build Include="dbo\Stored Procedures\AddExtensionToFileType.sql" />
+    <Build Include="dbo\Stored Procedures\AddDeletedSongITunesId.sql" />
+  </ItemGroup>
+</Project>

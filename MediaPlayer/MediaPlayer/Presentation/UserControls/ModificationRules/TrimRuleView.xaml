@@ -1,0 +1,48 @@
+﻿<UserControl
+    x:Class="MediaPlayer.Presentation.UserControls.ModificationRules.TrimRuleView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:etk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit/extended"
+    xmlns:rules="clr-namespace:MediaPlayer.Presentation.UserControls.ModificationRules"
+    xmlns:brules="clr-namespace:MediaPlayer.Business.ModificationRules"
+    xmlns:ubusiness="clr-namespace:Utilities.Business;assembly=Utilities"
+    mc:Ignorable="d" 
+    d:DesignHeight="36"
+    d:DesignWidth="300">
+    <UserControl.Resources>
+
+        <Style TargetType="{x:Type Label}" BasedOn="{StaticResource labelStyle}">
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
+        </Style>
+
+    </UserControl.Resources>
+    
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="48" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="36" />
+        </Grid.ColumnDefinitions>
+        
+        <etk:IntegerUpDown
+            Grid.Column="0"
+            Value="{Binding Path=Rule.CharactersToTrim, RelativeSource={RelativeSource AncestorType={x:Type rules:TrimRuleView}}}" />
+        
+        <Label
+            Grid.Column="1"
+            Content="from" />
+        
+        <ComboBox
+            Grid.Column="2"
+            ItemsSource="{Binding Source={ubusiness:EnumerationExtension {x:Type brules:TrimRulePositionEnum}}}"
+            SelectedItem="{Binding Path=Rule.Position, Mode=TwoWay, RelativeSource={RelativeSource AncestorType={x:Type rules:TrimRuleView}}}"/>
+
+        <Label
+            Grid.Column="3"
+            Content="of" />
+
+    </Grid>
+</UserControl>

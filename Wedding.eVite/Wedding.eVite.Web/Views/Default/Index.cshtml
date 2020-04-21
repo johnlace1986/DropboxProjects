@@ -1,0 +1,34 @@
+﻿@using Wedding.eVite.Business
+
+@{
+    ViewBag.Title = "Home";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section HeaderSection
+{
+    <script src="~/Scripts/jquery.slideshow.js"></script>
+    <script src="~/Scripts/Default.Index.js"></script>
+}
+
+<div style="height: 500px;">
+    <div class="default_image"></div>
+
+    <div class="default_text">
+        <p>Hello and welcome!</p>
+
+        <p>Thank you for taking the time to visit our wedding website.</p>
+
+        <p>As you probably already know, in June 2014 we got engaged after 4 wonderful years together and we will finally be tying the knot on Friday 29th July 2016 at <a href="http://www.sandholeoakbarn-weddings.co.uk/" target="_blank">Sandhole Oak Barn in Congleton.</a></p>
+        
+        <p>We have set up this website for our guests which we hope you will enjoy looking through. You can <a href="~/RSVP">respond to your invitation</a>, <a href="~/BigDay">find out lots of useful information about the venue and the big day</a>, <a href="~/Messages">get in contact with us</a> with any questions you may have and lots, lots more.</p>
+        
+        <p>We will even be uploading our <a href="~/Photos">wedding photos</a> that you will be able to peruse at your leisure and you will also be able to upload your own snaps to share with us and the rest of our guests.</p>
+        
+        <p>We hope you enjoy using this website and we look forward to seeing you @(ViewBag.WeLookForwardToSeeingYou) to help us celebrate our special day in style!</p>
+        
+        <p>Lots of love…</p>
+
+        <h3>John <span style="color: #bfbfbf;">&amp;</span> Lizzie</h3>
+    </div>
+</div>

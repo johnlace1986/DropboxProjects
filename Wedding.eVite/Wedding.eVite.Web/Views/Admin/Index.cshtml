@@ -1,0 +1,137 @@
+﻿@using Wedding.eVite.Business
+@using Wedding.eVite.Web.Models
+
+@model IEnumerable<AdminInviteController>
+
+@{
+    ViewBag.Title = "Admin";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@section HeaderSection {
+    <script src="~/Scripts/jquery.watermark.js"></script>
+    <script src="~/Scripts/jquery.loading.js"></script>
+    <script src="~/Scripts/Admin.Index.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            setInvitesContainerHeight();
+            loadSummary();
+
+            $('#txtFilter').watermark('Filter...', { useNative: false, className: 'watermark' });
+        });
+
+        window.onresize = function () {
+            setInvitesContainerHeight();
+        };
+    </script>
+}
+
+<div>
+    
+    <div class="admin_index_invite_summary cf">
+        <ul>
+            <li>
+                <a href="~/Admin/Guests">
+                    <p>Total Guests</p>
+                    <p data-totalGuests></p>
+                </a>
+            </li>
+            <li>
+                <a href="~/Admin/Guests/yes">
+                    <p>Guests attending</p>
+                    <p data-guestsAttending></p>
+                </a>
+            </li>
+            <li>
+                <a href="~/Admin/Guests/no">
+                    <p>Guests not attending</p>
+                    <p data-guestsNotAttending></p>
+                </a>
+            </li>
+            <li>
+                <a href="~/Admin/Guests/unknown">
+                    <p>Guests not RSVP'd</p>
+                    <p data-guestsNoRSVP></p>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="admin_index_invites">
+        <table width="100%" cellpadding="0" cellspacing="0">
+            <colgroup>
+                <col width="40" />
+                <col width="259" />
+                <col width="348" />
+                <col width="48" />
+                <col width="204" />
+            </colgroup>
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Email Address</th>
+                    <th>Guests</th>
+                    <th>RSVP</th>
+                    <th style="text-align: right;"><input id="txtFilter" type="text" class="textbox" onkeyup="filterInvites(this.value);" style="width: 151px;" /></th>                    
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (AdminInviteController invite in Model)
+                {
+                    <tr id="@("trInvite" + invite.Invite.Id)">
+                        <td>@if (invite.Invite.IsAdmin) { <text><img src="~/Content/Images/is_admin.png" title="Admin invitation" /></text> } </td>
+                        <td>@invite.Invite.EmailAddress</td>
+                        <td>@invite.Invite.GuestList</td>
+                        <td style="text-align: center;">@if (invite.Invite.RSVP) { <text><img src="~/Content/Images/tick.png" title="All guests have RSVP'd" /></text> }</td>
+                        <td style="padding: 0px; position:relative;">
+                            <ul class="admin_index_invites_buttons">
+                                <li><a href="~/Admin/Invite/@invite.Invite.Id"><div class="admin_index_invites_buttons_edit" title="Edit Invite">&nbsp;</div></a></li>
+                                @if (invite.Invite.Id != ViewBag.LoggedInInvite.Id) { 
+                                    <li><input type="button" class="button admin_index_invites_buttons_delete" title="Delete Invite" onclick="deleteInvite(@invite.Invite.Id, '@invite.Invite.GuestList');" /></li>
+                                }
+                                @if (!invite.Invite.IsAdmin) { 
+                                    <li class="admin_index_invites_buttons_messages">
+                                        <a href="~/Admin/Messages/@invite.Invite.Id" title="View Messages">
+                                            <div class="admin_index_invites_buttons_unread_messages_count">@(invite.UnreadMessageCount == 0 ? String.Empty : invite.UnreadMessageCount.ToString())</div>
+                                        </a>
+                                    </li>
+                                    <li><input type="button" class="button admin_index_invites_buttons_email" title="Email Invite" onclick="sendInviteEmail(@invite.Invite.Id)" /></li>
+                                }
+                            </ul>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <div class="admin_index_add_invite cf">
+        <input id="btnAddInvite" type="button" class="button" value="Add Invite" onclick="location.href = '@Url.Action("Invite", "Admin")';" />
+        <input id="btnSendGiftWebsiteEmails" type="button" class="button" value="Send Gift Notification Emails" onclick="sendGiftWebsiteEmails();" />
+    </div>
+
+</div>
+
+<div id="divDeleteInvite" class="modalDialog">
+    <p>Are you sure you want to delete the invite for <label id="lblDeleteInviteName"></label>?</p>
+    <div class="admin_index_delete_invite_loading">&nbsp;</div>
+</div>
+
+<div id="divSendEmail" class="modalDialog">
+    <table width="100%" cellpadding="0" cellspacing="0">
+        <tr>
+            <td style="width: 32px;"><div class="admin_index_send_email_loading">&nbsp;</div></td>
+            <td><div class="admin_index_send_email_message"></div></td>
+        </tr>
+    </table>    
+</div>
+
+<div id="divSendGiftWebsiteEmails" class="modalDialog">
+    <p>Are you sure you want to send the gift notification emails?</p>
+    <div class="admin_index_send_gift_notification_emails_loading">&nbsp;</div>
+</div>
+
+<div id="divError" class="modalDialog">
+    <p>Something has gone wrong. Please check errors.</p>
+</div>

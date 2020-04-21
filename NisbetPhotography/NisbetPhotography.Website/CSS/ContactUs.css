@@ -1,0 +1,43 @@
+﻿.contact_us
+{
+	position: relative;
+	left: 50%;
+	margin: 72px 0px 72px -239px;
+	background-image: url('../Images/contact_us_background.png');
+	width: 442px;
+	height: 299px;
+	padding: 12px 18px;
+}
+
+.description
+{
+	float: left;
+	width: 224px;
+}
+
+.user_form
+{
+	float: right;
+	position: relative;
+	top: -6px;
+}
+
+.send
+{
+	margin-top: -6px;
+	float: left;
+	width: 100%;
+}
+
+.send_button
+{
+	float: right;
+}
+
+.error_label
+{
+	float: left;
+	padding: 6px 0px;
+	width: 360px;
+	color: #ff0000;
+}

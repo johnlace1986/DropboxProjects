@@ -1,0 +1,12 @@
+﻿<%@ Page Title="Nisbet Photography - About Us" Language="C#" MasterPageFile="Slider.Master" AutoEventWireup="true" CodeBehind="AboutUs.aspx.cs" Inherits="NisbetPhotography.Website.AboutUs" %>
+<%@ MasterType VirtualPath="Slider.master" %>
+
+<asp:Content ID="conAboutUsHead" ContentPlaceHolderID="cphSliderHead" Runat="Server">
+</asp:Content>
+
+<asp:Content ID="conAboutUsBody" ContentPlaceHolderID="cphSliderBody" Runat="Server">
+    <p>Both Caroline and I have been using Canon EOS cameras and equipment for around ten years now. The first camera we shared was an EOS 300 35mm film camera which definitely gave us the bug for taking photographs. Some of the early photographs taken with this camera are still some of our all time favourites. Maybe this is because as our memories get older the printed record of a moment in time becomes even more valuable.</p>
+    <p>This camera was soon added to with a digital version, the EOS 350D; some additional lenses were also purchased at this time. This enabled our skills and experience to be further enhanced. We continued with this camera for a good few years but due to the rapid development of the technology surrounding digital photography the EOS 300 film camera became an ornament on the shelf and was replaced with the EOS 500D. Again additional lenses and equipment were added to extend our ability to take pictures in different situations.</p>
+    <p>As Caroline and I are both from an IT background the use of digital image processing was a natural extension to the skills we were gaining in photography, we have sampled and used many different software packages and workflow systems during the years. This has given us a vast amount of experience in not only managing the photographs that we take but also in repairing and renovating images that friends and family have asked us to reprint for them.</p>
+    <p>As well as the investment described above we have now also purchased a new Canon EOS 7D camera, lighting equipment, both for use in the studio, and for mobile locations and we have standardised our software on the Adobe suite of programs for photography using Lightroom 3.2 and Photoshop CS5. This provides us with the tools to capture and develop the images in the way that suits.</p>
+</asp:Content>

@@ -1,0 +1,91 @@
+﻿<Window
+    x:Class="MediaPlayer.Presentation.Windows.FileTypeDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:windows="clr-namespace:MediaPlayer.Presentation.Windows"
+    Style="{StaticResource dialogWindow}"
+    Title=""
+    Width="300"
+    Height="300"
+    WindowStartupLocation="CenterScreen"
+    ShowInTaskbar="False"
+    Loaded="Window_Loaded">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        
+        <Label
+            Grid.Row="0"
+            Grid.Column="0"
+            Content="Name:" />
+        
+        <TextBox
+            x:Name="txtName"
+            Grid.Row="0"
+            Grid.Column="1"
+            Text="{Binding Path=SelectedFileType.Name, Mode=TwoWay, RelativeSource={RelativeSource AncestorType={x:Type windows:FileTypeDialog}}}"
+            GotFocus="txtName_GotFocus"/>
+        
+        <Label
+            Grid.Row="1"
+            Grid.Column="0"
+            Content="Extensions:" />
+        
+        <ListBox
+            x:Name="lstExtensions"
+            Grid.Row="1"
+            Grid.Column="1"
+            SelectionMode="Extended"
+            ItemsSource="{Binding Path=SelectedFileType.Extensions, Mode=OneWay, RelativeSource={RelativeSource AncestorType={x:Type windows:FileTypeDialog}}}"
+            KeyUp="lstExtensions_KeyUp"/>
+        
+        <Grid
+            Grid.Row="2"
+            Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            
+            <TextBox
+                x:Name="txtExtension"
+                Grid.Column="0"
+                KeyUp="txtExtension_KeyUp"/>
+            
+            <Button
+                x:Name="btnAddExtension"
+                Grid.Column="1"
+                Margin="6"
+                Content="+"
+                Click="btnAddExtension_Click" />
+            
+            <Button
+                x:Name="btnRemoveExtension"
+                Grid.Column="2"
+                Margin="6"
+                Content="x"
+                Click="btnRemoveExtension_Click" />
+        </Grid>
+        
+        <Button
+            x:Name="btnOK"
+            Grid.Row="3"
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            Margin="6"
+            Content="OK"
+            Width="60"
+            HorizontalAlignment="Center"
+            Click="btnOK_Click" />
+    </Grid>
+</Window>

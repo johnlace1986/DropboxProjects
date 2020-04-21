@@ -1,0 +1,52 @@
+﻿.default_content h3
+{
+	padding: 18px 0px;
+}
+
+.welcome
+{
+	height: 380px;
+}
+
+.left_hand_side
+{
+	float: left;
+	width: 40%;
+}
+
+.right_hand_side
+{
+	float: right;
+	width: 50%;
+}
+
+.highlighted_box
+{
+	border: solid 1px #9dca5d;
+	background-color: #528037;
+	padding: 12px;
+	color: #ffffff;
+}
+
+.highlighted_box h3
+{
+	padding: 0px 0px 12px 0px;
+	margin: 0;
+	color: #ffffff;	
+}
+
+.latest_work
+{
+    height: 380px;
+}
+
+.latest_work_description
+{
+    width: 450px;
+    float: right;
+}
+
+.latest_work_screenshot
+{
+    float: left;
+}

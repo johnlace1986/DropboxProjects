@@ -1,0 +1,126 @@
+﻿<UserControl
+    x:Class="MediaPlayer.Presentation.UserControls.MediaItemViews.MediaItemsView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:miv="clr-namespace:MediaPlayer.Presentation.UserControls.MediaItemViews"
+    xmlns:vc="clr-namespace:MediaPlayer.ValueConverters"
+    xmlns:uvc="clr-namespace:Utilities.ValueConverters;assembly=Utilities"
+    xmlns:ce="clr-namespace:MediaPlayer.Presentation.UserControls.ControlExtenders"
+    xmlns:ts="clr-namespace:MediaPlayer.TemplateSelectors"
+    mc:Ignorable="d" 
+    d:DesignHeight="300"
+    d:DesignWidth="300">
+    <UserControl.Resources>
+        <vc:MediaItemCollectionConverter x:Key="mediaItemCollectionConverter" />
+        <uvc:BooleanVisibilityConverter x:Key="booleanVisibilityConverter" />
+    </UserControl.Resources>
+    <Grid>
+        <ce:ItemsSourceTrackingDataGrid
+            x:Name="dgMediaItems" 
+            Tag="{Binding Path=EnablePlayOptions, Mode=OneWay, Converter={StaticResource booleanVisibilityConverter}, RelativeSource={RelativeSource AncestorType={x:Type miv:MediaItemsView}}}"
+            AutoGenerateColumns="{Binding Path=AutoGenerateColumns, RelativeSource={RelativeSource AncestorType={x:Type miv:MediaItemsView}}}"
+            RowStyleSelector="{StaticResource mediaItemRowStyleSelector}"
+            BorderBrush="Transparent"
+            BorderThickness="0"
+            Margin="0"
+            ItemsSource="{Binding Path=MediaItems, Converter={StaticResource mediaItemCollectionConverter}, RelativeSource={RelativeSource AncestorType={x:Type miv:MediaItemsView}}}"
+            SelectedIndex="{Binding Path=SelectedIndex, Mode=TwoWay, RelativeSource={RelativeSource AncestorType={x:Type miv:MediaItemsView}}}"
+            SelectedItem="{Binding Path=SelectedMediaItem, Mode=TwoWay, RelativeSource={RelativeSource AncestorType={x:Type miv:MediaItemsView}}}"
+            KeyUp="dgMediaItems_KeyUp"
+            MouseDoubleClick="dgMediaItems_MouseDoubleClick"
+            ItemsSourceChanged="dgMediaItems_ItemsSourceChanged">
+
+            <ce:ItemsSourceTrackingDataGrid.ContextMenu>
+                <ContextMenu
+                    x:Name="cmMediaItems"
+                    Opened="cmMediaItems_Opened">
+                    <MenuItem
+                        x:Name="miPlay"
+                        Header="Play"
+                        Click="miPlay_Click" />
+                    <MenuItem
+                        x:Name="miPlayFromHere"
+                        Header="Play from here"
+                        Click="miPlayFromHere_Click" />
+                    <MenuItem
+                        x:Name="miAddToNowPlaying"
+                        Header="Add to &quot;Now Playing...&quot;"
+                        Click="miAddToNowPlaying_Click" />
+                    <Separator
+                        x:Name="sepPlay"/>
+                    <MenuItem
+                        x:Name="miShowInExplorer"
+                        Header="Show in Explorer"
+                        Click="miShowInExplorer_Click" />
+                    <Separator />
+                    <MenuItem
+                        x:Name="miEdit"
+                        Header="Edit"
+                        Click="miEdit_Click" />
+                    <MenuItem
+                        x:Name="miModify"
+                        Header="Modify"
+                        Click="miModify_Click" />
+                    <MenuItem
+                        x:Name="miDelete"
+                        Header="Delete"
+                        Click="miDelete_Click" />
+                    <Separator />
+                    <MenuItem
+                        x:Name="miMergeParts"
+                        Header="Merge Parts"
+                        Click="miMergeParts_Click" />
+                    <MenuItem
+                        x:Name="miSetNameFromFilename"
+                        Header="Set name from filename"
+                        Click="miSetNameFromFilename_Click" />
+                    <MenuItem
+                        x:Name="miSetEpisodeNumber"
+                        Header="Set episode number...">
+                        <MenuItem
+                            x:Name="miSetEpisodeNumberFromTitle"
+                            Header="...from title"
+                            Click="miSetEpisodeNumberFromTitle_Click" />
+                        <MenuItem
+                            x:Name="miSetEpisodeNumberFromIndex"
+                            Header="...from index"
+                            Click="miSetEpisodeNumberFromIndex_Click" />
+                    </MenuItem>
+                    <MenuItem
+                        x:Name="miSetNumberOfEpisodesToSelectionCount"
+                        Header="Set number of episodes to selection"
+                        Click="miSetNumberOfEpisodesToSelectionCount_Click" />
+                    <MenuItem
+                        x:Name="miSetTrackNumber"
+                        Header="Set track number...">
+                        <MenuItem
+                            x:Name="miSetTrackNumberFromTitle"
+                            Header="...from title"
+                            Click="miSetTrackNumberFromTitle_Click" />
+                        <MenuItem
+                            x:Name="miSetTrackNumberFromIndex"
+                            Header="...from index"
+                            Click="miSetTrackNumberFromIndex_Click" />
+                    </MenuItem>
+                    <MenuItem
+                        x:Name="miSetNumberOfTracksToSelectionCount"
+                        Header="Set number of tracks to selection"
+                        Click="miSetNumberOfTracksToSelectionCount_Click" />
+                    <Separator />
+                    <MenuItem
+                        x:Name="miTags"
+                        Header="Tags"
+                        Click="miTags_Click" />
+                    <Separator />
+                    <MenuItem
+                        x:Name="miExport"
+                        Header="Export..."
+                        Click="miExport_Click"/>
+                </ContextMenu>
+            </ce:ItemsSourceTrackingDataGrid.ContextMenu>
+        </ce:ItemsSourceTrackingDataGrid>
+            
+    </Grid>
+</UserControl>

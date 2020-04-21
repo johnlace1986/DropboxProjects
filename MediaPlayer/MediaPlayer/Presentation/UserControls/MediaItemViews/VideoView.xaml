@@ -1,0 +1,112 @@
+﻿<UserControl
+    x:Class="MediaPlayer.Presentation.UserControls.MediaItemViews.VideoView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:etk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit/extended"
+    xmlns:miv="clr-namespace:MediaPlayer.Presentation.UserControls.MediaItemViews"   
+    xmlns:vc="clr-namespace:MediaPlayer.ValueConverters"
+    xmlns:uvc="clr-namespace:Utilities.ValueConverters;assembly=Utilities"
+    mc:Ignorable="d" 
+    d:DesignHeight="300"
+    d:DesignWidth="300">
+    <UserControl.Resources>
+        <uvc:IntelligentStringConverter x:Key="intelligentStringConverter" />
+        <vc:ShortUpDownConverter x:Key="shortUpDownConverter" />
+        <vc:VideoViewProgramsConverter x:Key="videoViewProgramsConverter" />        
+    </UserControl.Resources>
+    <Grid
+        Grid.Row="0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="80" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="80" />
+            <ColumnDefinition Width="80" />
+            <ColumnDefinition Width="40" />
+            <ColumnDefinition Width="80" />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+            
+        <Label
+            Grid.Row="0"
+            Grid.Column="0"
+            Content="Name:" />
+            
+        <TextBox
+            x:Name="txtName"
+            Grid.Row="0"
+            Grid.Column="1"
+            Text="{Binding Path=SelectedVideo.Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource intelligentStringConverter}, RelativeSource={RelativeSource AncestorType={x:Type miv:VideoView}}}"
+            GotFocus="element_GotFocus"/>
+
+        <Label
+            Grid.Row="0"
+            Grid.Column="2"
+            Content="Episode:" />
+
+        <etk:IntegerUpDown
+            x:Name="iudEpisode"
+            Grid.Row="0"
+            Grid.Column="3"
+            Minimum="1"
+            SelectAllOnGotFocus="True"
+            Text="{Binding Path=SelectedVideo.Episode, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource shortUpDownConverter}, RelativeSource={RelativeSource AncestorType={x:Type miv:VideoView}}}"
+            GotFocus="element_GotFocus" />
+
+        <Label
+            Grid.Row="0"
+            Grid.Column="4"
+            Content="of"
+            HorizontalContentAlignment="Center"/>
+
+        <etk:IntegerUpDown
+            x:Name="iudNumberOfEpisodes"
+            Grid.Row="0"
+            Grid.Column="5"
+            Minimum="1"
+            SelectAllOnGotFocus="True"
+            Value="{Binding Path=SelectedVideo.NumberOfEpisodes, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource shortUpDownConverter}, RelativeSource={RelativeSource AncestorType={x:Type miv:VideoView}}}"
+            GotFocus="element_GotFocus" />
+
+        <Label
+            Grid.Row="1"
+            Grid.Column="0"
+            Content="Program:" />
+
+        <ComboBox
+            x:Name="cmbProgram"
+            Grid.Row="1"
+            Grid.Column="1"
+            IsTextSearchEnabled="True"
+            IsTextSearchCaseSensitive="False"
+            IsEditable="True"
+            Text="{Binding Path=SelectedVideo.Program, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource intelligentStringConverter}, RelativeSource={RelativeSource AncestorType={x:Type miv:VideoView}}}"
+            GotFocus="element_GotFocus">
+            <ComboBox.ItemsSource>
+                <MultiBinding Converter="{StaticResource videoViewProgramsConverter}">
+                    <Binding Path="SelectedVideo" RelativeSource="{RelativeSource AncestorType={x:Type miv:VideoView}}" />
+                    <Binding Path="ShowHidden" RelativeSource="{RelativeSource AncestorType={x:Type miv:VideoView}}" />
+                </MultiBinding>
+            </ComboBox.ItemsSource>
+        </ComboBox>
+                                
+        <Label
+            Grid.Row="1"
+            Grid.Column="2"
+            Content="Series:" />
+
+        <etk:IntegerUpDown
+            x:Name="iudSeries"
+            Grid.Row="1"
+            Grid.Column="3"
+            Minimum="1"
+            SelectAllOnGotFocus="True"
+            Value="{Binding Path=SelectedVideo.Series, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource shortUpDownConverter}, RelativeSource={RelativeSource AncestorType={x:Type miv:VideoView}}}"
+            GotFocus="element_GotFocus" />
+    </Grid>
+</UserControl>

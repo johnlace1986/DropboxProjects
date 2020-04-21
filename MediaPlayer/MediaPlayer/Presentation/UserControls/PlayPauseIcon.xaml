@@ -1,0 +1,81 @@
+﻿<UserControl
+    x:Class="MediaPlayer.Presentation.UserControls.PlayPauseIcon"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:uc="clr-namespace:MediaPlayer.Presentation.UserControls"
+    xmlns:vc="clr-namespace:MediaPlayer.ValueConverters"
+    mc:Ignorable="d" 
+    d:DesignHeight="300"
+    d:DesignWidth="300">
+    <UserControl.Resources>
+        <vc:PlayIconVisibilityConverter x:Key="playIconVisibilityConverter" />
+        <vc:PauseIconVisibilityConverter x:Key="pauseIconVisibilityConverter" />
+        <vc:PlayPauseIconStoppedVisibilityConverter x:Key="playPauseIconStoppedVisibilityConverter" />
+    </UserControl.Resources>
+    <UserControl.Template>
+        <ControlTemplate TargetType="UserControl">
+            <Border
+                Background="{Binding Path=Background, RelativeSource={RelativeSource AncestorType={x:Type uc:PlayPauseIcon}}}"
+                Padding="{Binding Path=Padding, RelativeSource={RelativeSource AncestorType={x:Type uc:PlayPauseIcon}}}">
+                <Border.Visibility>
+                    <MultiBinding Converter="{StaticResource playPauseIconStoppedVisibilityConverter}">
+                        <Binding Path="PlayState" RelativeSource="{RelativeSource AncestorType={x:Type uc:PlayPauseIcon}}" />
+                        <Binding Path="VisibileWhenStopped" RelativeSource="{RelativeSource AncestorType={x:Type uc:PlayPauseIcon}}" />
+                    </MultiBinding>
+                </Border.Visibility>
+                <Grid>
+                    <Polygon
+                        x:Name="polPlay"
+                        Points="0,0 0,1 1,0.5"
+                        Stroke="{Binding Path=BorderBrush, RelativeSource={RelativeSource AncestorType={x:Type uc:PlayPauseIcon}}}"
+                        StrokeThickness="{Binding Path=BorderThickness, RelativeSource={RelativeSource AncestorType={x:Type uc:PlayPauseIcon}}}"
+                        Fill="{Binding Path=Foreground, RelativeSource={RelativeSource AncestorType={x:Type uc:PlayPauseIcon}}}"
+                        Stretch="Fill">
+                        <Polygon.Visibility>
+                            <MultiBinding Converter="{StaticResource playIconVisibilityConverter}">
+                                <Binding Path="PlayState" RelativeSource="{RelativeSource AncestorType={x:Type uc:PlayPauseIcon}}" />
+                                <Binding Path="ShowActionIcon" RelativeSource="{RelativeSource AncestorType={x:Type uc:PlayPauseIcon}}" />
+                            </MultiBinding>
+                        </Polygon.Visibility>
+                    </Polygon>
+
+                    <Grid>
+                        <Grid.Visibility>
+                            <MultiBinding Converter="{StaticResource pauseIconVisibilityConverter}">
+                                <Binding Path="PlayState" RelativeSource="{RelativeSource AncestorType={x:Type uc:PlayPauseIcon}}" />
+                                <Binding Path="ShowActionIcon" RelativeSource="{RelativeSource AncestorType={x:Type uc:PlayPauseIcon}}" />
+                            </MultiBinding>
+                        </Grid.Visibility>
+                        <Grid.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="Background" Value="{Binding Path=Foreground, RelativeSource={RelativeSource AncestorType={x:Type uc:PlayPauseIcon}}}" />
+                                <Setter Property="BorderBrush" Value="{Binding Path=BorderBrush, RelativeSource={RelativeSource AncestorType={x:Type uc:PlayPauseIcon}}}" />
+                                <Setter Property="BorderThickness" Value="{Binding Path=BorderThickness, RelativeSource={RelativeSource AncestorType={x:Type uc:PlayPauseIcon}}}" />
+                            </Style>
+                        </Grid.Resources>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="4.5*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="4.5*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Border
+                            Grid.Column="0">
+                            <TextBlock
+                                Text=" " />
+                        </Border>
+
+                        <Border
+                            Grid.Column="2">
+                            <TextBlock
+                                Text=" " />
+                        </Border>
+                    </Grid>
+                </Grid>
+            </Border>
+        </ControlTemplate>
+    </UserControl.Template>
+</UserControl>

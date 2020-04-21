@@ -1,0 +1,70 @@
+﻿.fields
+{
+	margin-bottom: 24px;
+}
+
+.field
+{
+	height: 43px;
+}
+
+.field_title
+{
+	float: left;
+	padding: 6px 0px;
+	width: 150px;
+	margin-right: 12px;
+}
+
+.field_label
+{
+	float: left;
+	padding: 6px 0px;
+}
+
+.field_textbox
+{
+	float: left;
+}
+
+.options
+{
+	height: 43px;
+	margin-bottom: 24px;
+}
+
+.option_buttons
+{
+	height: 43px;
+}
+
+ul.option_buttons
+{
+	margin: 0;
+	list-style: none;
+}
+
+ul.option_buttons li
+{
+	float: right;
+	margin-left: 12px;
+}
+
+.error_label
+{
+	height: 19px;
+	float: left;
+	padding: 12px 0px;
+	color: #ff0000;
+	text-align: center;
+	width: 100%;
+}
+
+.confirmation_label
+{
+	position: relative;
+	top: 12px;
+	padding: 12px 0px;
+	height: 19px;
+	margin-right: 24px;
+}

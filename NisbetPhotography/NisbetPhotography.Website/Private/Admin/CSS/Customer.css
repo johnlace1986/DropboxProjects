@@ -1,0 +1,120 @@
+﻿.fields
+{
+	margin-bottom: 24px;
+}
+
+.field
+{
+	height: 43px;
+}
+
+.field_title
+{
+	float: left;
+	padding: 6px 0px;
+	width: 120px;
+	margin-right: 12px;
+}
+
+.field_label
+{
+	float: left;
+	padding: 6px 0px;
+}
+
+.field_textbox
+{
+	float: left;
+}
+
+.options
+{
+	height: 43px;
+	margin-bottom: 24px;
+}
+
+.option_buttons
+{
+	height: 43px;
+}
+
+ul.option_buttons
+{
+	margin: 0;
+	list-style: none;
+}
+
+ul.option_buttons li
+{
+	float: right;
+	margin-left: 12px;
+}
+
+.album_link_button
+{
+	float: left;
+	margin-left: 12px;
+	margin-bottom: 12px;
+	cursor: pointer;
+}
+
+.album_link_button a
+{
+	color: #ffffff;
+}
+
+.album_link_button:hover
+{
+	text-decoration: none;
+}
+
+.album
+{
+	border: solid 2px #000000;
+	background-color: #3d3d3d;
+	width: 175px;
+	height: 220px;
+	padding: 3px;
+	text-align: center;
+	font-weight: bold;
+	font-size: 24px;
+	margin-bottom: 12px;
+}
+
+.album:hover
+{
+	background-color: #202020;
+}
+
+.album_image_wrapper
+{
+	margin-bottom: 6px;
+	height: 130px;
+	width: 100%;
+	border: solid 1px #000000;
+	background-color: #898989;
+}
+
+.album_image_frame
+{
+}
+
+.album_image
+{
+	max-width: 173px;
+	max-height: 130px;
+}
+
+.album_title
+{
+}
+
+.error_label
+{
+	height: 19px;
+	float: left;
+	padding: 12px 0px;
+	color: #ff0000;
+	text-align: center;
+	width: 100%;
+}
