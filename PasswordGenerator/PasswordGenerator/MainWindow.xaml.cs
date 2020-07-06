@@ -22,11 +22,11 @@ namespace PasswordGenerator
     {
         #region Dependency Properties
 
-        public static readonly DependencyProperty PasswordsProperty = DependencyProperty.Register("Password", typeof(ObservableCollection<String>), typeof(MainWindow));
+        public static readonly DependencyProperty PasswordsProperty = DependencyProperty.Register("Password", typeof(ObservableCollection<string>), typeof(MainWindow));
 
-        public static readonly DependencyProperty PasswordsToGenerateProperty = DependencyProperty.Register("PasswordsToGenerate", typeof(Int32), typeof(MainWindow));
+        public static readonly DependencyProperty PasswordsToGenerateProperty = DependencyProperty.Register("PasswordsToGenerate", typeof(int), typeof(MainWindow));
 
-        public static readonly DependencyProperty ClearBeforeGeneratingProperty = DependencyProperty.Register("ClearBeforeGenerating", typeof(Boolean), typeof(MainWindow));
+        public static readonly DependencyProperty ClearBeforeGeneratingProperty = DependencyProperty.Register("ClearBeforeGenerating", typeof(bool), typeof(MainWindow));
 
         #endregion
 
@@ -35,27 +35,27 @@ namespace PasswordGenerator
         /// <summary>
         /// Gets or sets the passwords that have been generated
         /// </summary>
-        public ObservableCollection<String> Passwords
+        public ObservableCollection<string> Passwords
         {
-            get { return GetValue(MainWindow.PasswordsProperty) as ObservableCollection<String>; }
+            get { return GetValue(MainWindow.PasswordsProperty) as ObservableCollection<string>; }
             set { SetValue(MainWindow.PasswordsProperty, value); }
         }
 
         /// <summary>
         /// Gets or sets the quantity of passwords to generate when the button is clicked
         /// </summary>
-        public Int32 PasswordsToGenerate
+        public int PasswordsToGenerate
         {
-            get { return (Int32)GetValue(MainWindow.PasswordsToGenerateProperty); }
+            get { return (int)GetValue(MainWindow.PasswordsToGenerateProperty); }
             set { SetValue(MainWindow.PasswordsToGenerateProperty, value); }
         }
 
         /// <summary>
         /// Gets or sets a value determining whether the generated passwords should be cleared before a new set of passwords are generated
         /// </summary>
-        public Boolean ClearBeforeGenerating
+        public bool ClearBeforeGenerating
         {
-            get { return (Boolean)GetValue(MainWindow.ClearBeforeGeneratingProperty); }
+            get { return (bool)GetValue(MainWindow.ClearBeforeGeneratingProperty); }
             set { SetValue(MainWindow.ClearBeforeGeneratingProperty, value); }
         }
 
@@ -70,7 +70,7 @@ namespace PasswordGenerator
         {
             DataContext = this;
             InitializeComponent();
-            Passwords = new ObservableCollection<String>();
+            Passwords = new ObservableCollection<string>();
             PasswordsToGenerate = 10;
             ClearBeforeGenerating = true;
         }
@@ -83,15 +83,17 @@ namespace PasswordGenerator
         {
             if (ClearBeforeGenerating)
                 Passwords.Clear();
+            
+            var rnd = new Random();
 
-            Random rnd = new Random();
-
-            for (int i = 0; i < PasswordsToGenerate; i++)
+            for (var i = 0; i < PasswordsToGenerate; i++)
             {
-                String password = String.Empty;
+                var password = string.Empty;
 
-                for (int j = 0; j < 7; j++)
-                    password += Convert.ToChar(rnd.Next(65, 90));
+                for (var j = 0; j < 11; j++)
+                    password += Convert.ToChar(rnd.Next(97, 122));
+
+                password = password[0].ToString().ToUpper() + password.Substring(1);
 
                 password += rnd.Next(0, 9).ToString();
 

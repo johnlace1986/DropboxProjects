@@ -17,7 +17,7 @@
             x:Name="lstPasswords"
             Grid.Row="0"
             Height="240"
-            ItemsSource="{Binding Path=Passwords, RelativeSource={RelativeSource AncestorType={x:Type this:MainWindow}}}"/>
+            ItemsSource="{Binding Path=Passwords, RelativeSource={RelativeSource AncestorType={x:Type this:MainWindow}}}" FontFamily="Courier New"/>
         
         <Grid
             Grid.Row="1">
